@@ -342,7 +342,7 @@
         <!-- needed by org.mock-server:mockserver-netty -->
         <groupId>org.mozilla</groupId>
         <artifactId>rhino</artifactId>
-        <version>1.9.0</version>
+        <version>1.9.1</version>
       </dependency>
       <dependency>
         <groupId>org.jetbrains.kotlin</groupId>
