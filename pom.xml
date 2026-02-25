@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.mishmash.stacks</groupId>
   <artifactId>distributed-computing-stacks</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>pom</packaging>
 
   <name>Open Source Stacks for Distributed Computing</name>
@@ -75,11 +75,11 @@
     <!-- Apache ZooKeeper versions -->
     <zookeeper.stable.version>3.9.4</zookeeper.stable.version>
     <zookeeper.stable.mishmash.io.patch>2</zookeeper.stable.mishmash.io.patch>
-    <zookeeper.stable.mishmash.io.update>1</zookeeper.stable.mishmash.io.update>
+    <zookeeper.stable.mishmash.io.update>2</zookeeper.stable.mishmash.io.update>
 
     <!-- Apache Hadoop versions -->
-    <hadoop.stable.version>3.4.2</hadoop.stable.version>
-    <hadoop.stable.mishmash.io.patch>2</hadoop.stable.mishmash.io.patch>
+    <hadoop.stable.version>3.4.3</hadoop.stable.version>
+    <hadoop.stable.mishmash.io.patch>1</hadoop.stable.mishmash.io.patch>
     <hadoop.stable.mishmash.io.update>0</hadoop.stable.mishmash.io.update>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -120,7 +120,7 @@
     <yetus.version>0.15.1</yetus.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <vertx.version>5.0.8</vertx.version>
-    <vertx-patch.version>1.1</vertx-patch.version>
+    <vertx-patch.version>1.0</vertx-patch.version>
 
     <junit.version>6.0.0</junit.version>
     <mockito.version>5.21.0</mockito.version>
@@ -136,17 +136,17 @@
     <azure-resourcemanager.version>2.53.3</azure-resourcemanager.version>
     <openapi-nullable.version>0.2.9</openapi-nullable.version>
 
-    <compute-azure.version>1.0.1</compute-azure.version>
-    <compute-azure-utils.version>1.0.1</compute-azure-utils.version>
+    <compute-azure.version>1.0.2</compute-azure.version>
+    <compute-azure-utils.version>1.0.2</compute-azure-utils.version>
     <stacks-common.version>1.0.1</stacks-common.version>
     <compute-simple.version>1.0.1</compute-simple.version>
-    <security-oidc-common.version>1.0.1</security-oidc-common.version>
-    <security-azure.version>1.0.1</security-azure.version>
-    <karaf-security-common.version>1.0.1</karaf-security-common.version>
-    <karaf-security-azure.version>1.0.1</karaf-security-azure.version>
-    <karaf-compute-shell.version>1.0.1</karaf-compute-shell.version>
-    <karaf-features.version>1.0.1</karaf-features.version>
-    <misc-openid.version>1.0.1</misc-openid.version>
+    <security-oidc-common.version>1.0.2</security-oidc-common.version>
+    <security-azure.version>1.0.2</security-azure.version>
+    <karaf-security-common.version>1.0.2</karaf-security-common.version>
+    <karaf-security-azure.version>1.0.2</karaf-security-azure.version>
+    <karaf-compute-shell.version>1.0.2</karaf-compute-shell.version>
+    <karaf-features.version>1.0.2</karaf-features.version>
+    <misc-openid.version>1.0.2</misc-openid.version>
   </properties>
 
   <modules>

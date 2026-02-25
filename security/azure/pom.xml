@@ -20,7 +20,7 @@
   <parent>
     <groupId>io.mishmash.stacks</groupId>
     <artifactId>distributed-computing-stacks</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -29,7 +29,7 @@
   <version>${security-azure.version}</version>
   <packaging>bundle</packaging>
 
-  <name>Azure (Entra ID) security for distributed computing stacks</name>
+  <name>Azure Entra ID security for distributed computing stacks</name>
   <description>
     Allows the distributed computing stacks to itegrate with Azure Entra ID 
     for authentication and authorization.
