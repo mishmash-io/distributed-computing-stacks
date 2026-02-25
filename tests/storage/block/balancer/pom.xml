@@ -19,7 +19,7 @@
 
   <groupId>io.mishmash.test.stacks</groupId>
   <artifactId>test-storage-blocks-balancer</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 
   <name>Storage/block/balancer tests</name>
   <description>
@@ -70,8 +70,8 @@
   </developers>
 
   <properties>
-    <top.version>1.0.0</top.version>
-    <hadoop.version>3.4.2-mmio.2.0</hadoop.version>
+    <top.version>1.0.1</top.version>
+    <hadoop.version>3.4.3-mmio.1.0</hadoop.version>
 
     <hadoop.common.build.dir>${project.build.directory}</hadoop.common.build.dir>
     <hadoop.log.dir>${project.build.directory}/log</hadoop.log.dir>

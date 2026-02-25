@@ -20,7 +20,7 @@
   <parent>
     <groupId>io.mishmash.stacks</groupId>
     <artifactId>distributed-computing-stacks</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -1012,7 +1012,7 @@
               <goal>wget</goal>
             </goals>
             <configuration>
-              <url>https://github.com/mishmash-io/hadoop/compare/rel/release-${hadoop.stable.version}...mishmash-io:hadoop:patch-${hadoop.stable.version}_${hadoop.stable.mishmash.io.patch}.diff</url>
+              <url>https://github.com/mishmash-io/hadoop/compare/rel/release-${hadoop.stable.version}...mishmash-io:hadoop:rel/patch-${hadoop.stable.version}_${hadoop.stable.mishmash.io.patch}.diff</url>
               <outputFileName>mishmash_io_hadoop.patch</outputFileName>
               <outputDirectory>${project.build.directory}</outputDirectory>
             </configuration>

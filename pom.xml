@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.mishmash.stacks</groupId>
   <artifactId>distributed-computing-stacks</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>pom</packaging>
 
   <name>Open Source Stacks for Distributed Computing</name>
@@ -78,8 +78,8 @@
     <zookeeper.stable.mishmash.io.update>1</zookeeper.stable.mishmash.io.update>
 
     <!-- Apache Hadoop versions -->
-    <hadoop.stable.version>3.4.2</hadoop.stable.version>
-    <hadoop.stable.mishmash.io.patch>2</hadoop.stable.mishmash.io.patch>
+    <hadoop.stable.version>3.4.3</hadoop.stable.version>
+    <hadoop.stable.mishmash.io.patch>1</hadoop.stable.mishmash.io.patch>
     <hadoop.stable.mishmash.io.update>0</hadoop.stable.mishmash.io.update>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
