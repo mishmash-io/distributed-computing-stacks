@@ -29,7 +29,7 @@
   <version>${security-azure.version}</version>
   <packaging>bundle</packaging>
 
-  <name>Azure (Entra ID) security for distributed computing stacks</name>
+  <name>Azure Entra ID security for distributed computing stacks</name>
   <description>
     Allows the distributed computing stacks to itegrate with Azure Entra ID 
     for authentication and authorization.

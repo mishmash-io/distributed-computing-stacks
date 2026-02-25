@@ -120,7 +120,7 @@
     <yetus.version>0.15.1</yetus.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <vertx.version>5.0.8</vertx.version>
-    <vertx-patch.version>1.1</vertx-patch.version>
+    <vertx-patch.version>1.0</vertx-patch.version>
 
     <junit.version>6.0.0</junit.version>
     <mockito.version>5.21.0</mockito.version>
@@ -136,17 +136,17 @@
     <azure-resourcemanager.version>2.53.3</azure-resourcemanager.version>
     <openapi-nullable.version>0.2.9</openapi-nullable.version>
 
-    <compute-azure.version>1.0.1</compute-azure.version>
-    <compute-azure-utils.version>1.0.1</compute-azure-utils.version>
+    <compute-azure.version>1.0.2</compute-azure.version>
+    <compute-azure-utils.version>1.0.2</compute-azure-utils.version>
     <stacks-common.version>1.0.1</stacks-common.version>
     <compute-simple.version>1.0.1</compute-simple.version>
-    <security-oidc-common.version>1.0.1</security-oidc-common.version>
-    <security-azure.version>1.0.1</security-azure.version>
-    <karaf-security-common.version>1.0.1</karaf-security-common.version>
-    <karaf-security-azure.version>1.0.1</karaf-security-azure.version>
-    <karaf-compute-shell.version>1.0.1</karaf-compute-shell.version>
-    <karaf-features.version>1.0.1</karaf-features.version>
-    <misc-openid.version>1.0.1</misc-openid.version>
+    <security-oidc-common.version>1.0.2</security-oidc-common.version>
+    <security-azure.version>1.0.2</security-azure.version>
+    <karaf-security-common.version>1.0.2</karaf-security-common.version>
+    <karaf-security-azure.version>1.0.2</karaf-security-azure.version>
+    <karaf-compute-shell.version>1.0.2</karaf-compute-shell.version>
+    <karaf-features.version>1.0.2</karaf-features.version>
+    <misc-openid.version>1.0.2</misc-openid.version>
   </properties>
 
   <modules>
