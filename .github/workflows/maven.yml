@@ -161,6 +161,9 @@ jobs:
         path: ~/.m2/repository
         key: ${{ needs.compile.outputs.build-cache-key }}
         fail-on-cache-miss: true
+    - name: Download additional deps to keep surefire plugin happy when offline
+      # needed by coordination/cluster, which uses testng (TODO: download automatically when 'going offline' for tests)
+      run: mvn dependency:get -Dartifact=org.apache.maven.surefire:surefire-testng:jar:3.5.5
     - name: Run test set ${{ matrix.testset }}
       env:
         OTEL_SERVICE_NAME: maven-test-service
