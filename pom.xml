@@ -82,6 +82,11 @@
     <hadoop.stable.mishmash.io.patch>1</hadoop.stable.mishmash.io.patch>
     <hadoop.stable.mishmash.io.update>0</hadoop.stable.mishmash.io.update>
 
+    <!-- Apache Helix versions -->
+    <helix.stable.version>1.4.3</helix.stable.version>
+    <helix.stable.mishmash.io.patch>1</helix.stable.mishmash.io.patch>
+    <helix.stable.mishmash.io.update>0</helix.stable.mishmash.io.update>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -93,8 +98,11 @@
     <commons-compress.version>1.28.0</commons-compress.version>
     <commons-io.version>2.21.0</commons-io.version>
     <commons-lang.version>3.20.0</commons-lang.version>
+    <dropwizard.metrics.version>4.2.38</dropwizard.metrics.version>
     <guava.version>33.5.0-jre</guava.version>
     <gson.version>2.13.2</gson.version>
+    <httpcomponents.core.version>5.4.1</httpcomponents.core.version>
+    <httpcomponents.client.version>5.6</httpcomponents.client.version>
     <jackson.version>2.21.1</jackson.version>
     <jackson-annotations.version>2.21</jackson-annotations.version>
     <stax2-api.version>4.2.2</stax2-api.version>
@@ -155,6 +163,7 @@
     <module>compute/compute-azure-utils</module>
 
     <module>patched-projects/zookeeper</module>
+    <module>patched-projects/helix</module>
     <module>patched-projects/hadoop</module>
 
     <module>quorum/quorum-client</module>
@@ -228,9 +237,24 @@
         <version>${jetty.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.httpcomponents.core5</groupId>
+        <artifactId>httpcore5</artifactId>
+        <version>${httpcomponents.core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents.client5</groupId>
+        <artifactId>httpclient5</artifactId>
+        <version>${httpcomponents.client.version}</version>
+      </dependency>
+      <dependency>
         <groupId>jakarta.annotation</groupId>
         <artifactId>jakarta.annotation-api</artifactId>
         <version>${jakarta-annotation.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.xml.bind</groupId>
+        <artifactId>jakarta.xml.bind-api</artifactId>
+        <version>4.0.5</version>
       </dependency>
       <dependency>
         <groupId>commons-cli</groupId>
@@ -263,6 +287,11 @@
         <version>${commons-lang.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-math3</artifactId>
+        <version>3.6.1</version>
+      </dependency>
+      <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>
         <version>${gson.version}</version>
@@ -286,6 +315,11 @@
         <groupId>com.fasterxml.jackson.datatype</groupId>
         <artifactId>jackson-datatype-jsr310</artifactId>
         <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>2.5</version>
       </dependency>
       <dependency>
         <groupId>org.codehaus.woodstox</groupId>
@@ -430,6 +464,11 @@
         <groupId>org.jspecify</groupId>
         <artifactId>jspecify</artifactId>
         <version>${jspecify.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.dropwizard.metrics</groupId>
+        <artifactId>metrics-core</artifactId>
+        <version>${dropwizard.metrics.version}</version>
       </dependency>
 
       <dependency>
