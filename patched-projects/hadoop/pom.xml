@@ -79,14 +79,11 @@
   </developers>
 
   <properties>
-    <httpcomponents.core.version>5.4.1</httpcomponents.core.version>
-    <httpcomponents.client.version>5.6</httpcomponents.client.version>
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
     <curator.version>5.9.0</curator.version>
     <wildfly-openssl.version>2.2.5.Final</wildfly-openssl.version>
     <jsp-api.version>4.0.0</jsp-api.version>
     <jersey.version>3.1.11</jersey.version>
-    <dropwizard.metrics.version>4.2.38</dropwizard.metrics.version>
     <sshd.version>2.17.1</sshd.version>
     <xmlunit.version>2.11.0</xmlunit.version>
 
@@ -145,11 +142,6 @@
         <artifactId>commons-text</artifactId>
         <version>1.15.0</version>
       </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-math3</artifactId>
-        <version>3.6.1</version>
-      </dependency>
 
       <!-- logging dependencies -->
       <dependency>
@@ -200,21 +192,6 @@
         <artifactId>jersey-hk2</artifactId>
         <version>${jersey.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.apache.httpcomponents.core5</groupId>
-        <artifactId>httpcore5</artifactId>
-        <version>${httpcomponents.core.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.httpcomponents.client5</groupId>
-        <artifactId>httpclient5</artifactId>
-        <version>${httpcomponents.client.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.xml.bind</groupId>
-        <artifactId>jakarta.xml.bind-api</artifactId>
-        <version>4.0.5</version>
-      </dependency>
 
       <!-- Updated to minimal ZooKeeper -->
       <dependency>
@@ -259,11 +236,6 @@
       </dependency>
 
       <!-- Telemetry dependencies -->
-      <dependency>
-        <groupId>io.dropwizard.metrics</groupId>
-        <artifactId>metrics-core</artifactId>
-        <version>${dropwizard.metrics.version}</version>
-      </dependency>
       <dependency>
         <groupId>io.dropwizard.metrics</groupId>
         <artifactId>metrics-jmx</artifactId>
@@ -514,11 +486,6 @@
         <groupId>com.jayway.jsonpath</groupId>
         <artifactId>json-path</artifactId>
         <version>3.0.0</version>
-      </dependency>
-      <dependency>
-        <groupId>org.yaml</groupId>
-        <artifactId>snakeyaml</artifactId>
-        <version>2.6</version>
       </dependency>
       <dependency>
         <groupId>org.xmlunit</groupId>

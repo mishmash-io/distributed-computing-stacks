@@ -41,6 +41,7 @@ jobs:
       matrix:
         testset:
           - 'coordination/base'
+          - 'coordination/cluster'
           - 'storage/block/base'
           - 'storage/block/balancer'
           - 'storage/block/blockmanagement'
@@ -86,8 +87,14 @@ jobs:
             testset: 'storage/block/namenode'
           - telemetryhttpport: 4334
             testset: 'storage/block/namenode'
+          - telemetrygrpcport: 4335
+            testset: 'coordination/cluster'
+          - telemetryhttpport: 4336
+            testset: 'coordination/cluster'
           - telemetryoutput: 'coordination-base'
             testset: 'coordination/base'
+          - telemetryoutput: 'coordination-cluster'
+            testset: 'coordination/cluster'
           - telemetryoutput: 'storage-block-base'
             testset: 'storage/block/base'
           - telemetryoutput: 'storage-block-balancer'
@@ -106,6 +113,8 @@ jobs:
             testset: 'storage/block/namenode'
           - testname: 'Base distributed coordination tests'
             testset: 'coordination/base'
+          - testname: 'Cluster coordination tests'
+            testset: 'coordination/cluster'
           - testname: 'Base distributed block storage tests'
             testset: 'storage/block/base'
           - testname: 'Distributed block storage balancer tests'
@@ -152,6 +161,9 @@ jobs:
         path: ~/.m2/repository
         key: ${{ needs.compile.outputs.build-cache-key }}
         fail-on-cache-miss: true
+    - name: Download additional deps to keep surefire plugin happy when offline
+      # needed by coordination/cluster, which uses testng (TODO: download automatically when 'going offline' for tests)
+      run: mvn dependency:get -Dartifact=org.apache.maven.surefire:surefire-testng:3.5.5
     - name: Run test set ${{ matrix.testset }}
       env:
         OTEL_SERVICE_NAME: maven-test-service
