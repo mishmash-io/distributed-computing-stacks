@@ -18,7 +18,7 @@
   ~ under the License.
   -->
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="mishmash io patches of Apache Helix" parallel="false">
+<suite name="mishmash io patches of Apache Helix" parallel="false" time-out="900000">
   <test name="all tests" preserve-order="true">
     <packages>
       <package name="org.apache.helix.*"/>
