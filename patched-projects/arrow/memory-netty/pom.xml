@@ -25,11 +25,11 @@
   </parent>
 
   <groupId>io.mishmash.stacks.patches</groupId>
-  <artifactId>arrow-vector-patches</artifactId>
+  <artifactId>arrow-memory-netty-patches</artifactId>
   <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
   <packaging>jar</packaging>
 
-  <name>mishmash io patches of Apache Arrow vector</name>
+  <name>mishmash io patches of Apache Arrow Netty memory allocator</name>
   <description>
     This package contains Apache Arrow code as modified by mishmash io. For more info 
     on the specific modifications by mishmash io visit our website and GitHub.
@@ -98,24 +98,18 @@
       <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
+      <groupId>org.immutables</groupId>
+      <artifactId>value-annotations</artifactId>
+      <scope>provided</scope> <!-- compile only -->
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-common</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-buffer</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -125,26 +119,6 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-console</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -223,8 +197,10 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-vector soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/java</source>
+                <!-- add the patched arrow-memory-netty soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-netty/src/main/java</source>
+                <!-- add the patched arrow-memory-netty-buffer-patch soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-netty-buffer-patch/src/main/java</source>
               </sources>
             </configuration>
           </execution>
@@ -236,8 +212,10 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-vector test soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/test/java</source>
+                <!-- add the patched arrow-memory-netty test soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-netty/src/test/java</source>
+                <!-- add the patched arrow-memory-netty-buffer-patch test soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-netty-buffer-patch/src/test/java</source>
               </sources>
             </configuration>
           </execution>
@@ -252,30 +230,10 @@
                 <!-- add the test resoruces -->
                 <resource>
                   <directory>
-                    ${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/test/resources
+                    ${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-netty/src/test/resources
                   </directory>
                 </resource>
               </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <!-- generate sources from fmpp -->
-        <groupId>org.apache.drill.tools</groupId>
-        <artifactId>drill-fmpp-maven-plugin</artifactId>
-        <version>1.22.0</version>
-        <executions>
-          <execution>
-            <id>generate-fmpp</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <phase>generate-sources</phase>
-            <configuration>
-              <config>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/codegen/config.fmpp</config>
-              <output>${project.build.directory}/generated-sources/fmpp</output>
-              <templates>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/codegen/templates</templates>
             </configuration>
           </execution>
         </executions>
@@ -285,11 +243,6 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <annotationProcessorPaths combine.children="append">
-            <path>
-              <groupId>org.checkerframework</groupId>
-              <artifactId>checker</artifactId>
-              <version>${checker.version}</version>
-            </path>
             <path>
               <groupId>org.immutables</groupId>
               <artifactId>value</artifactId>

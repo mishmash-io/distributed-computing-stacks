@@ -947,14 +947,6 @@
   </dependencies>
 
   <build>
-    <extensions>
-      <extension>
-        <groupId>kr.motd.maven</groupId>
-        <artifactId>os-maven-plugin</artifactId>
-        <version>1.7.1</version>
-      </extension>
-    </extensions>
-
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -1279,12 +1271,6 @@
       <plugin>
         <groupId>org.xolstice.maven.plugins</groupId>
         <artifactId>protobuf-maven-plugin</artifactId>
-        <version>0.6.1</version>
-        <configuration>
-          <protocArtifact>
-            com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
-          </protocArtifact>
-        </configuration>
         <executions>
           <execution>
             <id>compile-common-protobuf</id>

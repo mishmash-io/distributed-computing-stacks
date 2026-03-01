@@ -25,11 +25,11 @@
   </parent>
 
   <groupId>io.mishmash.stacks.patches</groupId>
-  <artifactId>arrow-vector-patches</artifactId>
+  <artifactId>arrow-flight-core-patches</artifactId>
   <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
   <packaging>jar</packaging>
 
-  <name>mishmash io patches of Apache Arrow vector</name>
+  <name>mishmash io patches of Apache Arrow Flight RPC core</name>
   <description>
     This package contains Apache Arrow code as modified by mishmash io. For more info 
     on the specific modifications by mishmash io visit our website and GitHub.
@@ -79,6 +79,10 @@
     </developer>
   </developers>
 
+  <properties>
+    <grpc.version>1.79.0</grpc.version>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -87,6 +91,23 @@
         <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-bom</artifactId>
+        <version>${grpc.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${protobuf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java-util</artifactId>
+        <version>${protobuf.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -98,24 +119,72 @@
       <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-vector-patches</artifactId>
+      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-memory-netty-patches</artifactId>
+      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.immutables</groupId>
+      <artifactId>value-annotations</artifactId>
+      <scope>provided</scope> <!-- compile only -->
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-netty</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-protobuf</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-tcnative-boringssl-static</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-buffer</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-handler</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-transport</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-stub</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java-util</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>commons-codec</groupId>
-      <artifactId>commons-codec</artifactId>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -123,28 +192,25 @@
     </dependency>
 
     <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-vector-patches</artifactId>
+      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      <scope>test</scope>
+      <classifier>tests</classifier>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-services</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-console</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest</artifactId>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-inprocess</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -160,6 +226,14 @@
   </dependencies>
 
   <build>
+    <!--extensions>
+      <extension>
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>1.7.1</version>
+      </extension>
+    </extensions-->
+
     <plugins>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
@@ -223,21 +297,23 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-vector soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/java</source>
+                <!-- add the patched arrow-flight-core soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/flight/flight-core/src/main/java</source>
+                <!--source>/home/zethix/git/mishmash-github/arrow-java/flight/flight-core/src/main/java</source-->
               </sources>
             </configuration>
           </execution>
           <execution>
-            <id>add-zookeeper-test-sources</id>
+            <id>add-arrow-test-sources</id>
             <phase>generate-test-sources</phase>
             <goals>
               <goal>add-test-source</goal>
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-vector test soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/test/java</source>
+                <!-- add the patched arrow-flight-core test soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/flight/flight-core/src/test/java</source>
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/flight/flight-core/src/test/proto</source>
               </sources>
             </configuration>
           </execution>
@@ -252,7 +328,7 @@
                 <!-- add the test resoruces -->
                 <resource>
                   <directory>
-                    ${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/test/resources
+                    ${project.build.directory}/arrow-java-${arrow.stable.version}/flight/flight-core/src/test/resources
                   </directory>
                 </resource>
               </resources>
@@ -261,21 +337,35 @@
         </executions>
       </plugin>
       <plugin>
-        <!-- generate sources from fmpp -->
-        <groupId>org.apache.drill.tools</groupId>
-        <artifactId>drill-fmpp-maven-plugin</artifactId>
-        <version>1.22.0</version>
+        <groupId>org.xolstice.maven.plugins</groupId>
+        <artifactId>protobuf-maven-plugin</artifactId>
         <executions>
           <execution>
-            <id>generate-fmpp</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
+            <id>compile-protobuf</id>
             <phase>generate-sources</phase>
+            <goals>
+              <goal>compile</goal>
+              <goal>compile-custom</goal>
+            </goals>
             <configuration>
-              <config>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/codegen/config.fmpp</config>
-              <output>${project.build.directory}/generated-sources/fmpp</output>
-              <templates>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/codegen/templates</templates>
+              <protoSourceRoot>${project.build.directory}/arrow-java-${arrow.stable.version}/arrow-format/</protoSourceRoot>
+              <pluginId>grpc-java</pluginId>
+              <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+              <pluginParameter>@generated=omit</pluginParameter>
+            </configuration>
+          </execution>
+          <execution>
+            <id>compile-tests-protobuf</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>test-compile</goal>
+              <goal>test-compile-custom</goal>
+            </goals>
+            <configuration>
+              <protoTestSourceRoot>${project.build.directory}/arrow-java-${arrow.stable.version}/flight/flight-core/src/test/proto</protoTestSourceRoot>
+              <pluginId>grpc-java</pluginId>
+              <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
+              <pluginParameter>@generated=omit</pluginParameter>
             </configuration>
           </execution>
         </executions>
@@ -285,11 +375,6 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <annotationProcessorPaths combine.children="append">
-            <path>
-              <groupId>org.checkerframework</groupId>
-              <artifactId>checker</artifactId>
-              <version>${checker.version}</version>
-            </path>
             <path>
               <groupId>org.immutables</groupId>
               <artifactId>value</artifactId>
