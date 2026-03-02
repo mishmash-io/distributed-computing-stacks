@@ -124,7 +124,7 @@
     <logback-version>1.5.32</logback-version>
     <snappy.version>1.1.10.8</snappy.version>
     <spotbugsannotations.version>4.9.8</spotbugsannotations.version>
-    <error_prone_annotations.version>2.47.0</error_prone_annotations.version>
+    <error_prone_annotations.version>2.48.0</error_prone_annotations.version>
     <failureaccess.version>1.0.3</failureaccess.version>
     <listenablefuture.version>9999.0-empty-to-avoid-conflict-with-guava</listenablefuture.version>
     <j2objc.version>3.1</j2objc.version>
@@ -140,7 +140,7 @@
     <immutables.version>2.12.1</immutables.version>
 
     <junit.version>6.0.0</junit.version>
-    <mockito.version>5.21.0</mockito.version>
+    <mockito.version>5.22.0</mockito.version>
     <hamcrest.version>3.0</hamcrest.version>
     <surefire.version>3.5.5</surefire.version>
 
@@ -773,7 +773,7 @@
         <plugin>
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
-          <version>6.0.0</version>
+          <version>6.0.2</version>
           <extensions>true</extensions>
         </plugin>
         <plugin>
