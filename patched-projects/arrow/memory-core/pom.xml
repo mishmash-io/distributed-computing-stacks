@@ -82,6 +82,11 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-format-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
         <groupId>org.checkerframework</groupId>
         <artifactId>checker-qual</artifactId>
         <version>${checker.version}</version>
@@ -98,7 +103,6 @@
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-format-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>org.checkerframework</groupId>

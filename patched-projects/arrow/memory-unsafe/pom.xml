@@ -88,6 +88,11 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -95,7 +100,6 @@
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-memory-core-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>org.immutables</groupId>

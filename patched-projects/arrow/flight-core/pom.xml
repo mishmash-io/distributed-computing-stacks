@@ -93,6 +93,42 @@
         <scope>import</scope>
       </dependency>
       <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-vector-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-vector-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-vector-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+        <scope>test</scope>
+        <classifier>tests</classifier>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-netty-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-netty-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
         <groupId>io.grpc</groupId>
         <artifactId>grpc-bom</artifactId>
         <version>${grpc.version}</version>
@@ -116,17 +152,14 @@
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-memory-core-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-vector-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-memory-netty-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -194,7 +227,6 @@
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-vector-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
       <scope>test</scope>
       <classifier>tests</classifier>
     </dependency>
@@ -226,14 +258,6 @@
   </dependencies>
 
   <build>
-    <!--extensions>
-      <extension>
-        <groupId>kr.motd.maven</groupId>
-        <artifactId>os-maven-plugin</artifactId>
-        <version>1.7.1</version>
-      </extension>
-    </extensions-->
-
     <plugins>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>

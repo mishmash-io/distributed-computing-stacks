@@ -192,6 +192,15 @@
             <configuration>
               <artifactItems>
                 <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>helix-patches</artifactId>
+                  <version>${helix.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
                   <groupId>io.mishmash.stacks.patches</groupId>
                   <artifactId>helix-patches</artifactId>
                   <version>${helix.version}</version>
@@ -222,6 +231,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.5</version>
         <configuration>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
           <suiteXmlFiles>
             <suiteXmlFile>src/test/conf/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
@@ -235,7 +245,7 @@
         <configuration>
           <failOnError>false</failOnError>
           <failOnWarnings>false</failOnWarnings>
-          <sourcepath>${project.build.directory}/workdir/zookeeper-server/src/test/java</sourcepath>
+          <sourcepath>${project.build.directory}/patched-sources/src/test/java</sourcepath>
         </configuration>
       </plugin>
       <plugin>
@@ -243,7 +253,7 @@
         <artifactId>maven-jxr-plugin</artifactId>
         <version>3.6.0</version>
         <configuration>
-          <sourceDirs>${project.build.directory}/workdir/zookeeper-server/src/test/java/</sourceDirs>
+          <sourceDirs>${project.build.directory}/patched-sources/src/test/java/</sourceDirs>
         </configuration>
       </plugin>
     </plugins>
