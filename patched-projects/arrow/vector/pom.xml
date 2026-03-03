@@ -31,11 +31,11 @@
 
   <name>mishmash io patches of Apache Arrow vector</name>
   <description>
-    This package contains Apache ZooKeeper code as modified by mishmash io. For more info 
+    This package contains Apache Arrow code as modified by mishmash io. For more info 
     on the specific modifications by mishmash io visit our website and GitHub.
 
     It is recommended that you don't use this package directly, but rather - one or more of the 
-    minimal quorum stacks packages.
+    minimal distributed memory stacks packages.
   </description>
   <url>https://mishmash.io/open_source/distributed-computing-stacks</url>
 
@@ -79,22 +79,19 @@
     </developer>
   </developers>
 
-  <properties>
-    <checker.version>3.53.1</checker.version>
-    <immutables.version>2.12.1</immutables.version>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.checkerframework</groupId>
-        <artifactId>checker-qual</artifactId>
-        <version>${checker.version}</version>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.immutables</groupId>
-        <artifactId>value-annotations</artifactId>
-        <version>${immutables.version}</version>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -103,7 +100,6 @@
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
       <artifactId>arrow-memory-core-patches</artifactId>
-      <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -174,6 +170,18 @@
         <artifactId>download-maven-plugin</artifactId>
         <executions>
           <execution>
+            <id>download-patch</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>https://github.com/mishmash-io/arrow-java/compare/v${arrow.stable.version}...mishmash-io:arrow-java:patch-${arrow.stable.version}_${arrow.stable.mishmash.io.patch}.diff</url>
+              <outputFileName>mishmash_io_arrow.patch</outputFileName>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
             <id>download-original-source</id>
             <phase>initialize</phase>
             <goals>
@@ -183,6 +191,26 @@
               <url>https://github.com/apache/arrow-java/archive/refs/tags/v${arrow.stable.version}.zip</url>
               <unpack>true</unpack>
               <outputDirectory>${project.build.directory}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-patch-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>patch-original-source</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>apply</goal>
+            </goals>
+            <configuration>
+              <patchFile>${project.build.directory}/mishmash_io_arrow.patch</patchFile>
+              <patchTrackingFile>${project.build.directory}/mishmash_io_arrow_changes.txt</patchTrackingFile>
+              <strip>1</strip>
+              <removeEmptyFiles>true</removeEmptyFiles>
+              <targetDirectory>${project.build.directory}/arrow-java-${arrow.stable.version}</targetDirectory>
             </configuration>
           </execution>
         </executions>
@@ -199,7 +227,7 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-memory-core soruces -->
+                <!-- add the patched arrow-vector soruces -->
                 <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/main/java</source>
               </sources>
             </configuration>
@@ -212,7 +240,7 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-memory-core test soruces -->
+                <!-- add the patched arrow-vector test soruces -->
                 <source>${project.build.directory}/arrow-java-${arrow.stable.version}/vector/src/test/java</source>
               </sources>
             </configuration>

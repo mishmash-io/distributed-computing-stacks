@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2026 Mishmash IO UK Ltd.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.mishmash.test.stacks</groupId>
+  <artifactId>test-memory-base</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>Memory/base tests</name>
+  <description>
+    This artifact only exists to split testing into common categories.
+
+    It should not be installed or deployed.
+  </description>
+  <url>https://mishmash.io/open_source/apache_big_data</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>mishmash io</name>
+    <url>https://mishmash.io</url>
+  </organization>
+
+  <scm>
+    <connection>scm:git:https://github.com/mishmash-io/distributed-computing-stacks.git</connection>
+    <developerConnection>scm:git:https://github.com/mishmash-io/distributed-computing-stacks.git</developerConnection>
+    <url>https://github.com/mishmash-io/distributed-computing-stacks</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>Ivan Kountchev</name>
+      <email>i.kountchev@mishmash.io</email>
+      <organization>mishmash io</organization>
+      <organizationUrl>https://mishmash.io</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Andrey Rusev</name>
+      <email>a.rusev@mishmash.io</email>
+      <url>www.linkedin.com/in/andrey-rusev-21894172</url>
+      <organization>mishmash io</organization>
+      <organizationUrl>https://mishmash.io</organizationUrl>
+      <roles>
+        <role>architect</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <arrow.version>18.3.0-mmio.1.0</arrow.version>
+    <top.version>1.0.0</top.version>
+    <test.instrumentation.opts></test.instrumentation.opts>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-flight-core-patches</artifactId>
+        <version>${arrow.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-memory-core-patches</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-memory-netty-patches</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-memory-unsafe-patches</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-vector-patches</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-flight-core-patches</artifactId>
+      <version>${arrow.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.surefire</groupId>
+      <artifactId>surefire-junit-platform</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.patches</groupId>
+      <artifactId>arrow-vector-patches</artifactId>
+      <version>${arrow.version}</version>
+      <scope>test</scope>
+      <classifier>tests</classifier>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-buffer</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-services</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.grpc</groupId>
+      <artifactId>grpc-inprocess</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.10.0</version>
+        <executions>
+          <execution>
+            <id>unpack-test-classes</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-core-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-memory-core-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-netty-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-memory-netty-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-unsafe-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-memory-unsafe-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-vector-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-vector-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <!-- needed below, to add javadoc links in test reports -->
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-flight-core-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>patched-sources</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/patched-flight-core-sources</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-core-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>tests</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/memory-core/test-classes</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-unsafe-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>tests</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/memory-unsafe/test-classes</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-netty-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>tests</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/memory-netty/test-classes</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-vector-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>tests</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/vector/test-classes</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-flight-core-patches</artifactId>
+                  <version>${arrow.version}</version>
+                  <classifier>tests</classifier>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>${project.build.directory}/flight-core/test-classes</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.15.0</version>
+        <configuration>
+          <release>25</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.5</version>
+        <configuration>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <argLine>--add-reads=org.apache.arrow.memory.core=ch.qos.logback.classic --add-opens=java.base/java.lang.reflect=org.apache.arrow.memory.core --add-opens=java.base/java.nio=org.apache.arrow.memory.core,ALL-UNNAMED ${test.instrumentation.opts}</argLine>
+          <skip>true</skip> <!-- skip the 'default-test' execution -->
+            <enableAssertions>true</enableAssertions>
+            <childDelegation>true</childDelegation>
+            <forkCount>2</forkCount>
+            <reuseForks>true</reuseForks>
+            <systemPropertyVariables>
+              <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+              <io.netty.tryReflectionSetAccessible>true</io.netty.tryReflectionSetAccessible>
+              <user.timezone>UTC</user.timezone>
+              <!-- Note: changing the below configuration might increase the max allocation size for a vector
+              which in turn can cause OOM. Using 2MB - 1byte to simulate the defaul limit of 2^31 - 1 bytes. -->
+              <arrow.vector.max_allocation_bytes>2097151</arrow.vector.max_allocation_bytes>
+            </systemPropertyVariables>
+            <useModulePath>false</useModulePath>
+        </configuration>
+        <executions>
+          <execution>
+            <id>memory-core-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <excludes>
+                <!-- Test is only useful when NOT running with add-opens -->
+                <exclude>**/TestOpens.java</exclude>
+              </excludes>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-netty-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-unsafe-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-vector-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-flight-core-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/memory-core/test-classes</testClassesDirectory>
+              <reportNameSuffix>memory_core</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>memory-unsafe-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-netty-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-vector-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-flight-core-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/memory-unsafe/test-classes</testClassesDirectory>
+              <reportNameSuffix>memory_unsafe</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>memory-netty-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-unsafe-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-vector-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-flight-core-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/memory-netty/test-classes</testClassesDirectory>
+              <reportNameSuffix>memory_netty</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>vector-netty-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-unsafe-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-flight-core-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/vector/test-classes</testClassesDirectory>
+              <reportNameSuffix>vector_netty</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>vector-unsafe-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-netty-patches</classpathDependencyExclude>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-flight-core-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/vector/test-classes</testClassesDirectory>
+              <reportNameSuffix>vector_unsafe</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>flight-core-netty-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-unsafe-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/flight-core/test-classes</testClassesDirectory>
+              <reportNameSuffix>flight_core_netty</reportNameSuffix>
+            </configuration>
+          </execution>
+          <execution>
+            <id>flight-core-unsafe-tests</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <phase>test</phase>
+            <configuration>
+              <skip>false</skip>
+              <classpathDependencyExcludes>
+                <classpathDependencyExclude>io.mishmash.stacks.patches:arrow-memory-netty-patches</classpathDependencyExclude>
+              </classpathDependencyExcludes>
+              <testClassesDirectory>${project.build.directory}/flight-core/test-classes</testClassesDirectory>
+              <reportNameSuffix>flight_core_unsafe</reportNameSuffix>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.12.0</version>
+        <configuration>
+          <failOnError>false</failOnError>
+          <failOnWarnings>false</failOnWarnings>
+          <sourcepath>${project.build.directory}/patched-memory-core-sources/src/test/java;${project.build.directory}/patched-memory-netty-sources/src/test/java;${project.build.directory}/patched-memory-unsafe-sources/src/test/java;${project.build.directory}/patched-vector-sources/src/test/java;${project.build.directory}/patched-flight-core-sources/src/test/java</sourcepath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <sourceDirs>${project.build.directory}/patched-memory-core-sources/src/test/java;${project.build.directory}/patched-memory-netty-sources/src/test/java;${project.build.directory}/patched-memory-unsafe-sources/src/test/java;${project.build.directory}/patched-vector-sources/src/test/java;${project.build.directory}/patched-flight-core-sources/src/test/java</sourceDirs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

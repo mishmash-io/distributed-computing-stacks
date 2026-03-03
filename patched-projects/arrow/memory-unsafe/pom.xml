@@ -25,11 +25,11 @@
   </parent>
 
   <groupId>io.mishmash.stacks.patches</groupId>
-  <artifactId>arrow-memory-core-patches</artifactId>
+  <artifactId>arrow-memory-unsafe-patches</artifactId>
   <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
   <packaging>jar</packaging>
 
-  <name>mishmash io patches of Apache Arrow memory core</name>
+  <name>mishmash io patches of Apache Arrow sun.misc.Unsafe memory allocator</name>
   <description>
     This package contains Apache Arrow code as modified by mishmash io. For more info 
     on the specific modifications by mishmash io visit our website and GitHub.
@@ -83,18 +83,15 @@
     <dependencies>
       <dependency>
         <groupId>io.mishmash.stacks.patches</groupId>
-        <artifactId>arrow-format-patches</artifactId>
+        <artifactId>arrow-memory-core-patches</artifactId>
         <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>org.checkerframework</groupId>
-        <artifactId>checker-qual</artifactId>
-        <version>${checker.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.immutables</groupId>
-        <artifactId>value-annotations</artifactId>
-        <version>${immutables.version}</version>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -102,44 +99,17 @@
   <dependencies>
     <dependency>
       <groupId>io.mishmash.stacks.patches</groupId>
-      <artifactId>arrow-format-patches</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.checkerframework</groupId>
-      <artifactId>checker-qual</artifactId>
+      <artifactId>arrow-memory-core-patches</artifactId>
     </dependency>
     <dependency>
       <groupId>org.immutables</groupId>
       <artifactId>value-annotations</artifactId>
       <scope>provided</scope> <!-- compile only -->
     </dependency>
-    <dependency>
-      <groupId>com.google.errorprone</groupId>
-      <artifactId>error_prone_annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-console</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -218,8 +188,8 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-memory-core soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-core/src/main/java</source>
+                <!-- add the patched arrow-memory-unsafe soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-unsafe/src/main/java</source>
               </sources>
             </configuration>
           </execution>
@@ -231,8 +201,8 @@
             </goals>
             <configuration>
               <sources>
-                <!-- add the patched arrow-memory-core test soruces -->
-                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-core/src/test/java</source>
+                <!-- add the patched arrow-memory-unsafe test soruces -->
+                <source>${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-unsafe/src/test/java</source>
               </sources>
             </configuration>
           </execution>
@@ -247,7 +217,7 @@
                 <!-- add the test resoruces -->
                 <resource>
                   <directory>
-                    ${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-core/src/test/resources
+                    ${project.build.directory}/arrow-java-${arrow.stable.version}/memory/memory-unsafe/src/test/resources
                   </directory>
                 </resource>
               </resources>
@@ -260,11 +230,6 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <annotationProcessorPaths combine.children="append">
-            <path>
-              <groupId>org.checkerframework</groupId>
-              <artifactId>checker</artifactId>
-              <version>${checker.version}</version>
-            </path>
             <path>
               <groupId>org.immutables</groupId>
               <artifactId>value</artifactId>

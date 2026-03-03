@@ -40,6 +40,7 @@ jobs:
       max-parallel: 2
       matrix:
         testset:
+          - 'memory/base'
           - 'coordination/base'
           - 'coordination/cluster'
           - 'storage/block/base'
@@ -91,6 +92,12 @@ jobs:
             testset: 'coordination/cluster'
           - telemetryhttpport: 4336
             testset: 'coordination/cluster'
+          - telemetrygrpcport: 4337
+            testset: 'memory/base'
+          - telemetryhttpport: 4338
+            testset: 'memory/base'
+          - telemetryoutput: 'memory-base'
+            testset: 'memory/base'
           - telemetryoutput: 'coordination-base'
             testset: 'coordination/base'
           - telemetryoutput: 'coordination-cluster'
@@ -111,6 +118,8 @@ jobs:
             testset: 'storage/block/misc'
           - telemetryoutput: 'storage-block-namenode'
             testset: 'storage/block/namenode'
+          - testname: 'Base memory tests'
+            testset: 'memory/base'
           - testname: 'Base distributed coordination tests'
             testset: 'coordination/base'
           - testname: 'Cluster coordination tests'
