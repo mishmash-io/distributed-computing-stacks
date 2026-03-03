@@ -184,21 +184,21 @@ jobs:
       run: cd tests/${{ matrix.testset }} && mvn javadoc:test-javadoc jxr:test-jxr-no-fork surefire-report:report-only
       if: always()
     - name: Upload tests report
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       if: always()
       continue-on-error: true
       with:
         name: test-reports-${{ matrix.telemetryoutput }}
         path: tests/${{ matrix.testset }}/target/reports
     - name: Upload tests extra files
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       if: always()
       continue-on-error: true
       with:
         name: test-raw-files-${{ matrix.telemetryoutput }}
         path: tests/${{ matrix.testset }}/target/surefire
     - name: Upload tests raw reports
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+      uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       if: always()
       continue-on-error: true
       with:
