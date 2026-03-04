@@ -14,7 +14,7 @@ jobs:
       id-token: write
       attestations: write
       artifact-metadata: write
-    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@e21da65d86e3a697ccb967f08f50ddb781b9f10e
+    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@606c1c77cb4f02e77f44fe5b012b91e8625ad732
     secrets: inherit
     with:
       java-version: 25
