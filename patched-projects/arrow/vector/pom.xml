@@ -20,7 +20,7 @@
   <parent>
     <groupId>io.mishmash.stacks</groupId>
     <artifactId>distributed-computing-stacks</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
 
@@ -233,7 +233,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>add-zookeeper-test-sources</id>
+            <id>add-arrow-test-sources</id>
             <phase>generate-test-sources</phase>
             <goals>
               <goal>add-test-source</goal>
@@ -246,7 +246,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>add-zookeeper-test-resources</id>
+            <id>add-arrow-test-resources</id>
             <phase>generate-test-resources</phase>
             <goals>
               <goal>add-test-resource</goal>

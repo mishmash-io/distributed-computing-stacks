@@ -19,7 +19,7 @@
 
   <groupId>io.mishmash.test.stacks</groupId>
   <artifactId>test-storage-blocks-base</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 
   <name>Storage/block/base tests</name>
   <description>
@@ -70,8 +70,7 @@
   </developers>
 
   <properties>
-    <top.version>1.0.1</top.version>
-    <hadoop.version>3.4.3-mmio.1.0</hadoop.version>
+    <hadoop.version>3.4.3-mmio.1.1</hadoop.version>
 
     <hadoop.common.build.dir>${project.build.directory}</hadoop.common.build.dir>
     <hadoop.log.dir>${project.build.directory}/log</hadoop.log.dir>
@@ -87,14 +86,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- not needed when a flattened hadoop-patches is used -->
-      <!--dependency>
-        <groupId>io.mishmash.stacks</groupId>
-        <artifactId>distributed-computing-stacks</artifactId>
-        <version>${top.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency-->
       <dependency>
         <groupId>io.mishmash.stacks.patches</groupId>
         <artifactId>hadoop-patches</artifactId>
