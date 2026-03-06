@@ -71,7 +71,7 @@
   </developers>
 
   <properties>
-    <zookeeper.version>3.9.4-mmio.2.2</zookeeper.version>
+    <zookeeper.version>3.9.5-mmio.1.0</zookeeper.version>
     <jmockit.version>1.50</jmockit.version>
     <top.version>1.0.0</top.version>
     <test.instrumentation.opts></test.instrumentation.opts>
@@ -129,7 +129,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>jline</groupId>
+      <groupId>org.jline</groupId>
       <artifactId>jline</artifactId>
       <scope>test</scope>
     </dependency>
