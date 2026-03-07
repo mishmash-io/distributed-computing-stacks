@@ -90,7 +90,7 @@
     <!-- Apache Helix versions -->
     <helix.stable.version>1.4.3</helix.stable.version>
     <helix.stable.mishmash.io.patch>1</helix.stable.mishmash.io.patch>
-    <helix.stable.mishmash.io.update>1</helix.stable.mishmash.io.update>
+    <helix.stable.mishmash.io.update>0</helix.stable.mishmash.io.update>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
