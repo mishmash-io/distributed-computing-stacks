@@ -72,7 +72,6 @@
 
   <properties>
     <helix.version>1.4.3-mmio.1.0</helix.version>
-    <top.version>1.0.0</top.version>
     <test.instrumentation.opts></test.instrumentation.opts>
   </properties>
 
@@ -216,7 +215,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.4.0</version>
+        <version>3.5.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
