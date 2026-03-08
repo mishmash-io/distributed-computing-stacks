@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.mishmash.test.stacks</groupId>
-  <artifactId>test-coordination-base</artifactId>
+  <artifactId>test-quorum-base</artifactId>
   <version>1.0.2</version>
   <packaging>jar</packaging>
 
