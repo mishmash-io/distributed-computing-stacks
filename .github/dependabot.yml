@@ -3,7 +3,9 @@ updates:
   - package-ecosystem: "maven"
     directories:
       - "/"
-      - "/tests/coordination/base"
+      - "/tests/quorum/base"
+      - "/tests/quorum/cluster"
+      - "/tests/memory/base"
       - "/tests/storage/block/balancer"
       - "/tests/storage/block/base"
       - "/tests/storage/block/blockmanagement"

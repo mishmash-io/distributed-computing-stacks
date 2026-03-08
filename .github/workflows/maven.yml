@@ -41,8 +41,8 @@ jobs:
       matrix:
         testset:
           - 'memory/base'
-          - 'coordination/base'
-          - 'coordination/cluster'
+          - 'quorum/base'
+          - 'quorum/cluster'
           - 'storage/block/base'
           - 'storage/block/balancer'
           - 'storage/block/blockmanagement'
@@ -53,9 +53,9 @@ jobs:
           - 'storage/block/misc'
         include:
           - telemetrygrpcport: 4317
-            testset: 'coordination/base'
+            testset: 'quorum/base'
           - telemetryhttpport: 4318
-            testset: 'coordination/base'
+            testset: 'quorum/base'
           - telemetrygrpcport: 4319
             testset: 'storage/block/base'
           - telemetryhttpport: 4320
@@ -89,19 +89,19 @@ jobs:
           - telemetryhttpport: 4334
             testset: 'storage/block/namenode'
           - telemetrygrpcport: 4335
-            testset: 'coordination/cluster'
+            testset: 'quorum/cluster'
           - telemetryhttpport: 4336
-            testset: 'coordination/cluster'
+            testset: 'quorum/cluster'
           - telemetrygrpcport: 4337
             testset: 'memory/base'
           - telemetryhttpport: 4338
             testset: 'memory/base'
           - telemetryoutput: 'memory-base'
             testset: 'memory/base'
-          - telemetryoutput: 'coordination-base'
-            testset: 'coordination/base'
-          - telemetryoutput: 'coordination-cluster'
-            testset: 'coordination/cluster'
+          - telemetryoutput: 'quorum-base'
+            testset: 'quorum/base'
+          - telemetryoutput: 'quorum-cluster'
+            testset: 'quorum/cluster'
           - telemetryoutput: 'storage-block-base'
             testset: 'storage/block/base'
           - telemetryoutput: 'storage-block-balancer'
@@ -120,10 +120,10 @@ jobs:
             testset: 'storage/block/namenode'
           - testname: 'Base memory tests'
             testset: 'memory/base'
-          - testname: 'Base distributed coordination tests'
-            testset: 'coordination/base'
-          - testname: 'Cluster coordination tests'
-            testset: 'coordination/cluster'
+          - testname: 'Base distributed quorum tests'
+            testset: 'quorum/base'
+          - testname: 'Quorum cluster tests'
+            testset: 'quorum/cluster'
           - testname: 'Base distributed block storage tests'
             testset: 'storage/block/base'
           - testname: 'Distributed block storage balancer tests'
@@ -171,7 +171,7 @@ jobs:
         key: ${{ needs.compile.outputs.build-cache-key }}
         fail-on-cache-miss: true
     - name: Download additional deps to keep surefire plugin happy when offline
-      # needed by coordination/cluster, which uses testng (TODO: download automatically when 'going offline' for tests)
+      # needed by quorum/cluster, which uses testng (TODO: download automatically when 'going offline' for tests)
       run: mvn dependency:get -Dartifact=org.apache.maven.surefire:surefire-testng:3.5.5
     - name: Run test set ${{ matrix.testset }}
       env:
