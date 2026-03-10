@@ -97,7 +97,7 @@
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-compute</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-compute.version}</version>
       </dependency>
       <dependency>
         <groupId>com.azure</groupId>

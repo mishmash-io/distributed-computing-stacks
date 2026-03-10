@@ -111,7 +111,7 @@
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-resources</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-resources.version}</version>
         <scope>provided</scope>
       </dependency>
       <dependency>
