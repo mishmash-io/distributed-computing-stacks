@@ -83,7 +83,6 @@
     <azure-identity-broker.version>1.1.19</azure-identity-broker.version>
     <azure-netty.version>1.16.3</azure-netty.version>
     <azure-management.version>1.19.3</azure-management.version>
-    <netty-quic.version>0.0.75.Final</netty-quic.version>
     <nimbus-oidc.version>11.34</nimbus-oidc.version>
     <nimbus-lang-tag.version>1.7</nimbus-lang-tag.version>
     <nimbus-content-type.version>2.3</nimbus-content-type.version>
@@ -97,10 +96,21 @@
     <reactor-core.version>3.8.3</reactor-core.version>
     <reactor-netty.version>1.3.3</reactor-netty.version>
     <reactive-streams.version>1.0.4</reactive-streams.version>
+    <javax-validation.version>2.0.1.Final</javax-validation.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta-validation.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+        <version>${javax-validation.version}</version>
+      </dependency>
       <dependency>
         <groupId>io.mishmash.stacks.patches</groupId>
         <artifactId>zookeeper-patches</artifactId>
@@ -129,19 +139,19 @@
         <version>${reactor-netty.version}</version>
       </dependency>
       <dependency>
-        <groupId>io.netty.incubator</groupId>
-        <artifactId>netty-incubator-codec-native-quic</artifactId>
-        <version>${netty-quic.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty.incubator</groupId>
-        <artifactId>netty-incubator-codec-classes-quic</artifactId>
-        <version>${netty-quic.version}</version>
-      </dependency>
-      <dependency>
         <groupId>org.reactivestreams</groupId>
         <artifactId>reactive-streams</artifactId>
         <version>${reactive-streams.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-classes-quic</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http3</artifactId>
+        <version>${netty.version}</version>
       </dependency>
 
       <dependency>
@@ -311,27 +321,45 @@
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-resources</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-resources.version}</version>
       </dependency>
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-msi</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-msi.version}</version>
       </dependency>
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-authorization</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-authorization.version}</version>
       </dependency>
       <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-compute</artifactId>
-        <version>${azure-resourcemanager.version}</version>
+        <version>${azure-resourcemanager-compute.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.azure.resourcemanager</groupId>
+        <artifactId>azure-resourcemanager-storage</artifactId>
+        <version>${azure-resourcemanager-storage.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.azure.resourcemanager</groupId>
+        <artifactId>azure-resourcemanager-network</artifactId>
+        <version>${azure-resourcemanager-network.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+    </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -365,16 +393,16 @@
       <artifactId>reactor-netty-http</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.netty.incubator</groupId>
-      <artifactId>netty-incubator-codec-native-quic</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.netty.incubator</groupId>
-      <artifactId>netty-incubator-codec-classes-quic</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.reactivestreams</groupId>
       <artifactId>reactive-streams</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-codec-classes-quic</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-codec-http3</artifactId>
     </dependency>
 
     <dependency>
@@ -527,6 +555,14 @@
     <dependency>
       <groupId>com.azure.resourcemanager</groupId>
       <artifactId>azure-resourcemanager-compute</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.azure.resourcemanager</groupId>
+      <artifactId>azure-resourcemanager-storage</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.azure.resourcemanager</groupId>
+      <artifactId>azure-resourcemanager-network</artifactId>
     </dependency>
   </dependencies>
 
