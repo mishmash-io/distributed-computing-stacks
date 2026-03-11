@@ -120,6 +120,7 @@
     <kerby.version>2.1.1</kerby.version>
     <protobuf.version>4.34.0</protobuf.version>
     <protobuf-patch.version>1.2</protobuf-patch.version>
+    <flatbuffers.version>25.2.10</flatbuffers.version>
     <slf4j.version>2.0.17</slf4j.version>
     <logback-version>1.5.32</logback-version>
     <snappy.version>1.1.10.8</snappy.version>
@@ -177,6 +178,10 @@
 
     <module>compute/compute-azure-utils</module>
 
+    <module>memory/buffer</module>
+    <module>memory/buffer-unsafe</module>
+    <module>memory/vector</module>
+
     <module>patched-projects/arrow/format</module>
     <module>patched-projects/arrow/memory-core</module>
     <module>patched-projects/arrow/vector</module>
@@ -212,6 +217,9 @@
     <module>runtimes/osgi/quorum-server</module>
     <module>runtimes/osgi/compute-azure</module>
     <module>runtimes/osgi/compute-simple</module>
+    <module>runtimes/osgi/memory-buffer</module>
+    <module>runtimes/osgi/memory-buffer-unsafe</module>
+    <module>runtimes/osgi/memory-vector</module>
 
     <module>runtimes/karaf/compute-shell</module>
     <module>runtimes/karaf/security-common</module>
@@ -350,10 +358,10 @@
       <dependency>
         <groupId>com.google.flatbuffers</groupId>
         <artifactId>flatbuffers-java</artifactId>
-        <version>25.2.10</version>
+        <version>${flatbuffers.version}</version>
       </dependency>
       <dependency>
-	<groupId>org.yaml</groupId>
+	      <groupId>org.yaml</groupId>
         <artifactId>snakeyaml</artifactId>
         <version>2.6</version>
       </dependency>
