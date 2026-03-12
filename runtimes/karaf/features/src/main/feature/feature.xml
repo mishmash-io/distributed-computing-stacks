@@ -108,6 +108,17 @@
     <bundle>mvn:io.mishmash.stacks.memory/memory-buffer-unsafe-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
   </feature>
   <feature
+      name="memory-buffer-foreign"
+      description="Memory buffers implementation with java.lang.foreign"
+      version="${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}">
+    <details>
+      Details on
+
+      Memory buffer java.lang.foreign
+    </details>
+    <bundle>mvn:io.mishmash.stacks.memory/memory-buffer-foreign-mishmash-io-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
+  </feature>
+  <feature
       name="memory-vector"
       description="Memory vectors"
       version="${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}">

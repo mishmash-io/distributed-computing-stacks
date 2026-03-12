@@ -215,7 +215,26 @@
         <artifactId>compute-shell-karaf</artifactId>
         <version>${karaf-compute-shell.version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>io.mishmash.stacks.memory</groupId>
+        <artifactId>memory-buffer-osgi</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.memory</groupId>
+        <artifactId>memory-buffer-unsafe-osgi</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.memory</groupId>
+        <artifactId>memory-buffer-foreign-mishmash-io-osgi</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.memory</groupId>
+        <artifactId>memory-vector-osgi</artifactId>
+        <version>${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</version>
+      </dependency>
 
       <dependency>
         <groupId>com.azure</groupId>
@@ -454,7 +473,22 @@
       <groupId>io.mishmash.stacks.compute</groupId>
       <artifactId>compute-shell-karaf</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>io.mishmash.stacks.memory</groupId>
+      <artifactId>memory-buffer-osgi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.memory</groupId>
+      <artifactId>memory-buffer-unsafe-osgi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.memory</groupId>
+      <artifactId>memory-buffer-foreign-mishmash-io-osgi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.mishmash.stacks.memory</groupId>
+      <artifactId>memory-vector-osgi</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>com.azure</groupId>

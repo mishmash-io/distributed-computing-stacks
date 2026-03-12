@@ -186,12 +186,16 @@
                   <classifier>sources</classifier>
                   <overWrite>false</overWrite>
                   <!--
-                    TODO: to be removed once arrow remove 
+                    TODO: remove the exclusion of module-info.java once arrow remove 
                     @SuppressWarnings({ "requires-automatic", "requires-transitive-automatic" })
                     from their module-info
                   -->
                   <excludes>
-                    **/module-info.java
+                    **/module-info.java,
+
+                    **/apache/arrow/memory/CheckAllocator.java,
+                    **/apache/arrow/memory/DefaultAllocationManagerOption.java,
+                    **/apache/arrow/memory/util/MemoryUtil.java
                   </excludes>
                 </artifactItem>
               </artifactItems>
@@ -259,11 +263,21 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <!-- exclude the dummy MemoryUtil class, the correct one will be added by each buffer implementation -->
+            <exclude>**/arrow/memory/util/MemoryUtil*.class</exclude>
+          </excludes>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
