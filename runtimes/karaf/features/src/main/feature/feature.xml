@@ -84,6 +84,48 @@
   </feature>
 
   <feature
+      name="memory-buffer"
+      description="Memory buffers for distributed computing"
+      version="${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}">
+    <details>
+      Details on
+
+      Memory buffer
+    </details>
+    <bundle dependency="true">mvn:com.google.flatbuffers/flatbuffers-java/${flatbuffers.version}</bundle>
+    <bundle dependency="true">mvn:org.checkerframework/checker-qual/${checker.version}</bundle>
+    <bundle>mvn:io.mishmash.stacks.memory/memory-buffer-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
+  </feature>
+  <feature
+      name="memory-buffer-unsafe"
+      description="Memory buffers implementation with sun.misc.Unsafe"
+      version="${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}">
+    <details>
+      Details on
+
+      Memory buffer Unsafe
+    </details>
+    <bundle>mvn:io.mishmash.stacks.memory/memory-buffer-unsafe-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
+  </feature>
+  <feature
+      name="memory-vector"
+      description="Memory vectors"
+      version="${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}">
+    <details>
+      Details on
+
+      Memory vector
+    </details>
+    <feature>memory-buffer</feature>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-annotations/${jackson-annotations.version}</bundle>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-core/${jackson.version}</bundle>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.core/jackson-databind/${jackson.version}</bundle>
+    <bundle dependency="true">mvn:com.fasterxml.jackson.datatype/jackson-datatype-jsr310/${jackson.version}</bundle>
+    <bundle dependency="true">mvn:commons-codec/commons-codec/${commons-codec.version}</bundle>
+    <bundle>mvn:io.mishmash.stacks.memory/memory-vector-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
+  </feature>
+
+  <feature
       name="vertx-integration"
       description="Services for Vert.x integration"
       version="${vertx.version}-mmio.${vertx-patch.version}">
