@@ -152,6 +152,20 @@
                     **/module-info.java
                   </excludes>
                 </artifactItem>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.patches</groupId>
+                  <artifactId>arrow-memory-core-patches</artifactId>
+                  <version>${project.version}</version>
+                  <type>jar</type>
+                  <classifier>sources</classifier>
+                  <overWrite>false</overWrite>
+                  <!--
+                    include the original MemoryUtil class
+                  -->
+                  <includes>
+                    **/org/apache/arrow/memory/util/MemoryUtil.java
+                  </includes>
+                </artifactItem>
               </artifactItems>
               <outputDirectory>${project.build.directory}/sources/java</outputDirectory>
             </configuration>
@@ -214,6 +228,10 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
