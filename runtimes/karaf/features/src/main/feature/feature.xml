@@ -92,6 +92,49 @@
 
       Memory buffer
     </details>
+    <config name="memoryBufferRoot">
+################################################################################
+#
+#    Copyright 2026 Mishmash IO UK Ltd.
+#
+#    Licensed to the Apache Software Foundation (ASF) under one or more
+#    contributor license agreements.  See the NOTICE file distributed with
+#    this work for additional information regarding copyright ownership.
+#    The ASF licenses this file to You under the Apache License, Version 2.0
+#    (the "License"); you may not use this file except in compliance with
+#    the License.  You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+#
+################################################################################
+
+# Configure the ROOT buffer allocator
+
+# Buffer allocator name. Cannot be changed for ROOT. For non-root allocators
+# comes from the service.pid of the configuration, or from this property.
+# (The latter takes precedence).
+# memoryAllocatorName=ROOT
+
+# Amount of memory to reserve on init
+# initialReservation=0
+
+# An upper limit of how much memory can be allocated through this allocator
+# maxMemory=
+
+# A rounding policy for the ROOT allocator only. 'default' or 'segment'
+# roundingPolicy=default
+
+# When using the 'segment' rounding policy - set the segment size.
+#
+# The 'segment' policy will always allocate in 'segments' of the given size.
+# segmentSize=4096
+    </config>
     <bundle dependency="true">mvn:com.google.flatbuffers/flatbuffers-java/${flatbuffers.version}</bundle>
     <bundle dependency="true">mvn:org.checkerframework/checker-qual/${checker.version}</bundle>
     <bundle>mvn:io.mishmash.stacks.memory/memory-buffer-osgi/${arrow.stable.version}-mmio.${arrow.stable.mishmash.io.patch}.${arrow.stable.mishmash.io.update}</bundle>
