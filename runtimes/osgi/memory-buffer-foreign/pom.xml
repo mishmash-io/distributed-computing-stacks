@@ -90,8 +90,7 @@
   <dependencies>
     <dependency>
       <groupId>io.mishmash.stacks.memory</groupId>
-      <artifactId>memory-buffer</artifactId>
-      <version>${project.version}</version>
+      <artifactId>memory-buffer-osgi</artifactId>
     </dependency>
   </dependencies>
 
