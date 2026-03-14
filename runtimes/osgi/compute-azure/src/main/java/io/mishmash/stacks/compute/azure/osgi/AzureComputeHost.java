@@ -141,6 +141,7 @@ public class AzureComputeHost implements ComputeHost {
                 .map(Integer::valueOf);
     }
 
+    @Override
     public Optional<Processor> getCPUArchitecture() {
         return Optional.ofNullable(skuMemo.uncheckedGet())
                 .map(ComputeSku::capabilities)
