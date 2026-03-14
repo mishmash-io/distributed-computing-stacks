@@ -17,6 +17,7 @@
 
 package io.mishmash.stacks.oidc.sasl;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +45,7 @@ public class OAUTHBearerClientFactory implements SaslClientFactory {
             final CallbackHandler cbh) throws SaslException {
         LOG.log(Level.FINER, () ->
                 "Creating OAUTHBEARER SASL client -"
-                    + " mechanisms: " + mechanisms
+                    + " mechanisms: " + Arrays.toString(mechanisms)
                     + " authzId: " + authorizationId
                     + " protocol: " + protocol
                     + " server name: " + serverName
