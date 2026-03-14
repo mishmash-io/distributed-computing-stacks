@@ -143,8 +143,8 @@ public class DefaultAllocationManagerOption {
       return getFactory("org.apache.arrow.memory.foreign.ForeignAllocationManager");
     } catch (RuntimeException e) {
       throw new RuntimeException(
-          "Please add arrow-memory-netty to your classpath,"
-              + " No DefaultAllocationManager found to instantiate an NettyAllocationManager",
+          "Please add arrow-memory-foreign to your classpath,"
+              + " No DefaultAllocationManager found to instantiate an ForeignAllocationManager",
           e);
     }
   }
