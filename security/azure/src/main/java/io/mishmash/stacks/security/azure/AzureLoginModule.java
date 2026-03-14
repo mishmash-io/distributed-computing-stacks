@@ -292,7 +292,7 @@ public class AzureLoginModule extends BaseLoginModule {
         }
     }
 
-    private class AzurePrincipal extends AccessTokenPrincipal {
+    private static class AzurePrincipal extends AccessTokenPrincipal {
 
         private MemoizedAccessToken token;
 
