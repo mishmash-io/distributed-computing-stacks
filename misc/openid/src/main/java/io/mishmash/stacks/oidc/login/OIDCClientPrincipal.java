@@ -483,8 +483,8 @@ public class OIDCClientPrincipal implements Principal {
                         LOG.log(Level.WARNING,
                             String.format(
                                 """
-                                Incorrect value for {} config option. \
-                                Should be one of {} or {}. Using default.""",
+                                Incorrect value for %s config option. \
+                                Should be one of %s or %s. Using default.""",
                                 OPT_VERIFICATION_MODE,
                                 OPT_VERIFICATION_SIGNATURE,
                                 OPT_VERIFICATION_INTROSPECTION));
