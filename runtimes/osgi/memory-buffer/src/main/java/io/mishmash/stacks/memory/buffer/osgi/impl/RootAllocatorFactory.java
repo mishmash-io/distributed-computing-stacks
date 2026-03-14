@@ -138,12 +138,12 @@ public class RootAllocatorFactory {
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.warning("""
-                Cannot dinamically reconfigure the root buffer allocator, \
+                Cannot dynamically reconfigure the root buffer allocator, \
                 configuration changes will take effect on next start.""");
     }
 
     @Deactivate
-    protected void dectivate(
+    protected void deactivate(
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.info("Releasing the root buffer allocator");
