@@ -169,6 +169,7 @@
     <karaf-security-common.version>1.0.3</karaf-security-common.version>
     <karaf-security-azure.version>1.0.3</karaf-security-azure.version>
     <karaf-compute-shell.version>1.0.3</karaf-compute-shell.version>
+    <karaf-memory-buffer-shell.version>1.0.0</karaf-memory-buffer-shell.version>
     <karaf-features.version>1.0.3</karaf-features.version>
     <misc-openid.version>1.0.3</misc-openid.version>
   </properties>
@@ -224,6 +225,7 @@
     <module>runtimes/osgi/memory-vector</module>
 
     <module>runtimes/karaf/compute-shell</module>
+    <module>runtimes/karaf/buffer-shell</module>
     <module>runtimes/karaf/security-common</module>
     <module>runtimes/karaf/security-azure</module>
     <module>runtimes/karaf/features</module>
