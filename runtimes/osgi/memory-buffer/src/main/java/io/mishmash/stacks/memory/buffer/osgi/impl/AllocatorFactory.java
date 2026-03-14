@@ -129,7 +129,7 @@ public class AllocatorFactory {
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.warning(
-                "Cannot dinamically reconfigure the '"
+                "Cannot dynamically reconfigure the '"
                 + allocator.getName()
                 + """
                 ' buffer allocator, configuration changes will take \
