@@ -259,8 +259,8 @@ public class OIDCClientPrincipal implements Principal {
                 String.format(
                     """
                     OIDC client requires a valid issuer. \
-                    Set the {} or {} config options; or enable auto-discovery \
-                    through {}""",
+                    Set the %s or %s config options; or enable auto-discovery \
+                    through %s""",
                     OPT_WHO_AM_I, OPT_ISSUER, OPT_ENDPOINT_OIDC_DISCOVERY));
         }
 
@@ -278,8 +278,8 @@ public class OIDCClientPrincipal implements Principal {
                 String.format(
                     """
                     OIDC client requires a valid token endpoint URL. \
-                    Set the {} or {} config options; or enable auto-discovery \
-                    through {}""",
+                    Set the %s or %s config options; or enable auto-discovery \
+                    through %s""",
                     OPT_WHO_AM_I,
                     OPT_ENDPOINT_TOKEN,
                     OPT_ENDPOINT_OIDC_DISCOVERY));
@@ -291,8 +291,8 @@ public class OIDCClientPrincipal implements Principal {
                         """
                         The OIDC client requires a valid JWKS endpoint URL, \
                         but one was not found. \
-                        Set the {} config option, or enable auto-discovery \
-                        through {} and make sure the issuer supports it.""",
+                        Set the %s config option, or enable auto-discovery \
+                        through %s and make sure the issuer supports it.""",
                         OPT_ENDPOINT_JWKS,
                         OPT_ENDPOINT_OIDC_DISCOVERY));
         } else {
@@ -303,9 +303,9 @@ public class OIDCClientPrincipal implements Principal {
             throw new LoginException(
                     String.format(
                         """
-                        JWT verification mode is {}, but no introspection \
-                        endpoint is provided in config. Set the {} option \
-                        to a valid URL or enable auto-discovery through {}""",
+                        JWT verification mode is %s, but no introspection \
+                        endpoint is provided in config. Set the %s option \
+                        to a valid URL or enable auto-discovery through %s""",
                         OPT_VERIFICATION_INTROSPECTION,
                         OPT_ENDPOINT_INTROSPECT,
                         OPT_ENDPOINT_OIDC_DISCOVERY));
