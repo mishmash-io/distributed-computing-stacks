@@ -165,7 +165,7 @@ public class OAUTHBearerServer implements SaslServer {
         jwt = null;
     }
 
-    private class HdrsIterator implements Iterator<ByteBuffer> {
+    private static class HdrsIterator implements Iterator<ByteBuffer> {
 
         private ByteBuffer buf;
 
