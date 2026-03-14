@@ -143,7 +143,7 @@ public class RootAllocatorFactory {
     }
 
     @Deactivate
-    protected void dectivate(
+    protected void deactivate(
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.info("Releasing the root buffer allocator");
