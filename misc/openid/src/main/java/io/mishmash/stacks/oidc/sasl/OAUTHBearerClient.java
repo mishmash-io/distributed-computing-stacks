@@ -137,12 +137,12 @@ public class OAUTHBearerClient implements SaslClient {
 
     protected void writeGSHeader(final OutputStream os) throws IOException {
         // write GS2 channel-binding flag
-        os.write(new String("n,").getBytes(StandardCharsets.UTF_8));
+        os.write("n,".getBytes(StandardCharsets.UTF_8));
 
         if (authz != null) {
             // write the GS2 authz id
             os.write(
-                    new String("a=" + authz + ",")
+                    ("a=" + authz + ",")
                         .getBytes(StandardCharsets.UTF_8));
         }
 
@@ -153,7 +153,7 @@ public class OAUTHBearerClient implements SaslClient {
     protected void writeHost(final OutputStream os) throws IOException {
         if (server != null) {
             // write the server name
-            os.write(new String("host=" + server)
+            os.write(("host=" + server)
                     .getBytes(StandardCharsets.UTF_8));
             // ...and a delimiter
             os.write(0x01);
@@ -163,7 +163,7 @@ public class OAUTHBearerClient implements SaslClient {
     protected void writeAuth(
             final OutputStream os,
             final SignedJWT jwt) throws IOException {
-        os.write(new String("auth=Bearer " + jwt.serialize())
+        os.write(("auth=Bearer " + jwt.serialize())
                 .getBytes(StandardCharsets.UTF_8));
         os.write(0x01);
     }
