@@ -129,7 +129,7 @@ public class AllocatorFactory {
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.warning(
-                "Cannot dinamically reconfigure the '"
+                "Cannot dynamically reconfigure the '"
                 + allocator.getName()
                 + """
                 ' buffer allocator, configuration changes will take \
@@ -137,7 +137,7 @@ public class AllocatorFactory {
     }
 
     @Deactivate
-    protected void dectivate(
+    protected void deactivate(
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.info("Releasing the '"
