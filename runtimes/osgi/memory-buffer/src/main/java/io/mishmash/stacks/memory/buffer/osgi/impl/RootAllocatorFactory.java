@@ -37,7 +37,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import io.mishmash.stacks.memory.buffer.osgi.api.MemoryBufferServices;
 import static io.mishmash.stacks.memory.buffer.osgi.api.MemoryBufferServices.getLong;
-import io.mishmash.stacks.memory.buffer.osgi.impl.OsgiAllocationListeners.Listener;
+import io.mishmash.stacks.memory.buffer.osgi.impl.OsgiAllocationListeners.OsgiAllocationListener;
 
 @Component(
         immediate=true,
@@ -114,7 +114,7 @@ public class RootAllocatorFactory {
                 MemoryBufferServices.OPT_ALLOCATOR_NAME,
                 MemoryBufferServices.ROOT_ALLOCATOR_NAME);
 
-        Listener listener = listeners.forAllocator(
+        OsgiAllocationListener listener = listeners.forAllocator(
                 MemoryBufferServices.ROOT_ALLOCATOR_NAME);
         cfg = cfg.listener(listener);
 
