@@ -177,6 +177,7 @@ public class AzureProvider implements ComputeProvider {
         return getName();
     }
 
+    @Override
     public boolean equals(Object o) {
         if (o == null) {
             return false;
