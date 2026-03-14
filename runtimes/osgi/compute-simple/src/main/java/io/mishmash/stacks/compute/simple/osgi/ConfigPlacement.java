@@ -69,11 +69,10 @@ public class ConfigPlacement implements Placement {
 
     @Override
     public Optional<PlacementGeography> getGeography() {
-        final String g = geography;
         final String j = jurisdiction;
 
-        return Optional.ofNullable(g)
-                .map(gg -> new PlacementGeography() {
+        return Optional.ofNullable(geography)
+                .map(g -> new PlacementGeography() {
                     @Override
                     public String getId() {
                         return g;
@@ -94,7 +93,6 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementRegion> getRegion() {
         return Optional.ofNullable(region)
-                .map(r -> r)
                 .map(r -> new PlacementRegion() {
                     @Override
                     public String getId() {
@@ -106,7 +104,6 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementZone> getZone() {
         return Optional.ofNullable(zone)
-                .map(z -> z)
                 .map(z -> new PlacementZone() {
                     @Override
                     public String getId() {
@@ -118,7 +115,6 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementGroup> getGroup() {
         return Optional.ofNullable(group)
-                .map(g -> g)
                 .map(g -> new PlacementGroup() {
                     @Override
                     public String getId() {
@@ -130,7 +126,6 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementDomain> getFaultDomain() {
         return Optional.ofNullable(faultDomain)
-                .map(String::new)
                 .map(f -> new PlacementDomain() {
                     @Override
                     public String getId() {
@@ -142,7 +137,6 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementDomain> getUpdateDomain() {
         return Optional.ofNullable(updateDomain)
-                .map(String::new)
                 .map(u -> new PlacementDomain() {
                     @Override
                     public String getId() {
