@@ -69,12 +69,8 @@ public class ConfigPlacement implements Placement {
 
     @Override
     public Optional<PlacementGeography> getGeography() {
-        final String g = geography == null
-                ? null
-                : new String(geography);
-        final String j = jurisdiction == null
-                ? null
-                : new String(jurisdiction);
+        final String g = geography;
+        final String j = jurisdiction;
 
         return Optional.ofNullable(g)
                 .map(gg -> new PlacementGeography() {
@@ -85,10 +81,10 @@ public class ConfigPlacement implements Placement {
                     @Override
                     public Optional<PlacementJurisdiction> getJurisdiction() {
                         return Optional.ofNullable(j)
-                                .map(j -> new PlacementJurisdiction() {
+                                .map(jj -> new PlacementJurisdiction() {
                                     @Override
                                     public String getName() {
-                                        return j;
+                                        return jj;
                                     }
                                 });
                     }
@@ -98,7 +94,7 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementRegion> getRegion() {
         return Optional.ofNullable(region)
-                .map(String::new)
+                .map(r -> r)
                 .map(r -> new PlacementRegion() {
                     @Override
                     public String getId() {
@@ -110,7 +106,7 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementZone> getZone() {
         return Optional.ofNullable(zone)
-                .map(String::new)
+                .map(z -> z)
                 .map(z -> new PlacementZone() {
                     @Override
                     public String getId() {
@@ -122,7 +118,7 @@ public class ConfigPlacement implements Placement {
     @Override
     public Optional<PlacementGroup> getGroup() {
         return Optional.ofNullable(group)
-                .map(String::new)
+                .map(g -> g)
                 .map(g -> new PlacementGroup() {
                     @Override
                     public String getId() {
