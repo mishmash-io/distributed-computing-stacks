@@ -137,7 +137,7 @@ public class AllocatorFactory {
     }
 
     @Deactivate
-    protected void dectivate(
+    protected void deactivate(
             final BundleContext ctx,
             final Map<String, Object> props) {
         LOG.info("Releasing the '"
