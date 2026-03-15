@@ -298,7 +298,7 @@ public class AzureProvider implements ComputeProvider {
         return reg;
         } catch (Exception e) {
             LOG.log(Level.SEVERE,
-                    "Failed to register Azure Network servcie for "
+                    "Failed to register Azure Network service for "
                             + " private IP address "
                             + privateAddress
                             + ", will retry.",
