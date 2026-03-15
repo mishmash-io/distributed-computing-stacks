@@ -35,7 +35,7 @@ import org.osgi.service.component.annotations.Reference;
 
 import io.mishmash.stacks.memory.buffer.osgi.api.MemoryBufferServices;
 import static io.mishmash.stacks.memory.buffer.osgi.api.MemoryBufferServices.getLong;
-import io.mishmash.stacks.memory.buffer.osgi.impl.OsgiAllocationListeners.Listener;
+import io.mishmash.stacks.memory.buffer.osgi.impl.OsgiAllocationListeners.OsgiAllocationListener;
 
 @Component(
         service={AllocatorFactory.class},
@@ -104,7 +104,8 @@ public class AllocatorFactory {
                 MemoryBufferServices.OPT_ALLOCATOR_NAME,
                 name == null ? UUID.randomUUID().toString() : name);
 
-        Listener listener = allocationListeners.forAllocator(name);
+        OsgiAllocationListener listener = allocationListeners
+                .forAllocator(name);
         allocator = rootAllocator.newChildAllocator(
                 name,
                 listener,
@@ -157,7 +158,7 @@ public class AllocatorFactory {
         if (propValue != null
                 && propValue instanceof String s
                 && s.length() > PID.length() + 1) {
-            return s.substring(PID.length());
+            return s.substring(PID.length() + 1);
         }
 
         return null;

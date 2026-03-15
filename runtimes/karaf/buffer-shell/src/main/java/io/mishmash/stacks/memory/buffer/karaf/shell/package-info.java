@@ -15,21 +15,4 @@
  *
  */
 
-package io.mishmash.stacks.memory.buffer.osgi.impl;
-
-import org.apache.arrow.memory.AllocationListener;
-import org.apache.arrow.memory.BufferAllocator;
-
-public interface OsgiAllocationListeners {
-
-    public OsgiAllocationListener forAllocator(String name);
-
-    public void unset(BufferAllocator buf);
-
-    public void unset(String name);
-
-    public interface OsgiAllocationListener
-            extends AllocationListener {
-        public void setBufferAllocator(BufferAllocator allocator);
-    }
-}
+package io.mishmash.stacks.memory.buffer.karaf.shell;
