@@ -105,7 +105,8 @@ public class RootAllocatorFactory {
                         + " should be set to one of '"
                         + MemoryBufferServices.ROUNDING_POLICY_DEFAULT
                         + "' or '"
-                        + MemoryBufferServices.ROUNDING_POLICY_SEGMENT);
+                        + MemoryBufferServices.ROUNDING_POLICY_SEGMENT
+                        + "'.");
                 }
                 break;
             }
@@ -149,7 +150,9 @@ public class RootAllocatorFactory {
         LOG.info("Releasing the root buffer allocator");
 
         try {
-            serviceReg.unregister();
+            if (serviceReg != null) {
+                serviceReg.unregister();
+            }
             listeners.unset(rootAllocator);
         } finally {
             rootAllocator.close();
