@@ -170,48 +170,48 @@ public class ConfigPlacement implements Placement {
         geography = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_GEO))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 
     protected void configureJurisdiction(final Map<String, Object> conf) {
         jurisdiction = Optional.ofNullable(
                         conf.get(CONFIG_PLACEMENT_PROP_JURISDICTION))
                     .map(Object::toString)
-                    .get();
+                    .orElse(null);
     }
 
     protected void configureRegion(final Map<String, Object> conf) {
         region = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_REGION))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 
     protected void configureZone(final Map<String, Object> conf) {
         zone = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_ZONE))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 
     protected void configureGroup(final Map<String, Object> conf) {
         group = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_GROUP))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 
     protected void configureUpdateDomain(final Map<String, Object> conf) {
         updateDomain = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_UPDATE_DOM))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 
     protected void configureFaultDomain(final Map<String, Object> conf) {
         faultDomain = Optional.ofNullable(
                     conf.get(CONFIG_PLACEMENT_PROP_FAULT_DOM))
                 .map(Object::toString)
-                .get();
+                .orElse(null);
     }
 }
