@@ -194,6 +194,11 @@ public class AzureProvider implements ComputeProvider {
         }
     }
 
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
+    }
+
     protected void refreshFromIMDS() {
         try {
             Pair<List<DataDisk>, List<NetworkInterface>> resources
