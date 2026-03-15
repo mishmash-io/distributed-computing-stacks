@@ -149,7 +149,9 @@ public class RootAllocatorFactory {
         LOG.info("Releasing the root buffer allocator");
 
         try {
-            serviceReg.unregister();
+            if (serviceReg != null) {
+                serviceReg.unregister();
+            }
             listeners.unset(rootAllocator);
         } finally {
             rootAllocator.close();
