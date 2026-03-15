@@ -80,10 +80,10 @@ public class ConfigPlacement implements Placement {
                     @Override
                     public Optional<PlacementJurisdiction> getJurisdiction() {
                         return Optional.ofNullable(j)
-                                .map(jj -> new PlacementJurisdiction() {
+                                .map(jurisdictionName -> new PlacementJurisdiction() {
                                     @Override
                                     public String getName() {
-                                        return jj;
+                                        return jurisdictionName;
                                     }
                                 });
                     }
