@@ -76,21 +76,31 @@ public class OAUTHBearerClientFactory implements SaslClientFactory {
                 serverName);
         } else if (mechanism.startsWith(
                 OAUTHBearerProvider.MECHANISM + "-DH")) {
-            int keyLen = Integer.valueOf(
-                    mechanism.substring(
+            int keyLen;
+
+            try {
+                keyLen = Integer.parseInt(
+                        mechanism.substring(
                             (OAUTHBearerProvider.MECHANISM + "-DH")
                                 .length()));
 
-            switch (keyLen) {
-            case 4096:
-                return new OAUTHBearerClientDH(
-                        client,
-                        authorizationId,
-                        serverName,
-                        4096);
-            default:
-                throw new SaslException("Unsupported key length: " + keyLen);
+                switch (keyLen) {
+                case 4096:
+                    return new OAUTHBearerClientDH(
+                            client,
+                            authorizationId,
+                            serverName,
+                            4096);
+                }
+            } catch (Exception e) {
+                throw new SaslException(
+                    "Can't create OAUTH Bearer Sasl client with mechanism "
+                        + mechanism,
+                    e);
             }
+
+            // reached when switch(keyLen) above does not match a 'case'
+            throw new SaslException("Unsupported key length: " + keyLen);
         } else {
             throw new SaslException("Unsupported mechanism " + mechanism);
         }

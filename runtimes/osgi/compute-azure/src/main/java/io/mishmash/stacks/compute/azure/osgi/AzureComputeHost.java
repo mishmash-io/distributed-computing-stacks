@@ -120,7 +120,8 @@ public class AzureComputeHost implements ComputeHost {
 
     @Override
     public Optional<Integer> getMemoryMB() {
-        return Optional.ofNullable(skuMemo.uncheckedGet())
+        try {
+            return Optional.ofNullable(skuMemo.uncheckedGet())
                 .map(ComputeSku::capabilities)
                 .flatMap(l -> l.stream()
                     .filter(c -> c.name().equals(VM_SKU_CAPABILITY_MEM_SIZE))
@@ -128,17 +129,28 @@ public class AzureComputeHost implements ComputeHost {
                 .map(ResourceSkuCapabilities::value)
                 .map(Double::valueOf)
                 .map(d -> (int)(d * 1024));
+        } catch (Exception e) {
+            throw new RuntimeException(
+                "Failed to parse Azure compute host memory size",
+                e);
+        }
     }
 
     @Override
     public Optional<Integer> getNumCPUCores() {
-        return Optional.ofNullable(skuMemo.uncheckedGet())
+        try {
+            return Optional.ofNullable(skuMemo.uncheckedGet())
                 .map(ComputeSku::capabilities)
                 .flatMap(l -> l.stream()
                     .filter(c -> c.name().equals(VM_SKU_CAPABILITY_CPUS))
                     .findAny())
                 .map(ResourceSkuCapabilities::value)
                 .map(Integer::valueOf);
+        } catch (Exception e) {
+            throw new RuntimeException(
+                "Failed to parse Azure compute host number of CPU cores",
+                e);
+        }
     }
 
     @Override
