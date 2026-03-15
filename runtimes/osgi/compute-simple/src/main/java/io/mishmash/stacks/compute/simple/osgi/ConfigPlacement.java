@@ -58,7 +58,6 @@ public class ConfigPlacement implements Placement {
     @Reference
     private ConfigComputeProvider provider;
 
-    //private String servicePid;
     private String geography;
     private String jurisdiction;
     private String region;
