@@ -55,7 +55,7 @@ public class OAUTHBearerClientFactory implements SaslClientFactory {
 
         if (subject == null) {
             throw new SaslException(
-                    "Could not determine Subject for sasl client");
+                    "Could not determine Subject for SASL client");
         }
 
         OIDCClientPrincipal client = subject
@@ -66,6 +66,10 @@ public class OAUTHBearerClientFactory implements SaslClientFactory {
         if (client == null) {
             throw new SaslException(
                     "Could not find an OIDC client");
+        }
+
+        if (mechanisms == null || mechanisms.length == 0) {
+            throw new SaslException("No SASL mechanisms provided");
         }
 
         // prioritize the first mechanism given
@@ -94,7 +98,7 @@ public class OAUTHBearerClientFactory implements SaslClientFactory {
                 }
             } catch (Exception e) {
                 throw new SaslException(
-                    "Can't create OAUTH Bearer Sasl client with mechanism "
+                    "Can't create OAUTH Bearer SASL client with mechanism "
                         + mechanism,
                     e);
             }

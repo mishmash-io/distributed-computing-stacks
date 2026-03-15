@@ -34,7 +34,6 @@ import io.mishmash.stacks.oidc.login.OIDCClientPrincipal;
 public class OAUTHBearerClient implements SaslClient {
 
     private boolean isComplete = false;
-    private boolean checksFailed = false;
     private OIDCClientPrincipal oidc;
     private String authz;
     private String server;
@@ -61,7 +60,7 @@ public class OAUTHBearerClient implements SaslClient {
     @Override
     public byte[] evaluateChallenge(final byte[] challenge)
             throws SaslException {
-        if (checksFailed || challenge == null) {
+        if (challenge == null) {
             throw new SaslException(
                     getMechanismName() + " authentication failed");
         }
