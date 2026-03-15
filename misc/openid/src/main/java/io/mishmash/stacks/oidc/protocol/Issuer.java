@@ -113,7 +113,7 @@ public class Issuer {
         }
     }
 
-    public void initSigntures() {
+    public void initSignatures() {
         signatures = new RESTSignatures(
                 rest,
                 getJWKSEndpoint().get());
