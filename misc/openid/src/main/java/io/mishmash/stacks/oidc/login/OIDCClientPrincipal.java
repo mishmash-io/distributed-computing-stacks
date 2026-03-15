@@ -300,7 +300,7 @@ public class OIDCClientPrincipal implements Principal {
                         OPT_ENDPOINT_JWKS,
                         OPT_ENDPOINT_OIDC_DISCOVERY));
         } else {
-            issuer.initSigntures();
+            issuer.initSignatures();
         }
 
         if (shouldIntrospect && issuer.getIntrospectionEndpoint().isEmpty()) {
