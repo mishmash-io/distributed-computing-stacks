@@ -47,7 +47,7 @@ import io.mishmash.stacks.memory.buffer.osgi.impl.OsgiAllocationListeners.OsgiAl
 public class RootAllocatorFactory {
 
     private static final Logger LOG =
-            Logger.getLogger(AllocatorFactory.class.getName());
+            Logger.getLogger(RootAllocatorFactory.class.getName());
 
     private RootAllocator rootAllocator;
     private ServiceRegistration<BufferAllocator> serviceReg;
