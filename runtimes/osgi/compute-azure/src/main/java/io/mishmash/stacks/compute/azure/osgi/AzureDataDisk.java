@@ -104,7 +104,7 @@ public class AzureDataDisk extends AzureDiskBase {
 
         return dps.stream()
             .filter(p -> p.scsiHost() == 1
-                            && p.scsiLun() == intLun
+                            && intLun.equals(p.scsiLun())
                             && p.mountPoint() != null
                             && !p.mountPoint().isBlank())
             .findFirst()
