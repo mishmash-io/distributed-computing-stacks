@@ -145,12 +145,16 @@ public class OIDCClientPrincipal implements Principal {
                         return SignedJWT.parse(
                                 j.get("access_token").getAsString());
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        throw new RuntimeException(
+                            "Failed to parse access token",
+                            e);
                     }
                 })
                 .get();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(
+                "Access token request failed",
+                e);
         }
     }
 

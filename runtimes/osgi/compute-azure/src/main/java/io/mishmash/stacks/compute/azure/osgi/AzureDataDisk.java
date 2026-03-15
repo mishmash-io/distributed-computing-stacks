@@ -95,7 +95,15 @@ public class AzureDataDisk extends AzureDiskBase {
 
     @Override
     public Optional<URI> getURI() {
-        Integer intLun = Integer.valueOf(lun);
+        Integer intLun;
+        try {
+            intLun = Integer.valueOf(lun);
+        } catch (Exception e) {
+            throw new RuntimeException(
+                "Failed to parse Azure data disk LUN",
+                e);
+        }
+
         Collection<OsDiskPartition> dps = lsblk.uncheckedGet();
 
         if (dps == null || dps.isEmpty()) {
@@ -104,7 +112,7 @@ public class AzureDataDisk extends AzureDiskBase {
 
         return dps.stream()
             .filter(p -> p.scsiHost() == 1
-                            && p.scsiLun() == intLun
+                            && intLun.equals(p.scsiLun())
                             && p.mountPoint() != null
                             && !p.mountPoint().isBlank())
             .findFirst()

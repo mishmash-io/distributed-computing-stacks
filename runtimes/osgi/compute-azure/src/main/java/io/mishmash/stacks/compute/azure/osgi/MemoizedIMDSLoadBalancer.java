@@ -55,7 +55,8 @@ public class MemoizedIMDSLoadBalancer
                             AzureConstants.IMDS_VER_LOADBALANCER,
                             AzureConstants.IMDS_PARAM_META)
                     .thenApply(LoadBalancer::getLoadbalancer)
-                    .orTimeout(2, TimeUnit.SECONDS);
+                    .orTimeout(2, TimeUnit.SECONDS)
+                    .whenComplete(this::postRunAction);
         } catch (ApiException e) {
             return CompletableFuture.failedFuture(e);
         }
@@ -73,4 +74,5 @@ public class MemoizedIMDSLoadBalancer
                     t);
         }
     }
+
 }

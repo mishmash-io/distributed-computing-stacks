@@ -163,40 +163,55 @@ public class ConfigPlacement implements Placement {
 
     @Modified
     private void modify(final Map<String, Object> conf) {
-        configureGeography(conf);
-        configureJurisdiction(conf);
-        configureRegion(conf);
-        configureZone(conf);
-        configureGroup(conf);
-        configureUpdateDomain(conf);
-        configureFaultDomain(conf);
+        configure(conf);
     }
 
     protected void configureGeography(final Map<String, Object> conf) {
-        geography = (String) conf.get(CONFIG_PLACEMENT_PROP_GEO);
+        geography = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_GEO))
+                .map(Object::toString)
+                .get();
     }
 
     protected void configureJurisdiction(final Map<String, Object> conf) {
-        jurisdiction = (String) conf.get(CONFIG_PLACEMENT_PROP_JURISDICTION);
+        jurisdiction = Optional.ofNullable(
+                        conf.get(CONFIG_PLACEMENT_PROP_JURISDICTION))
+                    .map(Object::toString)
+                    .get();
     }
 
     protected void configureRegion(final Map<String, Object> conf) {
-        region = (String) conf.get(CONFIG_PLACEMENT_PROP_REGION);
+        region = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_REGION))
+                .map(Object::toString)
+                .get();
     }
 
     protected void configureZone(final Map<String, Object> conf) {
-        zone = (String) conf.get(CONFIG_PLACEMENT_PROP_ZONE);
+        zone = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_ZONE))
+                .map(Object::toString)
+                .get();
     }
 
     protected void configureGroup(final Map<String, Object> conf) {
-        group = (String) conf.get(CONFIG_PLACEMENT_PROP_GROUP);
+        group = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_GROUP))
+                .map(Object::toString)
+                .get();
     }
 
     protected void configureUpdateDomain(final Map<String, Object> conf) {
-        updateDomain = (String) conf.get(CONFIG_PLACEMENT_PROP_UPDATE_DOM);
+        updateDomain = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_UPDATE_DOM))
+                .map(Object::toString)
+                .get();
     }
 
     protected void configureFaultDomain(final Map<String, Object> conf) {
-        faultDomain = (String) conf.get(CONFIG_PLACEMENT_PROP_FAULT_DOM);
+        faultDomain = Optional.ofNullable(
+                    conf.get(CONFIG_PLACEMENT_PROP_FAULT_DOM))
+                .map(Object::toString)
+                .get();
     }
 }
