@@ -348,7 +348,7 @@ public class AzureProvider implements ComputeProvider {
             return reg;
         } catch (Exception e) {
             LOG.log(Level.SEVERE,
-                    "Failed to register Azure Data Disk servcie for LUN "
+                    "Failed to register Azure Data Disk service for LUN "
                             + lun
                             + ", will retry.",
                     e);
