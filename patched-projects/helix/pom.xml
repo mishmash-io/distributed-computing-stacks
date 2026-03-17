@@ -136,7 +136,6 @@
     <dependency>
       <groupId>io.mishmash.stacks.quorum</groupId>
       <artifactId>quorum-server</artifactId>
-      <version>${zookeeper.stable.version}-mmio.${zookeeper.stable.mishmash.io.patch}.${zookeeper.stable.mishmash.io.update}</version>
     </dependency>
     <dependency>
       <groupId>org.yaml</groupId>
