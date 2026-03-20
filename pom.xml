@@ -152,7 +152,7 @@
     <osgi-ds.version>1.5.1</osgi-ds.version>
 
     <azure-identity.version>1.18.2</azure-identity.version>
-    <azure-resourcemanager-resources.version>2.53.6</azure-resourcemanager-resources.version>
+    <azure-resourcemanager-resources.version>2.54.0</azure-resourcemanager-resources.version>
     <azure-resourcemanager-msi.version>2.53.6</azure-resourcemanager-msi.version>
     <azure-resourcemanager-authorization.version>2.53.7</azure-resourcemanager-authorization.version>
     <azure-resourcemanager-compute.version>2.56.2</azure-resourcemanager-compute.version>
