@@ -158,7 +158,7 @@
     <azure-resourcemanager-compute.version>2.56.2</azure-resourcemanager-compute.version>
     <azure-resourcemanager-storage.version>2.55.3</azure-resourcemanager-storage.version>
     <azure-resourcemanager-network.version>2.58.0</azure-resourcemanager-network.version>
-    <openapi-nullable.version>0.2.9</openapi-nullable.version>
+    <openapi-nullable.version>0.2.10</openapi-nullable.version>
 
     <compute-azure.version>1.0.3</compute-azure.version>
     <compute-azure-utils.version>1.0.3</compute-azure-utils.version>
