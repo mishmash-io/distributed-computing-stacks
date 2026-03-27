@@ -19,7 +19,7 @@
 
   <groupId>io.mishmash.test.stacks</groupId>
   <artifactId>test-quorum-cluster</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.3</version>
   <packaging>jar</packaging>
 
   <name>Quorum/cluster tests</name>
