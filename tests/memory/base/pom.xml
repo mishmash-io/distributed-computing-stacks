@@ -71,7 +71,7 @@
   </developers>
 
   <properties>
-    <arrow.version>18.3.0-mmio.1.0</arrow.version>
+    <arrow.version>18.3.0-mmio.1.1</arrow.version>
     <test.instrumentation.opts></test.instrumentation.opts>
   </properties>
 
