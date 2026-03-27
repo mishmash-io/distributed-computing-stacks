@@ -82,14 +82,11 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.checkerframework</groupId>
-        <artifactId>checker-qual</artifactId>
-        <version>${checker.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.immutables</groupId>
-        <artifactId>value-annotations</artifactId>
-        <version>${immutables.version}</version>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-core-patches</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>

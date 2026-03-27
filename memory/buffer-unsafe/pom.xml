@@ -87,9 +87,11 @@
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.immutables</groupId>
-        <artifactId>value-annotations</artifactId>
-        <version>${immutables.version}</version>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-memory-unsafe-patches</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>

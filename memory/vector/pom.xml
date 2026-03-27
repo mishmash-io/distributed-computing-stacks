@@ -86,6 +86,13 @@
         <artifactId>memory-buffer</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>io.mishmash.stacks.patches</groupId>
+        <artifactId>arrow-vector-patches</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
