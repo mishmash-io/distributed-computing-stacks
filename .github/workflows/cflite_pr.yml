@@ -22,7 +22,7 @@ jobs:
       id: build
       uses: google/clusterfuzzlite/actions/build_fuzzers@884713a6c30a92e5e8544c39945cd7cb630abcd1 # v1
       with:
-        language: java
+        language: jvm
         github-token: ${{ secrets.GITHUB_TOKEN }}
         sanitizer: ${{ matrix.sanitizer }}
         # Optional but recommended: used to only run fuzzers that are affected
