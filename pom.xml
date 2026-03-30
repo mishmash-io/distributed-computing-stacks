@@ -130,7 +130,7 @@
     <listenablefuture.version>9999.0-empty-to-avoid-conflict-with-guava</listenablefuture.version>
     <j2objc.version>3.1</j2objc.version>
     <jspecify.version>1.0.0</jspecify.version>
-    <log4j2.version>2.25.3</log4j2.version>
+    <log4j2.version>2.25.4</log4j2.version>
     <karaf.version>4.4.10</karaf.version>
     <yetus.version>0.15.1</yetus.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
@@ -631,7 +631,7 @@
         <plugin>
           <groupId>io.github.git-commit-id</groupId>
           <artifactId>git-commit-id-maven-plugin</artifactId>
-          <version>9.0.2</version>
+          <version>9.1.0</version>
           <executions>
             <execution>
               <phase>initialize</phase>
