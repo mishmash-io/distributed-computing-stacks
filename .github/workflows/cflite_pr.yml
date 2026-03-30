@@ -16,7 +16,7 @@ jobs:
         sanitizer:
         - address
         - undefined
-        - memory
+        # - memory - not supported on jvm
     steps:
     - name: Build Fuzzers (${{ matrix.sanitizer }})
       id: build
