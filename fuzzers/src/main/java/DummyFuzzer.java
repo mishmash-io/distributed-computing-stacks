@@ -14,8 +14,10 @@
  *  limitations under the License.
  */
 
+import com.code_intelligence.jazzer.api.FuzzedDataProvider;
+
 public class DummyFuzzer {
-    public static void fuzzerTest(byte[] input) {
+    public static void fuzzerTestOneInput(final FuzzedDataProvider data) {
         // empty
     }
 }

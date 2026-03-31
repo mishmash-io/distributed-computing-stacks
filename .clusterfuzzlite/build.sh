@@ -34,8 +34,8 @@ do
     cat > "$OUT/$base_name" << EOF
 #!/bin/sh
 this_dir=\$(dirname "\$0")
-\$this_dir/jazz_driver --agent_path=\$this_dir/jazzer_agent_deploy.jar \
-    -cp="$class_path" \
+\$this_dir/jazzer_driver --agent_path=\$this_dir/jazzer_agent_deploy.jar \
+    --cp="\$this_dir:$class_path" \
     --target_class=$base_name \
     --jvm_args="-Xmx2048m" \
     \$@
