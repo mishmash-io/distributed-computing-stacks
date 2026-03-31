@@ -13,6 +13,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: "47 22 * * *"
 
 permissions:
   contents: read
@@ -32,6 +34,7 @@ jobs:
 
   test:
     needs: compile
+    if: ${{ github.event_name == 'schedule' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -208,7 +211,7 @@ jobs:
   site:
     name: Update project web site
     needs: test
-    if: always()
+    if: ${{ github.event_name == 'schedule' && (needs.test.result == 'success' || needs.test.result == 'failure') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
