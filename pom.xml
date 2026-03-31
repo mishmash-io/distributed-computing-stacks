@@ -154,7 +154,7 @@
     <azure-identity.version>1.18.2</azure-identity.version>
     <azure-resourcemanager-resources.version>2.54.0</azure-resourcemanager-resources.version>
     <azure-resourcemanager-msi.version>2.53.6</azure-resourcemanager-msi.version>
-    <azure-resourcemanager-authorization.version>2.53.7</azure-resourcemanager-authorization.version>
+    <azure-resourcemanager-authorization.version>2.53.8</azure-resourcemanager-authorization.version>
     <azure-resourcemanager-compute.version>2.56.3</azure-resourcemanager-compute.version>
     <azure-resourcemanager-storage.version>2.55.4</azure-resourcemanager-storage.version>
     <azure-resourcemanager-network.version>2.58.0</azure-resourcemanager-network.version>
