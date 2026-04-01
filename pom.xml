@@ -110,7 +110,7 @@
     <httpcomponents.client.version>5.6</httpcomponents.client.version>
     <jackson.version>2.21.2</jackson.version>
     <jackson-annotations.version>2.21</jackson-annotations.version>
-    <stax2-api.version>4.2.2</stax2-api.version>
+    <stax2-api.version>4.3.0</stax2-api.version>
     <woodstox.version>7.1.1</woodstox.version>
     <jetty.version>12.1.7</jetty.version>
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
