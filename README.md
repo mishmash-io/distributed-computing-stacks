@@ -18,11 +18,11 @@ Use the stacks here to solve common problems related to distributed computing, l
 
 The stacks, and their dependencies, are **continuously hardened** and include latest **vulnerability fixes.**
 
-Use the stacks to also **manage critical dependencies** - such as those facing networks and clients.
+Use them to also **manage critical dependencies** - such as those facing networks and clients.
 
 ### Minimize and secure your software supply chain
 
-Choose only the functionalities you need - unnecessary dependencies **won't bloat your deployments.**
+Choose only the functionalities you need and **avoid dependency bloat in your deployments.**
 
 In addition, use the **SLSA Level 3 artifact attestations** of all stack elements to **secure your
 software supply chain.**
@@ -34,13 +34,12 @@ Add the stack elements for your cloud provider and automatically integrate with 
 
 Manage your distributed system with the same tool you use to manage your infrastructure.
 
-## The stacks
-
-### Background
+## Quick intro
 
 > [!IMPORTANT]
 > 
-> The stacks are ***derivative works*** of other open source projects. They often include patches, > customizations, and additional functionalities by [mishmash io.](https://mishmash.io/)
+> The stacks are ***derivative works*** of other open source projects. They often include patches,
+> customizations, and additional functionalities by [mishmash io.](https://mishmash.io/)
 > 
 > A full list of upstream projects and their customizations is available below.
 
@@ -50,21 +49,15 @@ Additionally, we're sharing some plugins and extensions that we've developed for
 
 This repository organizes all patches and extensions into ready-made **stacks** for common use case scenarios.
 
-> [!IMPORTANT]
-> This repository is a **Work in progress!**
+> [!WARNING]
 >
-> A number of **stacks** we've accumulated internally are not published or not documented fully yet.
+> This repository is a ***Work in progress***
 >
-> Use the `watch` button above to get updates on progress.
+> A number of **stacks** we've accumulated internally aren't published or not documented fully yet.
+>
+> Use the `watch` button at the top to get updates on progress.
 
-#### In this README you will find:
-- **The motivation:** [why do we patch and rebuild?](#why-do-we-rebuild-other-open-source-projects)
-- **The goals and principles:** [what are we changing?](#summary-of-whats-modified)
-- **The rules we follow:**
-  - [When patching](#patching-process-outline)
-  - [When publishing](#publishing-patches)
-- **The original projects:**
-  - [As a list, with details on what's modified](#the-patched-projects)
+In this README you will find:
 - **The stacks:**
   - [Listed, with links for details](#the-stacks)
   - [Various ways of using a stack](#using-the-stacks)
@@ -73,8 +66,106 @@ This repository organizes all patches and extensions into ready-made **stacks** 
   - [Get more out of the stacks](#plugins-extensions-and-extras)
 - **The repository:**
   - [How to build your own stack](#modifying-the-stacks)
-- **The background:**
+- **The original upstream projects:**
+  - [As a list, with details on what's modified](#the-upstream-projects)
+- **The motivation:** [why do we patch and rebuild?](#why-do-we-rebuild-other-open-source-projects)
+- **The goals and principles:** [what are we changing?](#summary-of-whats-modified)
+- **The rules we follow:**
+  - [When patching](#patching-process-outline)
+  - [When publishing](#publishing-patches)
+- **About:**
   - [About mishmash.io](#about-mishmashio)
+
+## The stacks
+
+***Stacks*** built here typically provide one specific capability that you might need when developing your distributed and clustered system. Here's a quick overview, with functionalities by category:
+
+- ***Cloud integration*** blocks
+  
+  Together, these blocks form a base layer that allows you to integrate your clustered software with ***major public clouds*** (like Azure, AWS and GCP) or ***upgrade to next-generation technologies:***
+  - ***Configure*** (and reconfigure) your system with modern automation tools
+  - Discover the ***topology*** of a running cluster across regions and availability zones and then optimize ***data and task placement.***
+  - Add ***backward-compatible, fail-over RPC*** calls with established libraries (such as Protocol Buffers) or the newer, memory-efficient [Apache Arrow.](https://arrow.apache.org/)
+  - ***Integrate the security*** of your cluster ***with the IAM of choice*** - OpenID Connect/UMA (like [Keycloak](https://www.keycloak.org/)) or the IAMs of major public clouds.
+
+- ***Quorum*** services
+  
+  Use the ***quorum stacks*** when you need to coordinate a number of cluster nodes:
+  - Ensure nodes have a ***consistent view of a shared state***
+  - Synchronize processes running on separate nodes with ***distributed locks, barriers, and more***
+  - Develop algorithms where ***nodes have to agree***
+  - Distribute and manage ***partitioned resources,*** execute ***massively-parallel tasks*** on them
+
+- ***Data*** management
+  
+  Conquering the load and performance of data-intensive algorithms needs dividing the input. Store, distribute and process data with these stacks:
+  - ***Load-balance disks*** for scalable IOPS, ***tier*** your disks to optimize cost
+  - Break large and growing data sets into ***blocks of optimal size*** so that you can evenly split the work across multiple ***compute slots***
+  - Process blocks with ***data locality ('zero-copy')***
+  - ***Replicate*** blocks throughout your cluster nodes for higher data locality ratio
+  - Dynamically ***rebalance*** the placement of data block replicas
+  - Combine with ***columnar file formats*** (such as [Apache ORC](https://orc.apache.org/) and [Apache Arrow](https://arrow.apache.org/))  for even better performance. ***Note:*** some of these file formats feature additional performance gains - like ***bloom filters,*** for example
+  
+- Distributed ***transactions***
+  
+  (Coming soon)
+
+## Using the stacks
+
+For a quick test or playground experiments you can launch individual services or small clusters using our pre-built images and deployment scripts. (Coming soon)
+
+In production environments we recommend either:
+- Using the stacks ***programmatically*** (embed inside your app)
+  
+  Choose the functionality you need and add its dependencies to your project. Then, inside your code, initialize and use the functionality through the provided interfaces. (Docs coming soon)
+
+- Combine functionalities into ***custom images*** using our ***builders***
+  
+  Pack stacks that you need to run side-by-side, but independently of your app, into your own images. Then launch tailored clusters. (Docs coming soon)
+
+Depending on your architecture both approaches have their pros and cons.
+
+## Getting updates
+
+(Coming soon)
+
+## Plugins, extensions and extras
+
+> [!NOTE]
+> These packages are not part of the original open source projects - they're developed by **mishmash.io** to complement and extend the functionality.
+> 
+> Their source code is published in this repository.
+
+- Login modules and SASL mechanisms for popular IAMs.
+  
+  SASL (Simple Authentication and Security Layer) is a framework that allows 
+  networking protocols (such as RPC implementations) to offer configurable authentication and security. That is - you provide a security ***mechanism*** and protocols operate with it.
+  
+  It is often used with Kerberos as a mechanism, but with this package you can plug in OpenID Connect, UMA or the IAMs of major public clouds as ***SASL mechanisms.*** [Go to the IAM SASL provider.](misc/openid/)
+
+## Modifying the stacks
+
+(Coming soon)
+
+## The upstream projects
+
+These are the original open source projects that are ***patched*** here:
+- Apache ZooKeeper
+  
+  > Apache ZooKeeper is an effort to develop and maintain an open-source server which enables highly reliable distributed coordination.
+  > 
+  > ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. [Apache ZooKeeper website](https://zookeeper.apache.org/)
+- Apache Hadoop
+  
+  > The Apache® Hadoop® project develops open-source software for reliable, scalable, distributed computing.
+  > 
+  > The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. [Apache Hadoop website](https://hadoop.apache.org/)
+
+For details on ***changes to the original code*** of the projects above [see these docs.](patched-projects)
+
+The following are original open source projects whose code is not modified, but ***their dependencies might be.*** These projects are rebuilt, retested and potentially ***repackaged:***
+
+(Coming soon)
 
 ## Why do we rebuild other open source projects?
 
@@ -151,97 +242,6 @@ Publishing binaries on other repositories (such as `maven central` or `DockerHub
 Or in other words - we'll only release binaries when the original open source project releases a new version or when the security of its current version is compromised.
 
 Find out more about how we do versioning of our patched releases below.
-
-## The Patched Projects
-
-These are the original open source projects that are ***patched*** here:
-- Apache ZooKeeper
-  
-  > Apache ZooKeeper is an effort to develop and maintain an open-source server which enables highly reliable distributed coordination.
-  > 
-  > ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. [Apache ZooKeeper website](https://zookeeper.apache.org/)
-- Apache Hadoop
-  
-  > The Apache® Hadoop® project develops open-source software for reliable, scalable, distributed computing.
-  > 
-  > The Apache Hadoop software library is a framework that allows for the distributed processing of large data sets across clusters of computers using simple programming models. [Apache Hadoop website](https://hadoop.apache.org/)
-
-For details on ***changes to the original code*** of the projects above [see these docs.](patched-projects)
-
-The following are original open source projects whose code is not modified, but ***their dependencies might be.*** These projects are rebuilt, retested and potentially ***repackaged:***
-
-(Coming soon)
-
-## The Stacks
-
-***Stacks*** built here typically provide one specific functionality that you might need when developing your distributed and clustered system. Here's a quick overview, with functionalities by category:
-
-- ***Cloud integration*** blocks
-  
-  Together, these blocks form a base layer of commonly used functionality and allow you to integrate your clustered software with ***major public clouds*** (like Azure, AWS and GCP) or ***upgrade to next-generation technologies:***
-  - ***Configure*** (and reconfigure) your system with modern automation tools
-  - Discover the ***topology*** of a running cluster across regions and availability zones and then optimize ***data and task placement.***
-  - Add ***backward-compatible, fail-over RPC*** calls with established libraries (such as Protocol Buffers) or the newer, memory-efficient [Apache Arrow.](https://arrow.apache.org/)
-  - ***Integrate the security*** of your cluster ***with the IAM of choice*** - OpenID Connect/UMA (like [Keycloak](https://www.keycloak.org/)) or the IAMs of major public clouds.
-
-- ***Quorum*** services
-  
-  Use the ***quorum stacks*** when you need to coordinate a number of cluster nodes:
-  - Ensure nodes have a ***consistent view of a shared state***
-  - Synchronize processes running on separate nodes with ***distributed locks, barriers, and more***
-  - Develop algorithms where ***nodes have to agree***
-  - Distribute and manage ***partitioned resources,*** execute ***massively-parallel tasks*** on them
-
-- ***Data*** management
-  
-  Conquering the load and performance of data-intensive algorithms needs dividing the input. Store, distribute and process data with these stacks:
-  - ***Load-balance disks*** for scalable IOPS, ***tier*** your disks to optimize cost
-  - Break large and growing data sets into ***blocks of optimal size*** so that you can evenly split the work across multiple ***compute slots***
-  - Process blocks with ***data locality ('zero-copy')***
-  - ***Replicate*** blocks throughout your cluster nodes for higher data locality ratio
-  - Dynamically ***rebalance*** the placement of data block replicas
-  - Combine with ***columnar file formats*** (such as [Apache ORC](https://orc.apache.org/) and [Apache Arrow](https://arrow.apache.org/))  for even better performance. ***Note:*** some of these file formats feature additional performance gains - like ***bloom filters,*** for example
-  
-- Distributed ***transactions***
-  
-  (Coming soon)
-
-## Using the stacks
-
-For a quick test or playground experiments you can launch individual services or small clusters using our pre-built images and deployment scripts. (Coming soon)
-
-In production environments we recoomend either:
-- Using the stacks ***programmatically*** (embed inside your app)
-  
-  Choose the functionality you need and add its dependencies to your project. Then, inside your code, initialize and use the functionality through the provided interfaces. (Docs coming soon)
-
-- Combine functionalities into ***custom images*** using our ***builders***
-  
-  Pack stacks that you need to run side-by-side, but independently of your app, into your own images. Then launch tailored clusters. (Docs coming soon)
-
-Depending on your architecture both approaches have their pros and cons.
-
-## Getting updates
-
-(Coming soon)
-
-## Plugins, extensions and extras
-
-> [!NOTE]
-> These packages are not part of the original open source projects - they're developed by **mishmash.io** to complement and extend the functionality.
-> 
-> Their source code is published in this repository.
-
-- Login modules and SASL mechanisms for popular IAMs.
-  
-  SASL (Simple Authentication and Security Layer) is a framework that allows 
-  networking protocols (such as RPC implementations) to offer configurable authentication and security. That is - you provide a security ***mechanism*** and protocols operate with it.
-  
-  It is often used with Kerberos as a mechanism, but with this package you can plug in OpenID Connect, UMA or the IAMs of major public clouds as ***SASL mechanisms.*** [Go to the IAM SASL provider.](misc/openid/)
-
-## Modifying the stacks
-
-(Coming soon)
 
 # About mishmash.io
 
