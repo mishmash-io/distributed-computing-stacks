@@ -2,24 +2,53 @@
 
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/mishmash-io/distributed-computing-stacks/badge)](https://scorecard.dev/viewer/?uri=github.com/mishmash-io/distributed-computing-stacks) [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/12336/badge)](https://www.bestpractices.dev/projects/12336)
 
+### Develop large-scale distributed systems
 
-#### In this repository you'll find ***derivative works*** of other open source projects that are popular for building distributed apps and clusters.
+Use the stacks here to solve common problems related to distributed computing, like:
+- **partitioning resources** - for example, huge data sets
+- **replication and high availability** across data centers, geographic regions, cloud providers, etc.
+- optimizing **massively parallel algorithms** with techniques like:
+  - **data and/or memory locality**
+  - **distributed consistency**
+  - **GPUs, vectorization, CPU-cache utilization** and other features of latest hardware and operating systems
+  - **auto-scale** on demand
+- and **more**
 
-With a few exceptions, the code built here is originally developed by other parties (find the list below) and then customized by [mishmash.io](https://mishmash.io).
+### Develop secure distributed systems
 
-At mishmash.io, we use a lot of open source - in our [distributed database](https://mishmash.io/docs/database) or other software that we publish (such as our [open source analytics for OpenTelemetry](https://github.com/mishmash-io/opentelemetry-server-embedded)). Sometimes we customize the original project's code to better suit our needs and we're publishing our patches here.
+The stacks, and their dependencies, are **continuously hardened** and include latest **vulnerability fixes.**
 
-Additionally, we're sharing some plugins and extensions that we've developed for or around the original projects.
+Use the stacks to also **manage critical dependencies** - such as those facing networks and clients.
 
-In more technical terms - this repository contains a build process that:
-1. Fetches the original code of a number of open source projects
-2. Applies our patches
-3. Rebuilds
-4. Retests
-5. Packages ***smaller, per-feature*** components that you can ***stack*** together on an ***as-needed basis.***
-6. Builds and packages the ***extras*** developed by mishmash.io
+### Minimize and secure your software supply chain
 
-You can also find ready-made **stacks** for common use case scenarios.
+Choose only the functionalities you need - unnecessary dependencies **won't bloat your deployments.**
+
+In addition, use the **SLSA Level 3 artifact attestations** of all stack elements to **secure your
+software supply chain.**
+
+### Integrate with your production environment
+
+Add the stack elements for your cloud provider and automatically integrate with its services -
+**IAM, configuration, backup, etc.**
+
+Manage your distributed system with the same tool you use to manage your infrastructure.
+
+## The stacks
+
+### Background
+
+> [!IMPORTANT]
+> 
+> The stacks are ***derivative works*** of other open source projects. They often include patches, > customizations, and additional functionalities by [mishmash io.](https://mishmash.io/)
+> 
+> A full list of upstream projects and their customizations is available below.
+
+At mishmash.io, we use a lot of open source - in our [distributed database](https://mishmash.io/docs/database) or other software that we publish (such as our [open source analytics for OpenTelemetry](https://github.com/mishmash-io/opentelemetry-server-embedded)). Sometimes we customize the original (a.k.a. `upstream`) project's code to better suit our needs.
+
+Additionally, we're sharing some plugins and extensions that we've developed for or around the upstream projects.
+
+This repository organizes all patches and extensions into ready-made **stacks** for common use case scenarios.
 
 > [!IMPORTANT]
 > This repository is a **Work in progress!**
