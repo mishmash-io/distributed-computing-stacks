@@ -107,7 +107,7 @@
     <guava.version>33.6.0-jre</guava.version>
     <gson.version>2.13.2</gson.version>
     <httpcomponents.core.version>5.4.2</httpcomponents.core.version>
-    <httpcomponents.client.version>5.6</httpcomponents.client.version>
+    <httpcomponents.client.version>5.6.1</httpcomponents.client.version>
     <jackson.version>2.21.2</jackson.version>
     <jackson-annotations.version>2.21</jackson-annotations.version>
     <stax2-api.version>4.3.0</stax2-api.version>
