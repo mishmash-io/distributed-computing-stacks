@@ -101,7 +101,7 @@
     <commons-codec.version>1.21.0</commons-codec.version>
     <commons-collections.version>4.5.0</commons-collections.version>
     <commons-compress.version>1.28.0</commons-compress.version>
-    <commons-io.version>2.21.0</commons-io.version>
+    <commons-io.version>2.22.0</commons-io.version>
     <commons-lang.version>3.20.0</commons-lang.version>
     <dropwizard.metrics.version>4.2.38</dropwizard.metrics.version>
     <guava.version>33.6.0-jre</guava.version>
