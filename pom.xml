@@ -151,7 +151,7 @@
     <osgi-framework.version>1.10.0</osgi-framework.version>
     <osgi-ds.version>1.5.1</osgi-ds.version>
 
-    <azure-identity.version>1.18.2</azure-identity.version>
+    <azure-identity.version>1.18.3</azure-identity.version>
     <azure-resourcemanager-resources.version>2.54.0</azure-resourcemanager-resources.version>
     <azure-resourcemanager-msi.version>2.53.7</azure-resourcemanager-msi.version>
     <azure-resourcemanager-authorization.version>2.53.8</azure-resourcemanager-authorization.version>
