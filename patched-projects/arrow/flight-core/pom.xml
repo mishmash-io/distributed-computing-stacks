@@ -80,7 +80,7 @@
   </developers>
 
   <properties>
-    <grpc.version>1.80.0</grpc.version>
+    <grpc.version>1.81.0</grpc.version>
   </properties>
 
   <dependencyManagement>
