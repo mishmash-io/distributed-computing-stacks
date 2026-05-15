@@ -15,6 +15,13 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: "47 22 * * *"
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        description: Set to 'true' to also run the test jobs
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -34,7 +41,7 @@ jobs:
 
   test:
     needs: compile
-    if: ${{ github.event_name == 'schedule' }}
+    if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
