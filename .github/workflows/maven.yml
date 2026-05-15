@@ -154,14 +154,15 @@ jobs:
         distribution: 'temurin'
     - name: Setup tests telemetry collection
       id: setup-telemetry
-      uses: mishmash-io/setup-telemetry-collection@444385dc6be18038771153ff4c3ca388614ffca8 # v1.0.7
+      uses: mishmash-io/setup-telemetry-collection@a9090453ac2e76dbbccff14ac25b5f7f7ad07b4e # v1.0.7
       with:
-        java-agent-version: '2.26.1'
+        java-agent-version: '2.27.0'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         logs-artifact: telemetry-logs-${{ matrix.telemetryoutput }}
         metrics-artifact: telemetry-metrics-${{ matrix.telemetryoutput }}
         traces-artifact: telemetry-traces-${{ matrix.telemetryoutput }}
         save-profiles: true
+        emit-own-telemetry: true
         profiles-artifact: telemetry-profiles-${{ matrix.telemetryoutput }}
         grpc-port: ${{ matrix.telemetrygrpcport }}
         http-port: ${{ matrix.telemetryhttpport }}
