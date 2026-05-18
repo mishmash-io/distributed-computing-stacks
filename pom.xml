@@ -139,7 +139,7 @@
     <vertx-patch.version>1.0</vertx-patch.version>
 
     <checker.version>4.1.0</checker.version>
-    <immutables.version>2.12.1</immutables.version>
+    <immutables.version>2.12.2</immutables.version>
 
     <junit.version>6.0.0</junit.version>
     <mockito.version>5.23.0</mockito.version>
