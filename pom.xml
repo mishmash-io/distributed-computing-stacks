@@ -118,7 +118,7 @@
     <nimbus-jwt.version>10.9</nimbus-jwt.version>
     <minidev-smart.version>2.6.0</minidev-smart.version>
     <kerby.version>2.1.1</kerby.version>
-    <protobuf.version>4.34.1</protobuf.version>
+    <protobuf.version>4.35.0</protobuf.version>
     <protobuf-patch.version>1.1</protobuf-patch.version>
     <flatbuffers.version>25.2.10</flatbuffers.version>
     <slf4j.version>2.0.18</slf4j.version>
