@@ -114,7 +114,7 @@
     <woodstox.version>7.2.0</woodstox.version>
     <jetty.version>12.1.9</jetty.version>
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
-    <netty.version>4.2.13.Final</netty.version>
+    <netty.version>4.2.14.Final</netty.version>
     <nimbus-jwt.version>10.9</nimbus-jwt.version>
     <minidev-smart.version>2.6.0</minidev-smart.version>
     <kerby.version>2.1.1</kerby.version>
