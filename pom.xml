@@ -144,7 +144,7 @@
     <junit.version>6.0.0</junit.version>
     <mockito.version>5.23.0</mockito.version>
     <hamcrest.version>3.0</hamcrest.version>
-    <surefire.version>3.5.5</surefire.version>
+    <surefire.version>3.5.6</surefire.version>
 
     <test.instrumentation.opts></test.instrumentation.opts>
 
