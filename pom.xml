@@ -122,7 +122,7 @@
     <protobuf-patch.version>1.1</protobuf-patch.version>
     <flatbuffers.version>25.2.10</flatbuffers.version>
     <slf4j.version>2.0.18</slf4j.version>
-    <logback-version>1.5.32</logback-version>
+    <logback-version>1.5.33</logback-version>
     <snappy.version>1.1.10.8</snappy.version>
     <spotbugsannotations.version>4.9.8</spotbugsannotations.version>
     <error_prone_annotations.version>2.49.0</error_prone_annotations.version>
