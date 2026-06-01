@@ -85,7 +85,7 @@
     <jsp-api.version>4.0.0</jsp-api.version>
     <jersey.version>3.1.11</jersey.version>
     <sshd.version>2.18.0</sshd.version>
-    <xmlunit.version>2.11.0</xmlunit.version>
+    <xmlunit.version>2.12.0</xmlunit.version>
 
     <hadoop.common.build.dir>${project.build.directory}</hadoop.common.build.dir>
     <hadoop.log.dir>${project.build.directory}/log</hadoop.log.dir>
