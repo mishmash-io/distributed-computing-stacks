@@ -115,7 +115,7 @@
     <jetty.version>12.1.9</jetty.version>
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
     <netty.version>4.2.14.Final</netty.version>
-    <nimbus-jwt.version>10.9</nimbus-jwt.version>
+    <nimbus-jwt.version>10.9.1</nimbus-jwt.version>
     <minidev-smart.version>2.6.0</minidev-smart.version>
     <kerby.version>2.1.1</kerby.version>
     <protobuf.version>4.35.0</protobuf.version>
