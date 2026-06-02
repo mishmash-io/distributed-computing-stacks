@@ -73,9 +73,9 @@
 
   <properties>
     <!-- Apache Arrow versions -->
-    <arrow.stable.version>18.3.0</arrow.stable.version>
+    <arrow.stable.version>19.0.0</arrow.stable.version>
     <arrow.stable.mishmash.io.patch>1</arrow.stable.mishmash.io.patch>
-    <arrow.stable.mishmash.io.update>2</arrow.stable.mishmash.io.update>
+    <arrow.stable.mishmash.io.update>0</arrow.stable.mishmash.io.update>
 
     <!-- Apache ZooKeeper versions -->
     <zookeeper.stable.version>3.9.5</zookeeper.stable.version>
