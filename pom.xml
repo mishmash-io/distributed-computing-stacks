@@ -109,7 +109,7 @@
     <httpcomponents.core.version>5.4.2</httpcomponents.core.version>
     <httpcomponents.client.version>5.6.1</httpcomponents.client.version>
     <jackson.version>2.22.0</jackson.version>
-    <jackson-annotations.version>2.21</jackson-annotations.version>
+    <jackson-annotations.version>2.22</jackson-annotations.version>
     <stax2-api.version>4.3.0</stax2-api.version>
     <woodstox.version>7.2.0</woodstox.version>
     <jetty.version>12.1.9</jetty.version>
