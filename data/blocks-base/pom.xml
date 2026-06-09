@@ -343,6 +343,7 @@
                     **/hadoop/util/ReflectionUtils.java,
                     **/hadoop/util/Shell.java,
                     **/hadoop/util/SignalLogger.java,
+                    **/hadoop/util/SignalUtil.java,
                     **/hadoop/util/ShutdownHookManager.java,
                     **/hadoop/util/StopWatch.java,
                     **/hadoop/util/StringInterner.java,
@@ -356,6 +357,7 @@
                     **/hadoop/util/ZKUtil.java,
                     **/hadoop/util/bloom/*.java,
                     **/hadoop/util/concurrent/*.java,
+                    **/hadoop/util/dynamic/*.java,
                     **/hadoop/util/functional/*.java,
                     **/hadoop/util/hash/*.java,
                   </includes>
