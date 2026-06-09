@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   compile:
-    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@27eadf54dbf09080d825ce012446eb043ef0bd2c
+    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@cae861881507714074d67a11241a65c61406272f
     permissions:
       id-token: write
       contents: write
@@ -38,6 +38,7 @@ jobs:
     with:
       skip-tests: true
       java-version: '25'
+      cache-maven: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
 
   test:
     needs: compile
@@ -153,7 +154,7 @@ jobs:
     name: Testing, ${{ join(matrix.*, ' - ') }}
 
     steps:
-    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
     - name: Set up JDK 25
       uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
       with:
@@ -161,7 +162,7 @@ jobs:
         distribution: 'temurin'
     - name: Setup tests telemetry collection
       id: setup-telemetry
-      uses: mishmash-io/setup-telemetry-collection@9d4d4a9cef65bceddbd4af272f09c6047ec0b85c # v1.0.7
+      uses: mishmash-io/setup-telemetry-collection@163ee04a94eab67975c3574c4f3fb0d2208bf8f3 # v1.0.7
       with:
         java-agent-version: '2.27.0'
         github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -229,7 +230,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - name: Download test reports
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
