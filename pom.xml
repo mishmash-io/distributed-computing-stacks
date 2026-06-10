@@ -83,9 +83,9 @@
     <zookeeper.stable.mishmash.io.update>2</zookeeper.stable.mishmash.io.update>
 
     <!-- Apache Hadoop versions -->
-    <hadoop.stable.version>3.4.3</hadoop.stable.version>
+    <hadoop.stable.version>3.5.0</hadoop.stable.version>
     <hadoop.stable.mishmash.io.patch>1</hadoop.stable.mishmash.io.patch>
-    <hadoop.stable.mishmash.io.update>3</hadoop.stable.mishmash.io.update>
+    <hadoop.stable.mishmash.io.update>0</hadoop.stable.mishmash.io.update>
 
     <!-- Apache Helix versions -->
     <helix.stable.version>1.4.3</helix.stable.version>
