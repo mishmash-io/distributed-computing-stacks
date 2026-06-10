@@ -19,7 +19,7 @@
 
   <groupId>io.mishmash.test.stacks</groupId>
   <artifactId>test-storage-blocks-misc</artifactId>
-  <version>1.0.4</version>
+  <version>1.1.0</version>
 
   <name>Storage/block/misc tests</name>
   <description>
