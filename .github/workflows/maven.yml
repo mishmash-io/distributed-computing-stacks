@@ -42,7 +42,7 @@ jobs:
 
   test:
     needs: compile
-    if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests)
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -220,7 +220,7 @@ jobs:
   site:
     name: Update project web site
     needs: test
-    if: ${{ github.event_name == 'schedule' && (needs.test.result == 'success' || needs.test.result == 'failure') }}
+    if: (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests)) && (needs.test.result == 'success' || needs.test.result == 'failure')
     runs-on: ubuntu-latest
     permissions:
       contents: read
