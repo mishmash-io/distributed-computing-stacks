@@ -71,7 +71,7 @@
   </developers>
 
   <properties>
-    <zookeeper.version>3.9.5-mmio.1.2</zookeeper.version>
+    <zookeeper.version>3.9.5-mmio.1.3</zookeeper.version>
     <jmockit.version>1.50</jmockit.version>
     <test.instrumentation.opts></test.instrumentation.opts>
   </properties>
