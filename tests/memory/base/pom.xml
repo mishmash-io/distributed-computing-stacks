@@ -19,7 +19,7 @@
 
   <groupId>io.mishmash.test.stacks</groupId>
   <artifactId>test-memory-base</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <packaging>jar</packaging>
 
   <name>Memory/base tests</name>
@@ -71,7 +71,7 @@
   </developers>
 
   <properties>
-    <arrow.version>19.0.0-mmio.1.0</arrow.version>
+    <arrow.version>19.0.0-mmio.1.1</arrow.version>
     <test.instrumentation.opts></test.instrumentation.opts>
   </properties>
 
