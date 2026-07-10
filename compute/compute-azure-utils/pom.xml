@@ -156,7 +156,6 @@
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
-        <version>7.23.0</version>
         <executions>
           <execution>
             <id>generate imds client</id>
