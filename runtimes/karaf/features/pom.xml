@@ -83,7 +83,7 @@
     <azure-identity-broker.version>1.1.21</azure-identity-broker.version>
     <azure-netty.version>1.16.5</azure-netty.version>
     <azure-management.version>1.19.5</azure-management.version>
-    <nimbus-oidc.version>11.38.1</nimbus-oidc.version>
+    <nimbus-oidc.version>11.38.2</nimbus-oidc.version>
     <nimbus-lang-tag.version>1.7</nimbus-lang-tag.version>
     <nimbus-content-type.version>2.3</nimbus-content-type.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
