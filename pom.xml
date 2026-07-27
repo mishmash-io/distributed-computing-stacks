@@ -163,7 +163,7 @@
     <msal4j-brokers.version>1.0.0</msal4j-brokers.version>
     <msal4j-persistence.version>1.3.0</msal4j-persistence.version>
     <msal4j-runtime.version>0.17.4</msal4j-runtime.version>
-    <openapi-nullable.version>0.2.10</openapi-nullable.version>
+    <openapi-nullable.version>0.2.11</openapi-nullable.version>
 
     <compute-azure.version>1.0.7</compute-azure.version>
     <compute-azure-utils.version>1.0.7</compute-azure-utils.version>
