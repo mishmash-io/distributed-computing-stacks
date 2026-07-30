@@ -96,7 +96,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- Versions for dependencies common to all modules -->
-    <bouncycastle.version>1.84</bouncycastle.version>
+    <bouncycastle.version>1.85</bouncycastle.version>
     <commons-cli.version>1.11.0</commons-cli.version>
     <commons-codec.version>1.22.0</commons-codec.version>
     <commons-collections.version>4.5.0</commons-collections.version>
@@ -110,7 +110,7 @@
     <httpcomponents.client.version>5.6.2</httpcomponents.client.version>
     <jackson.version>2.22.1</jackson.version>
     <jackson-annotations.version>2.22</jackson-annotations.version>
-    <tools.jackson.version>3.2.0</tools.jackson.version>
+    <tools.jackson.version>3.2.1</tools.jackson.version>
     <stax2-api.version>4.3.0</stax2-api.version>
     <woodstox.version>7.2.1</woodstox.version>
     <jetty.version>12.1.11</jetty.version>
@@ -123,20 +123,20 @@
     <protobuf-patch.version>1.0</protobuf-patch.version>
     <flatbuffers.version>25.2.10</flatbuffers.version>
     <slf4j.version>2.0.18</slf4j.version>
-    <logback-version>1.5.38</logback-version>
+    <logback-version>1.6.1</logback-version>
     <snappy.version>1.1.10.8</snappy.version>
-    <spotbugsannotations.version>4.10.2</spotbugsannotations.version>
+    <spotbugsannotations.version>4.10.3</spotbugsannotations.version>
     <error_prone_annotations.version>2.50.0</error_prone_annotations.version>
     <failureaccess.version>1.0.3</failureaccess.version>
     <listenablefuture.version>9999.0-empty-to-avoid-conflict-with-guava</listenablefuture.version>
     <j2objc.version>3.1</j2objc.version>
-    <jspecify.version>1.0.0</jspecify.version>
+    <jspecify.version>1.0.1</jspecify.version>
     <log4j2.version>2.26.1</log4j2.version>
     <karaf.version>4.4.11</karaf.version>
     <yetus.version>0.15.1</yetus.version>
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <jakarta-validation.version>3.1.1</jakarta-validation.version>
-    <vertx.version>5.1.4</vertx.version>
+    <vertx.version>5.1.5</vertx.version>
     <vertx-patch.version>1.0</vertx-patch.version>
 
     <checker.version>4.2.1</checker.version>
@@ -154,16 +154,16 @@
 
     <azure-identity.version>1.18.4</azure-identity.version>
     <azure-resourcemanager-resources.version>2.54.2</azure-resourcemanager-resources.version>
-    <azure-resourcemanager-msi.version>2.53.9</azure-resourcemanager-msi.version>
+    <azure-resourcemanager-msi.version>2.54.0</azure-resourcemanager-msi.version>
     <azure-resourcemanager-authorization.version>2.53.10</azure-resourcemanager-authorization.version>
-    <azure-resourcemanager-compute.version>2.58.2</azure-resourcemanager-compute.version>
+    <azure-resourcemanager-compute.version>2.59.0</azure-resourcemanager-compute.version>
     <azure-resourcemanager-storage.version>2.57.1</azure-resourcemanager-storage.version>
     <azure-resourcemanager-network.version>2.59.1</azure-resourcemanager-network.version>
-    <msal4j.version>1.25.0</msal4j.version>
+    <msal4j.version>1.25.1</msal4j.version>
     <msal4j-brokers.version>1.0.0</msal4j-brokers.version>
     <msal4j-persistence.version>1.3.0</msal4j-persistence.version>
     <msal4j-runtime.version>0.17.4</msal4j-runtime.version>
-    <openapi-nullable.version>0.2.10</openapi-nullable.version>
+    <openapi-nullable.version>0.2.11</openapi-nullable.version>
 
     <compute-azure.version>1.0.7</compute-azure.version>
     <compute-azure-utils.version>1.0.7</compute-azure-utils.version>
@@ -760,7 +760,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.5.0</version>
+          <version>3.5.1</version>
           <executions>
             <execution>
               <id>prepare-jar</id>
@@ -773,7 +773,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>flatten-maven-plugin</artifactId>
-          <version>1.7.3</version>
+          <version>1.8.0</version>
           <configuration>
             <pomElements>
               <dependencies>interpolate</dependencies>
@@ -859,6 +859,33 @@
             </creators>
             <originator>Organization: mishmash io</originator>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.dataformat</groupId>
+              <artifactId>jackson-dataformat-xml</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.dataformat</groupId>
+              <artifactId>jackson-dataformat-yaml</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-annotations</artifactId>
+              <version>${jackson-annotations.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -899,6 +926,82 @@
           <artifactId>karaf-maven-plugin</artifactId>
           <version>${karaf.version}</version>
           <extensions>true</extensions>
+          <dependencies>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-annotations</artifactId>
+              <version>${jackson-annotations.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.openapitools</groupId>
+          <artifactId>openapi-generator-maven-plugin</artifactId>
+          <version>7.24.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-jsr310</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-guava</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-joda</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.dataformat</groupId>
+              <artifactId>jackson-dataformat-yaml</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.avro</groupId>
+          <artifactId>avro-maven-plugin</artifactId>
+          <version>1.12.1</version>
+          <dependencies>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-core</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-databind</artifactId>
+              <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.core</groupId>
+              <artifactId>jackson-annotations</artifactId>
+              <version>${jackson-annotations.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
