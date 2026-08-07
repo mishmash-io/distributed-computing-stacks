@@ -162,7 +162,7 @@ jobs:
         distribution: 'temurin'
     - name: Setup tests telemetry collection
       id: setup-telemetry
-      uses: mishmash-io/setup-telemetry-collection@b67c467d579f2e2c20a3eb6970996183b808a280 # v1.0.7
+      uses: mishmash-io/setup-telemetry-collection@b67c467d579f2e2c20a3eb6970996183b808a280 # v1.0.10
       with:
         java-agent-version: '2.27.0'
         github-token: ${{ secrets.GITHUB_TOKEN }}
