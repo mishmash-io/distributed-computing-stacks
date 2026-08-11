@@ -106,7 +106,7 @@
                 <!-- extract errno-related constants and functions -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="${headers.path}" />
+                  <arg value="/usr/include" />
                   <arg value="--include-constant" />
                   <arg value="EACCES" />
                   <arg value="--include-constant" />
@@ -185,7 +185,7 @@
                   <arg value="io.mishmash.foreign.posix.libc.errno" />
                   <arg value="--header-class-name" />
                   <arg value="ErrnoH" />
-                  <arg value="${headers.path}/errno.h" />
+                  <arg value="/usr/include/errno.h" />
                 </exec>
                 <!-- extract sendmsg/recvmsg constants and functions -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
@@ -246,7 +246,7 @@
                 <!-- fcntl-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="${headers.path}" />
+                  <arg value="/usr/include" />
                   <arg value="--include-constant" />
                   <arg value="O_RDONLY" />
                   <arg value="--include-constant" />
@@ -261,7 +261,7 @@
                   <arg value="io.mishmash.foreign.posix.libc.fcntl" />
                   <arg value="--header-class-name" />
                   <arg value="FcntlH" />
-                  <arg value="${headers.path}/fcntl.h" />
+                  <arg value="/usr/include/fcntl.h" />
                 </exec>
                 <!-- sys/stat headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
@@ -306,7 +306,7 @@
                 <!-- unistd-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="${headers.path}" />
+                  <arg value="/usr/include" />
                   <arg value="--include-constant" />
                   <arg value="_SC_PAGESIZE" />
                   <arg value="--include-function" />
@@ -319,7 +319,7 @@
                   <arg value="io.mishmash.foreign.posix.libc.unistd" />
                   <arg value="--header-class-name" />
                   <arg value="UnistdH" />
-                  <arg value="${headers.path}/unistd.h" />
+                  <arg value="/usr/include/unistd.h" />
                 </exec>
                 <!-- shared-memory-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
