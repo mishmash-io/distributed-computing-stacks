@@ -182,7 +182,7 @@
                   <arg value="--include-function" />
                   <arg value="__errno_location" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.errno" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc" />
                   <arg value="--header-class-name" />
                   <arg value="ErrnoH" />
                   <arg value="/usr/include/errno.h" />
@@ -238,9 +238,9 @@
                   <arg value="--include-function" />
                   <arg value="recvmsg" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.sys.socket" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc.sys" />
                   <arg value="--header-class-name" />
-                  <arg value="SysSocketH" />
+                  <arg value="SocketH" />
                   <arg value="${headers.path}/sys/socket.h" />
                 </exec>
                 <!-- fcntl-related headers -->
@@ -258,7 +258,7 @@
                   <arg value="--include-constant" />
                   <arg value="O_TRUNC" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.fcntl" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc" />
                   <arg value="--header-class-name" />
                   <arg value="FcntlH" />
                   <arg value="/usr/include/fcntl.h" />
@@ -298,9 +298,9 @@
                   <arg value="--include-function" />
                   <arg value="fstat" />                  
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.sys.stat" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc.sys" />
                   <arg value="--header-class-name" />
-                  <arg value="SysStatH" />
+                  <arg value="StatH" />
                   <arg value="${headers.path}/sys/stat.h" />
                 </exec>
                 <!-- unistd-related headers -->
@@ -316,7 +316,7 @@
                   <arg value="--include-function" />
                   <arg value="sysconf" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.unistd" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc" />
                   <arg value="--header-class-name" />
                   <arg value="UnistdH" />
                   <arg value="/usr/include/unistd.h" />
@@ -472,9 +472,9 @@
                   <arg value="--include-function" />
                   <arg value="mincore" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.sys.mman" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc.sys" />
                   <arg value="--header-class-name" />
-                  <arg value="SysMmanH" />
+                  <arg value="MManH" />
                   <arg value="${headers.path}/sys/mman.h" />
                 </exec>
                 <!-- for linux and glibc: -->
@@ -486,9 +486,9 @@
                   <arg value="--include-function" />
                   <arg value="gnu_get_libc_release" />
                   <arg value="-t" />
-                  <arg value="io.mishmash.foreign.posix.libc.gnu" />
+                  <arg value="io.mishmash.foreign.posix.linux.x86_64.libc.gnu" />
                   <arg value="--header-class-name" />
-                  <arg value="GlibcH" />
+                  <arg value="LibcVersionH" />
                   <arg value="${headers.path}/gnu/libc-version.h" />
                 </exec>
               </target>
