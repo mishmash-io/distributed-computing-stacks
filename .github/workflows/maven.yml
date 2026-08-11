@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   compile:
-    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@b4bbf8be1c9f467861d4a8ce2fe28bfaa715f933
+    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@1175099066e115ec3bf572b4caa43a5cf3d6243d
     permissions:
       id-token: write
       contents: write
@@ -38,6 +38,7 @@ jobs:
     with:
       skip-tests: true
       java-version: '25'
+      jextract-enable: true
       cache-maven: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
 
   test:

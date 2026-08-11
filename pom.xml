@@ -177,10 +177,12 @@
     <karaf-memory-buffer-shell.version>1.0.3</karaf-memory-buffer-shell.version>
     <karaf-features.version>1.0.7</karaf-features.version>
     <misc-openid.version>1.0.7</misc-openid.version>
+    <posix-libc.version>1.0.0</posix-libc.version>
   </properties>
 
   <modules>
     <module>misc/openid</module>
+    <module>misc/posix-libc</module>
 
     <module>compute/compute-azure-utils</module>
 
@@ -1002,6 +1004,11 @@
               <version>${jackson-annotations.version}</version>
             </dependency>
           </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.1.4</version>
         </plugin>
       </plugins>
     </pluginManagement>
