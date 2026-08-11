@@ -101,7 +101,7 @@
                 <!-- find correct path to header files -->
                 <exec executable="bash" failonerror="true" discardError="true" outputproperty="headers.path">
                   <arg value="-c" />
-                  <arg value="if [[ $(gccv --print-multiarch) ]]; then gcc --print-multiarch; else echo /usr/include; fi" />
+                  <arg value="if [[ $(gcc --print-multiarch) ]]; then echo /usr/include/$(gcc --print-multiarch); else echo /usr/include; fi" />
                 </exec>
                 <!-- extract errno-related constants and functions -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
