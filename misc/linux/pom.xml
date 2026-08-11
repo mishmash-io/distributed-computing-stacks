@@ -98,10 +98,15 @@
             <configuration>
               <target>
                 <mkdir dir="${project.build.directory}/generated-sources/jextract" />
+                <!-- find correct path to header files -->
+                <exec executable="bash" failonerror="true" discardError="true" outputproperty="headers.path">
+                  <arg value="-c" />
+                  <arg value="if [[ $(gccv --print-multiarch) ]]; then gcc --print-multiarch; else echo /usr/include; fi" />
+                </exec>
                 <!-- extract errno-related constants and functions -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--include-constant" />
                   <arg value="EACCES" />
                   <arg value="--include-constant" />
@@ -180,12 +185,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.errno" />
                   <arg value="--header-class-name" />
                   <arg value="ErrnoH" />
-                  <arg value="/usr/include/errno.h" />
+                  <arg value="${headers.path}/errno.h" />
                 </exec>
                 <!-- extract sendmsg/recvmsg constants and functions -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--define-macro" />
                   <arg value="__USE_GNU" />
                   <arg value="--include-constant" />
@@ -236,12 +241,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.sys.socket" />
                   <arg value="--header-class-name" />
                   <arg value="SysSocketH" />
-                  <arg value="/usr/include/sys/socket.h" />
+                  <arg value="${headers.path}/sys/socket.h" />
                 </exec>
                 <!-- fcntl-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--include-constant" />
                   <arg value="O_RDONLY" />
                   <arg value="--include-constant" />
@@ -256,12 +261,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.fcntl" />
                   <arg value="--header-class-name" />
                   <arg value="FcntlH" />
-                  <arg value="/usr/include/fcntl.h" />
+                  <arg value="${headers.path}/fcntl.h" />
                 </exec>
                 <!-- sys/stat headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--include-constant" />
                   <arg value="S_IRWXU" />
                   <arg value="--include-constant" />
@@ -296,12 +301,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.sys.stat" />
                   <arg value="--header-class-name" />
                   <arg value="SysStatH" />
-                  <arg value="/usr/include/sys/stat.h" />
+                  <arg value="${headers.path}/sys/stat.h" />
                 </exec>
                 <!-- unistd-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--include-constant" />
                   <arg value="_SC_PAGESIZE" />
                   <arg value="--include-function" />
@@ -314,12 +319,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.unistd" />
                   <arg value="--header-class-name" />
                   <arg value="UnistdH" />
-                  <arg value="/usr/include/unistd.h" />
+                  <arg value="${headers.path}/unistd.h" />
                 </exec>
                 <!-- shared-memory-related headers -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--define-macro" />
                   <arg value="_GNU_SOURCE" />
                   <arg value="--include-constant" />
@@ -470,12 +475,12 @@
                   <arg value="io.mishmash.foreign.posix.libc.sys.mman" />
                   <arg value="--header-class-name" />
                   <arg value="SysMmanH" />
-                  <arg value="/usr/include/sys/mman.h" />
+                  <arg value="${headers.path}/sys/mman.h" />
                 </exec>
                 <!-- for linux and glibc: -->
                 <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
                   <arg value="-I" />
-                  <arg value="/usr/include" />
+                  <arg value="${headers.path}" />
                   <arg value="--include-function" />
                   <arg value="gnu_get_libc_version" />
                   <arg value="--include-function" />
@@ -484,7 +489,7 @@
                   <arg value="io.mishmash.foreign.posix.libc.gnu" />
                   <arg value="--header-class-name" />
                   <arg value="GlibcH" />
-                  <arg value="/usr/include/gnu/libc-version.h" />
+                  <arg value="${headers.path}/gnu/libc-version.h" />
                 </exec>
               </target>
             </configuration>
