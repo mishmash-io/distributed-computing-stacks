@@ -28,6 +28,7 @@ permissions:
 
 jobs:
   test-paths:
+    runs-on: ubuntu-latest
     steps:
     - name: Print multiarch C-header paths
       run: |
