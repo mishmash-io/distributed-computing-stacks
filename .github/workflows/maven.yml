@@ -27,6 +27,12 @@ permissions:
   contents: read
 
 jobs:
+  test-paths:
+    run: |
+      sudo apt-get install -y build-essential
+      which gcc
+      gcc --print-multiarch
+
   compile:
     uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@1175099066e115ec3bf572b4caa43a5cf3d6243d
     permissions:
