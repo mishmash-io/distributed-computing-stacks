@@ -25,16 +25,16 @@
   </parent>
 
   <groupId>io.mishmash.stacks.misc</groupId>
-  <artifactId>linux-foreign-libc</artifactId>
-  <version>${linux-libc.version}</version>
+  <artifactId>posix-foreign-libc</artifactId>
+  <version>${posix-libc.version}</version>
 
-  <name>java.lang.foreign libc APIs for Linux</name>
+  <name>java.lang.foreign libc APIs for POSIX operating systems</name>
   <description>
-    A simple library that provides access to some of the Linux libc functions
-    like shm_open(), mmap(), etc.
+    A simple library that provides access to some of the POSIX (Linux, Unix, etc)
+    libc functions like shm_open(), mmap(), etc.
 
     Used mostly to implement memory-sharing, short-circtuit I/O and other
-    Linux-specific optimizations that are not available in the startandard
+    UNIX-specific optimizations that are not available in the startandard
     Java APIs.
   </description>
   <url>https://mishmash.io/open_source/distributed-computing-stacks</url>
@@ -531,6 +531,10 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>flatten-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.spdx</groupId>
