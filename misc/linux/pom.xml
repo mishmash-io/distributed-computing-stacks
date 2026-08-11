@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2026 Mishmash IO UK Ltd.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.mishmash.stacks</groupId>
+    <artifactId>distributed-computing-stacks</artifactId>
+    <version>1.1.1</version>
+    <relativePath>../../pom.xml</relativePath>
+  </parent>
+
+  <groupId>io.mishmash.stacks.misc</groupId>
+  <artifactId>linux-foreign-libc</artifactId>
+  <version>${linux-libc.version}</version>
+
+  <name>java.lang.foreign libc APIs for Linux</name>
+  <description>
+    A simple library that provides access to some of the Linux libc functions
+    like shm_open(), mmap(), etc.
+
+    Used mostly to implement memory-sharing, short-circtuit I/O and other
+    Linux-specific optimizations that are not available in the startandard
+    Java APIs.
+  </description>
+  <url>https://mishmash.io/open_source/distributed-computing-stacks</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>mishmash io</name>
+    <url>https://mishmash.io</url>
+  </organization>
+
+  <scm>
+    <connection>scm:git:https://github.com/mishmash-io/distributed-computing-stacks.git</connection>
+    <developerConnection>scm:git:https://github.com/mishmash-io/distributed-computing-stacks.git</developerConnection>
+    <url>https://github.com/mishmash-io/distributed-computing-stacks</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>mishmash io open-source contributors</name>
+      <email>opensourcemaintainers@mishmash.io</email>
+      <organization>mishmash io</organization>
+      <organizationUrl>https://mishmash.io</organizationUrl>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <name>Andrey Rusev</name>
+      <email>a.rusev@mishmash.io</email>
+      <url>www.linkedin.com/in/andrey-rusev-21894172</url>
+      <organization>mishmash io</organization>
+      <organizationUrl>https://mishmash.io</organizationUrl>
+      <roles>
+        <role>architect</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <jextract.path>jextract</jextract.path>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>extract-headers</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <mkdir dir="${project.build.directory}/generated-sources/jextract" />
+                <!-- extract errno-related constants and functions -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--include-constant" />
+                  <arg value="EACCES" />
+                  <arg value="--include-constant" />
+                  <arg value="EAGAIN" />
+                  <arg value="--include-constant" />
+                  <arg value="EALREADY" />
+                  <arg value="--include-constant" />
+                  <arg value="EBADF" />
+                  <arg value="--include-constant" />
+                  <arg value="EBUSY" />
+                  <arg value="--include-constant" />
+                  <arg value="ECONNRESET" />
+                  <arg value="--include-constant" />
+                  <arg value="EDESTADDRREQ" />
+                  <arg value="--include-constant" />
+                  <arg value="EDQUOT" />
+                  <arg value="--include-constant" />
+                  <arg value="EEXIST" />
+                  <arg value="--include-constant" />
+                  <arg value="EFAULT" />
+                  <arg value="--include-constant" />
+                  <arg value="EFBIG" />
+                  <arg value="--include-constant" />
+                  <arg value="EHWPOISON" />
+                  <arg value="--include-constant" />
+                  <arg value="EINTR" />
+                  <arg value="--include-constant" />
+                  <arg value="EINVAL" />
+                  <arg value="--include-constant" />
+                  <arg value="EIO" />
+                  <arg value="--include-constant" />
+                  <arg value="EISCONN" />
+                  <arg value="--include-constant" />
+                  <arg value="ELOOP" />
+                  <arg value="--include-constant" />
+                  <arg value="EMFILE" />
+                  <arg value="--include-constant" />
+                  <arg value="EMSGSIZE" />
+                  <arg value="--include-constant" />
+                  <arg value="ENAMETOOLONG" />
+                  <arg value="--include-constant" />
+                  <arg value="ENFILE" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOBUFS" />
+                  <arg value="--include-constant" />
+                  <arg value="ENODEV" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOENT" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOMEM" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOSPC" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOTCONN" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOTDIR" />
+                  <arg value="--include-constant" />
+                  <arg value="ENOTSOCK" />
+                  <arg value="--include-constant" />
+                  <arg value="EOPNOTSUPP" />
+                  <arg value="--include-constant" />
+                  <arg value="EOVERFLOW" />
+                  <arg value="--include-constant" />
+                  <arg value="EPERM" />
+                  <arg value="--include-constant" />
+                  <arg value="EPIPE" />
+                  <arg value="--include-constant" />
+                  <arg value="ETIMEDOUT" />
+                  <arg value="--include-constant" />
+                  <arg value="ETXTBSY" />
+                  <arg value="--include-constant" />
+                  <arg value="EWOULDBLOCK" />
+                  <arg value="--include-function" />
+                  <arg value="__errno_location" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.errno" />
+                  <arg value="--header-class-name" />
+                  <arg value="ErrnoH" />
+                  <arg value="/usr/include/errno.h" />
+                </exec>
+                <!-- extract sendmsg/recvmsg constants and functions -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--define-macro" />
+                  <arg value="__USE_GNU" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_CONFIRM" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_DONTROUTE" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_DONTWAIT" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_EOR" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_MORE" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_NOSIGNAL" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_OOB" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_FASTOPEN" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_PEEK" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_WAITALL" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_TRUNC" />
+                  <arg value="--include-constant" />
+                  <arg value="MSG_CTRUNC" />
+                  <arg value="--include-struct" />
+                  <arg value="cmsghdr" />
+                  <arg value="--include-struct" />
+                  <arg value="msghdr" />
+                  <arg value="--include-struct" />
+                  <arg value="iovec" />
+                  <arg value="--include-struct" />
+                  <arg value="ucred" />
+                  <arg value="--include-constant" />
+                  <arg value="SOL_SOCKET" />
+                  <arg value="--include-constant" />
+                  <arg value="SCM_RIGHTS" />
+                  <arg value="--include-constant" />
+                  <arg value="SCM_CREDENTIALS" />
+                  <arg value="--include-constant" />
+                  <arg value="SCM_SECURITY" />
+                  <arg value="--include-function" />
+                  <arg value="sendmsg" />
+                  <arg value="--include-function" />
+                  <arg value="recvmsg" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.sys.socket" />
+                  <arg value="--header-class-name" />
+                  <arg value="SysSocketH" />
+                  <arg value="/usr/include/sys/socket.h" />
+                </exec>
+                <!-- fcntl-related headers -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--include-constant" />
+                  <arg value="O_RDONLY" />
+                  <arg value="--include-constant" />
+                  <arg value="O_RDWR" />
+                  <arg value="--include-constant" />
+                  <arg value="O_CREAT" />
+                  <arg value="--include-constant" />
+                  <arg value="O_EXCL" />
+                  <arg value="--include-constant" />
+                  <arg value="O_TRUNC" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.fcntl" />
+                  <arg value="--header-class-name" />
+                  <arg value="FcntlH" />
+                  <arg value="/usr/include/fcntl.h" />
+                </exec>
+                <!-- sys/stat headers -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IRWXU" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IRUSR" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IWUSR" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IXUSR" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IRWXG" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IRGRP" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IWGRP" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IXGRP" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IRWXO" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IROTH" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IWOTH" />
+                  <arg value="--include-constant" />
+                  <arg value="S_IXOTH" />
+                  <arg value="--include-struct" />
+                  <arg value="stat" />
+                  <arg value="--include-struct" />
+                  <arg value="timespec" />
+                  <arg value="--include-function" />
+                  <arg value="fstat" />                  
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.sys.stat" />
+                  <arg value="--header-class-name" />
+                  <arg value="SysStatH" />
+                  <arg value="/usr/include/sys/stat.h" />
+                </exec>
+                <!-- unistd-related headers -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--include-constant" />
+                  <arg value="_SC_PAGESIZE" />
+                  <arg value="--include-function" />
+                  <arg value="close" />
+                  <arg value="--include-function" />
+                  <arg value="ftruncate" />
+                  <arg value="--include-function" />
+                  <arg value="sysconf" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.unistd" />
+                  <arg value="--header-class-name" />
+                  <arg value="UnistdH" />
+                  <arg value="/usr/include/unistd.h" />
+                </exec>
+                <!-- shared-memory-related headers -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--define-macro" />
+                  <arg value="_GNU_SOURCE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_NORMAL" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_RANDOM" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_SEQUENTIAL" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_WILLNEED" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_DONTNEED" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_REMOVE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_DONTFORK" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_DOFORK" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_HWPOISON" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_MERGEABLE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_UNMERGEABLE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_SOFT_OFFLINE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_HUGEPAGE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_NOHUGEPAGE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_COLLAPSE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_DONTDUMP" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_DODUMP" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_FREE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_WIPEONFORK" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_KEEPONFORK" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_COLD" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_PAGEOUT" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_POPULATE_READ" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_POPULATE_WRITE" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_GUARD_INSTALL" />
+                  <arg value="--include-constant" />
+                  <arg value="MADV_GUARD_REMOVE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_SHARED" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_SHARED_VALIDATE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_PRIVATE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_32BIT" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_ANON" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_ANONYMOUS" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_FILE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_FIXED" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_FIXED_NOREPLACE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_GROWSDOWN" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_HUGETLB" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_HUGE_2MB" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_HUGE_1GB" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_LOCKED" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_NONBLOCK" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_NORESERVE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_POPULATE" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_STACK" />
+                  <arg value="--include-constant" />
+                  <arg value="MAP_SYNC" />
+                  <arg value="--include-constant" />
+                  <arg value="MREMAP_MAYMOVE" />
+                  <arg value="--include-constant" />
+                  <arg value="MREMAP_FIXED" />
+                  <arg value="--include-constant" />
+                  <arg value="MREMAP_DONTUNMAP" />
+                  <arg value="--include-constant" />
+                  <arg value="MS_ASYNC" />
+                  <arg value="--include-constant" />
+                  <arg value="MS_SYNC" />
+                  <arg value="--include-constant" />
+                  <arg value="MS_INVALIDATE" />
+                  <arg value="--include-constant" />
+                  <arg value="MLOCK_ONFAULT" />
+                  <arg value="--include-constant" />
+                  <arg value="MCL_CURRENT" />
+                  <arg value="--include-constant" />
+                  <arg value="MCL_FUTURE" />
+                  <arg value="--include-constant" />
+                  <arg value="MCL_ONFAULT" />
+                  <arg value="--include-constant" />
+                  <arg value="PROT_EXEC" />
+                  <arg value="--include-constant" />
+                  <arg value="PROT_READ" />
+                  <arg value="--include-constant" />
+                  <arg value="PROT_WRITE" />
+                  <arg value="--include-constant" />
+                  <arg value="PROT_NONE" />
+                  <arg value="--include-function" />
+                  <arg value="shm_open" />
+                  <arg value="--include-function" />
+                  <arg value="shm_unlink" />                  
+                  <arg value="--include-function" />
+                  <arg value="mmap" />
+                  <arg value="--include-function" />
+                  <arg value="munmap" />
+                  <arg value="--include-function" />
+                  <arg value="mremap" />
+                  <arg value="--include-function" />
+                  <arg value="msync" />
+                  <arg value="--include-function" />
+                  <arg value="madvise" />
+                  <arg value="--include-function" />
+                  <arg value="mlock" />
+                  <arg value="--include-function" />
+                  <arg value="mlock2" />
+                  <arg value="--include-function" />
+                  <arg value="munlock" />
+                  <arg value="--include-function" />
+                  <arg value="mlockall" />
+                  <arg value="--include-function" />
+                  <arg value="munlockall" />
+                  <arg value="--include-function" />
+                  <arg value="mincore" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.sys.mman" />
+                  <arg value="--header-class-name" />
+                  <arg value="SysMmanH" />
+                  <arg value="/usr/include/sys/mman.h" />
+                </exec>
+                <!-- for linux and glibc: -->
+                <exec executable="${jextract.path}" dir="${project.build.directory}/generated-sources/jextract" failonerror="true">
+                  <arg value="-I" />
+                  <arg value="/usr/include" />
+                  <arg value="--include-function" />
+                  <arg value="gnu_get_libc_version" />
+                  <arg value="--include-function" />
+                  <arg value="gnu_get_libc_release" />
+                  <arg value="-t" />
+                  <arg value="io.mishmash.foreign.posix.libc.gnu" />
+                  <arg value="--header-class-name" />
+                  <arg value="GlibcH" />
+                  <arg value="/usr/include/gnu/libc-version.h" />
+                </exec>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-extracted-sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>${project.build.directory}/generated-sources/jextract</sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.spdx</groupId>
+        <artifactId>spdx-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

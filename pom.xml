@@ -177,10 +177,12 @@
     <karaf-memory-buffer-shell.version>1.0.3</karaf-memory-buffer-shell.version>
     <karaf-features.version>1.0.7</karaf-features.version>
     <misc-openid.version>1.0.7</misc-openid.version>
+    <linux-libc.version>1.0.0</linux-libc.version>
   </properties>
 
   <modules>
     <module>misc/openid</module>
+    <module>misc/linux</module>
 
     <module>compute/compute-azure-utils</module>
 
