@@ -18,4 +18,5 @@ jobs:
     secrets: inherit
     with:
       java-version: 25
+      jextract-enable: true
       skip-tests: true
