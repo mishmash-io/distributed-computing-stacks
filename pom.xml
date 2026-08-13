@@ -172,7 +172,7 @@
     <security-oidc-common.version>1.0.8</security-oidc-common.version>
     <security-azure.version>1.0.9</security-azure.version>
     <karaf-security-common.version>1.0.8</karaf-security-common.version>
-    <karaf-security-azure.version>1.0.7</karaf-security-azure.version>
+    <karaf-security-azure.version>1.0.8</karaf-security-azure.version>
     <karaf-compute-shell.version>1.0.8</karaf-compute-shell.version>
     <karaf-memory-buffer-shell.version>1.0.4</karaf-memory-buffer-shell.version>
     <karaf-features.version>1.0.8</karaf-features.version>
