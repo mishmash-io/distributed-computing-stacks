@@ -71,7 +71,7 @@
   </developers>
 
   <properties>
-    <helix.version>1.4.3-mmio.1.4</helix.version>
+    <helix.version>1.4.3-mmio.1.5</helix.version>
     <test.instrumentation.opts></test.instrumentation.opts>
   </properties>
 
