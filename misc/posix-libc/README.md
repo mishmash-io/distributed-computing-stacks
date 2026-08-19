@@ -109,3 +109,5 @@ Client terminated, shared memory is: [5, 6, 7, 8]
 [INFO] Finished at: 2026-08-19T13:49:22+03:00
 [INFO] ------------------------------------------------------------------------
 ```
+
+Now take a look at the source code of [the server](examples/src/main/java/test/Server.java) and [the client](examples/src/main/java/test/Client.java), it includes a lot of comments to help you get an idea how they work.
