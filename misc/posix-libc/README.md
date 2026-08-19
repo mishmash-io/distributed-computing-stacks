@@ -10,6 +10,16 @@ At [mishmash io](https://mishmash.io) we use it to implement **short-circuit, ze
 > these can increase the performance of a system [read our blog post on how we implemented this library](https://mishmash.io/blog/shared_memory_short_circuit_java_lang_foreign_jextract)
 >
 
+Add to your project's `pom.xml`:
+
+```xml
+<dependency>
+  <groupId>io.mishmash.stacks.misc</groupId>
+  <artifactId>posix-foreign-libc</artifactId>
+  <version>LATEST</version>
+</dependency>
+```
+
 ## Example code
 
 See [example code in this folder.](examples/) It contains [a server](examples/src/main/java/test/Server.java) that allocates a shared memory segment, opens a UNIX-domain socket and waits for a client to connect. Then it shares the 
