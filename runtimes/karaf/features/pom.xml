@@ -89,7 +89,7 @@
     <jcip-annotations.version>1.0</jcip-annotations.version>
     <asm.version>9.10.1</asm.version>
     <jna.version>5.19.1</jna.version>
-    <reactor-core.version>3.8.6</reactor-core.version>
+    <reactor-core.version>3.8.7</reactor-core.version>
     <reactor-netty.version>1.3.7</reactor-netty.version>
     <reactive-streams.version>1.0.4</reactive-streams.version>
     <javax-validation.version>2.0.1.Final</javax-validation.version>
