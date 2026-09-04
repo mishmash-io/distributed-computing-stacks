@@ -185,7 +185,7 @@ jobs:
         fail-on-cache-miss: true
     - name: Download additional deps to keep surefire plugin happy when offline
       # needed by quorum/cluster, which uses testng (TODO: download automatically when 'going offline' for tests)
-      run: mvn dependency:get -Dartifact=org.apache.maven.surefire:surefire-testng:3.5.6
+      run: mvn dependency:get -Dartifact=org.apache.maven.surefire:surefire-testng:3.6.0
     - name: Run test set ${{ matrix.testset }}
       env:
         OTEL_SERVICE_NAME: maven-test-service
@@ -246,4 +246,4 @@ jobs:
           path: test-reports/
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
