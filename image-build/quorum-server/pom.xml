@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2026 Mishmash IO UK Ltd.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.mishmash.test</groupId>
+  <artifactId>quorum-server</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <properties>
+    <quorum.version>3.9.5-mmio.1.5</quorum.version>
+    <base.path>${project.build.directory}/opt/stacks</base.path>
+    <common.path>${base.path}/common</common.path>
+    <quorum.path>${base.path}/quorum</quorum.path>
+    <quorum.server.path>${quorum.path}/server</quorum.server.path>
+    <data.dir>${quorum.server.path}/data</data.dir>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.mishmash.stacks.quorum</groupId>
+        <artifactId>quorum-client</artifactId>
+        <version>${quorum.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.mishmash.stacks.quorum</groupId>
+      <artifactId>quorum-server</artifactId>
+      <version>${quorum.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.xerial.snappy</groupId>
+      <artifactId>snappy-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.11.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.5.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>get-jar-filenames</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <exportAntProperties>true</exportAntProperties>
+              <target>
+                <basename file="${commons-io:commons-io:jar}" property="dependencies.commons-io"/>
+                <basename file="${org.xerial.snappy:snappy-java:jar}" property="dependencies.snappy-java"/>
+                <basename file="${io.mishmash.stacks.quorum:quorum-server:jar}" property="dependencies.quorum-server"/>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>io.mishmash.stacks.quorum</groupId>
+                  <artifactId>quorum-server</artifactId>
+                  <outputDirectory>${quorum.server.path}/lib</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>org.xerial.snappy</groupId>
+                  <artifactId>snappy-java</artifactId>
+                  <outputDirectory>${common.path}/lib</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>commons-io</groupId>
+                  <artifactId>commons-io</artifactId>
+                  <outputDirectory>${common.path}/lib</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-config-files</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${quorum.server.path}/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>etc</directory>
+                  <filtering>true</filtering>
+                  <targetPath>etc</targetPath>
+                </resource>
+                <resource>
+                  <directory>bin</directory>
+                  <filtering>true</filtering>
+                  <targetPath>bin</targetPath>
+                </resource>
+                <resource>
+                  <directory>conf</directory>
+                  <filtering>true</filtering>
+                  <targetPath>conf</targetPath>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-shell-profile</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${base.path}/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>shellprofile.d</directory>
+                  <filtering>true</filtering>
+                  <targetPath>libexec/shellprofile.d</targetPath>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-data-dir</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${data.dir}/</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>data</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
