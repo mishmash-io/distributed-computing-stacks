@@ -15,6 +15,7 @@ updates:
       - "/tests/storage/block/misc"
       - "/tests/storage/block/namenode"
       - "/misc/posix-libc/examples"
+      - "/image-build"
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
