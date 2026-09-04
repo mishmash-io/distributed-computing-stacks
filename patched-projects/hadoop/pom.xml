@@ -79,7 +79,6 @@
   </developers>
 
   <properties>
-    <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
     <curator.version>5.9.0</curator.version>
     <wildfly-openssl.version>2.3.0.Final</wildfly-openssl.version>
     <jsp-api.version>4.0.0</jsp-api.version>
@@ -166,11 +165,6 @@
         <groupId>org.eclipse.jetty.ee10</groupId>
         <artifactId>jetty-ee10-webapp</artifactId>
         <version>${jetty.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>${jakarta-servlet.version}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.activation</groupId>
