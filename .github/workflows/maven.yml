@@ -39,7 +39,7 @@ jobs:
       skip-tests: true
       java-version: '25'
       jextract-enable: true
-      cache-maven: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
+      cache-maven: true
 
   build-docker:
     needs: compile
