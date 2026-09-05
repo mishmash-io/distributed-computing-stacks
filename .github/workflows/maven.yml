@@ -39,7 +39,24 @@ jobs:
       skip-tests: true
       java-version: '25'
       jextract-enable: true
-      cache-maven: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run_tests) }}
+      cache-maven: true
+
+  build-docker:
+    needs: compile
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    name: Building container images
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - name: Restore cached build artifacts
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ~/.m2/repository
+        key: ${{ needs.compile.outputs.build-cache-key }}
+        fail-on-cache-miss: true
+    - name: Build images
+      run: cd image-build && podman build -v=$HOME/.m2:/root/.m2:rw,Z .
 
   test:
     needs: compile
