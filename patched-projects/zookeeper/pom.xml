@@ -132,6 +132,7 @@
         <version>${jmockit.version}</version>
         <scope>test</scope>
       </dependency>
+
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-client</artifactId>
@@ -246,6 +247,12 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bctls-jdk18on</artifactId>
+      <scope>test</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry.javaagent</groupId>
+      <artifactId>opentelemetry-javaagent</artifactId>
       <scope>test</scope>
       <optional>true</optional>
     </dependency>
