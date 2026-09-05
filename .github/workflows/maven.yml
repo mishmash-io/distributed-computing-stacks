@@ -55,7 +55,7 @@ jobs:
         path: ~/.m2/repository
         key: ${{ needs.compile.outputs.build-cache-key }}
         fail-on-cache-miss: true
-    - name: Build Docker image
+    - name: Build images
       run: cd image-build && podman build -v=$HOME/.m2:/root/.m2:rw,Z .
 
   test:
