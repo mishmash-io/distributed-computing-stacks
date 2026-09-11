@@ -119,13 +119,13 @@ Here's a list of the available stacks images and their contents:
 
 - `stacks-logging`
   
-  Logging backend, more about it [here.](logging/#readme)
+  Logging backend, more about it [here.](logging#readme)
 
 - `stacks-slf4j`
   
   [SLF4J logging facade,](https://www.slf4j.org) same versions as SLF4J releases.
   
-  **Needs** the [logging backend stack.](logging/#readme)
+  **Needs** the [logging backend stack.](logging#readme)
 
 - `stacks-netty`
   
@@ -133,12 +133,12 @@ Here's a list of the available stacks images and their contents:
 
 - `stacks-opentelemetry-agent`
   
-  Sets up the [OpenTelemetry Java agent.](https://opentelemetry.io/docs/zero-code/java/agent/) For configuration options - [read this.](opentelemetry-agent/#readme)
+  Sets up the [OpenTelemetry Java agent.](https://opentelemetry.io/docs/zero-code/java/agent/) For configuration options - [read this.](opentelemetry-agent#readme)
 
 - `stacks-sasl-oidc`
   
   Provides a SASL login module with OIDC (OpenID Connect) authentication.
-  Refer to [its own docs](sasl-oidc/#readme) for details.
+  Refer to [its own docs](sasl-oidc#readme) for details.
 
 - `stacks-bouncy-castle`
   
@@ -146,7 +146,7 @@ Here's a list of the available stacks images and their contents:
 
 - `shellprofiles-container`
   
-  Utility scripts when running stacks in containerized environments. [Learn more here](shellprofiles-container/#readme)
+  Utility scripts when running stacks in containerized environments. [Learn more here](shellprofiles-container#readme)
 
 - `stacks-quorum-client`
 
