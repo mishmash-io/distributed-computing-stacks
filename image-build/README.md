@@ -13,7 +13,7 @@ Choose images based on your architecture - whether you're embedding distributed 
 > This document only covers machine images that contain individual distributed
 > computing stacks. It does not cover the stacks themselves.
 >
-> To find out more about the stacks, [start with the main docs here.](../#readme)
+> To find out more about the stacks, [start with the main docs here.](..#readme)
 
 ## Stack vs Service images
 
@@ -212,4 +212,4 @@ necessary entries to the classpath, add additional JVM args, etc.
 
 ## About the distributed computing stacks
 
-This document only covers the distributed computing stacks images. For a broader view of the entire distributed computing stacks project, start at the [main documentation here.](../#readme)
+This document only covers the distributed computing stacks images. For a broader view of the entire distributed computing stacks project, start at the [main documentation here.](..#readme)
