@@ -170,7 +170,7 @@
                     **/zookeeper/common/ZKConfig.java,
 
                     **/zookeeper/ClientCnxnSocketNetty.java,
-                    **/zookeeper/common/NettyClientX509Util.java,
+                    **/zookeeper/common/ClientNettyX509Util.java,
                     **/zookeeper/common/NettyUtils.java,
                     **/zookeeper/common/QuorumX509Util.java,
                   </excludes>
