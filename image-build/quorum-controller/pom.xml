@@ -22,7 +22,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <properties>
-    <quorum.version>3.9.5-mmio.1.5</quorum.version>
+    <quorum.version>3.9.6-mmio.1.0</quorum.version>
     <base.path>${project.build.directory}/opt/stacks</base.path>
     <common.path>${base.path}/common</common.path>
     <quorum.path>${base.path}/quorum</quorum.path>
