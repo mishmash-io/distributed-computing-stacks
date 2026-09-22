@@ -201,7 +201,7 @@ COPY --from=stacks-jackson "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM eclipse-temurin:25-jre-noble@sha256:eba4652e73e82e9c18cf91ab42a831248f6fcd5e3a1b780949436118310ed24b AS quorum-server
+FROM eclipse-temurin:25-jre-noble@sha256:b573af9e331196fbc42e246da4df24df9b6c556c73e7efddfde0511f1c9508c5 AS quorum-server
 
 ARG INSTALL_BASE="/opt/stacks"
 
