@@ -18,10 +18,8 @@
 
 for stack in $stacks
 do
-    echo "Building stack: $stack:${versions[$stack]}"
-    podman build --target "$stack" \
-        --tag "docker.io/mishmashio/$stack:latest" \
-        --tag "docker.io/mishmashio/$stack:${versions[$stack]}" \
-        -v=$HOME/.m2:/root/.m2:rw,Z .
+    echo "Pushing stack: $stack:${versions[$stack]}"
+    podman push "docker.io/mishmashio/$stack:${versions[$stack]}" && \
+    	podman push "docker.io/mishmashio/$stack:latest"
 done
 
