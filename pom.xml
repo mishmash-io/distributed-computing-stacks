@@ -926,12 +926,12 @@
           <version>3.2.8</version>
           <configuration>
             <useAgent>false</useAgent>
-            <gpgArguments>
+            <!--gpgArguments>
               <arg>--batch</arg>
               <arg>--yes</arg>
               <arg>--pinentry-mode</arg>
               <arg>loopback</arg>
-            </gpgArguments>
+            </gpgArguments-->
           </configuration>
           <executions>
             <execution>
