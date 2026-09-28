@@ -28,7 +28,7 @@ permissions:
 
 jobs:
   compile:
-    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@e01facfc196200787713bb5c759998b646a3b822
+    uses: mishmash-io/github-workflows/.github/workflows/maven_build_with_provenance.yml@5d9f21d794701caa394166e480c1ee5b670505c6
     permissions:
       id-token: write
       contents: write
