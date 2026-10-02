@@ -846,17 +846,6 @@
           <artifactId>maven-bundle-plugin</artifactId>
           <version>6.2.0</version>
           <extensions>true</extensions>
-          <dependencies>
-            <dependency>
-              <!--
-                need to overwrite bnd as the version origially used fails to generate correct
-                manifests when using java 25 (it does not support java 25)
-              -->
-              <groupId>biz.aQute.bnd</groupId>
-              <artifactId>biz.aQute.bndlib</artifactId>
-              <version>7.4.0</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.spdx</groupId>
