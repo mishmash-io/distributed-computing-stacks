@@ -18,7 +18,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.mishmash.stacks</groupId>
   <artifactId>distributed-computing-stacks</artifactId>
-  <version>1.1.2</version>
+  <version>1.1.3</version>
   <packaging>pom</packaging>
 
   <name>Open Source Stacks for Distributed Computing</name>
@@ -75,22 +75,22 @@
     <!-- Apache Arrow versions -->
     <arrow.stable.version>19.0.0</arrow.stable.version>
     <arrow.stable.mishmash.io.patch>1</arrow.stable.mishmash.io.patch>
-    <arrow.stable.mishmash.io.update>2</arrow.stable.mishmash.io.update>
+    <arrow.stable.mishmash.io.update>3</arrow.stable.mishmash.io.update>
 
     <!-- Apache ZooKeeper versions -->
     <zookeeper.stable.version>3.9.6</zookeeper.stable.version>
     <zookeeper.stable.mishmash.io.patch>1</zookeeper.stable.mishmash.io.patch>
-    <zookeeper.stable.mishmash.io.update>0</zookeeper.stable.mishmash.io.update>
+    <zookeeper.stable.mishmash.io.update>1</zookeeper.stable.mishmash.io.update>
 
     <!-- Apache Hadoop versions -->
     <hadoop.stable.version>3.5.0</hadoop.stable.version>
     <hadoop.stable.mishmash.io.patch>1</hadoop.stable.mishmash.io.patch>
-    <hadoop.stable.mishmash.io.update>2</hadoop.stable.mishmash.io.update>
+    <hadoop.stable.mishmash.io.update>3</hadoop.stable.mishmash.io.update>
 
     <!-- Apache Helix versions -->
     <helix.stable.version>1.4.3</helix.stable.version>
     <helix.stable.mishmash.io.patch>1</helix.stable.mishmash.io.patch>
-    <helix.stable.mishmash.io.update>5</helix.stable.mishmash.io.update>
+    <helix.stable.mishmash.io.update>6</helix.stable.mishmash.io.update>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -121,7 +121,7 @@
     <minidev-smart.version>2.6.0</minidev-smart.version>
     <kerby.version>2.1.2</kerby.version>
     <protobuf.version>4.36.2</protobuf.version>
-    <protobuf-patch.version>1.0</protobuf-patch.version>
+    <protobuf-patch.version>1.1</protobuf-patch.version>
     <flatbuffers.version>25.2.10</flatbuffers.version>
     <slf4j.version>2.0.20</slf4j.version>
     <logback-version>1.6.5</logback-version>
@@ -138,7 +138,7 @@
     <jakarta-annotation.version>2.1.1</jakarta-annotation.version>
     <jakarta-validation.version>3.1.1</jakarta-validation.version>
     <vertx.version>5.2.0</vertx.version>
-    <vertx-patch.version>1.0</vertx-patch.version>
+    <vertx-patch.version>1.1</vertx-patch.version>
 
     <checker.version>4.3.0</checker.version>
     <immutables.version>2.12.2</immutables.version>
@@ -167,19 +167,19 @@
     <msal4j-runtime.version>0.17.4</msal4j-runtime.version>
     <openapi-nullable.version>0.2.12</openapi-nullable.version>
 
-    <compute-azure.version>1.0.8</compute-azure.version>
-    <compute-azure-utils.version>1.0.8</compute-azure-utils.version>
-    <stacks-common.version>1.0.7</stacks-common.version>
-    <compute-simple.version>1.0.7</compute-simple.version>
-    <security-oidc-common.version>1.0.8</security-oidc-common.version>
-    <security-azure.version>1.0.9</security-azure.version>
-    <karaf-security-common.version>1.0.8</karaf-security-common.version>
-    <karaf-security-azure.version>1.0.8</karaf-security-azure.version>
-    <karaf-compute-shell.version>1.0.8</karaf-compute-shell.version>
-    <karaf-memory-buffer-shell.version>1.0.4</karaf-memory-buffer-shell.version>
-    <karaf-features.version>1.0.8</karaf-features.version>
-    <misc-openid.version>1.0.8</misc-openid.version>
-    <posix-libc.version>1.0.0</posix-libc.version>
+    <compute-azure.version>1.0.9</compute-azure.version>
+    <compute-azure-utils.version>1.0.9</compute-azure-utils.version>
+    <stacks-common.version>1.0.8</stacks-common.version>
+    <compute-simple.version>1.0.8</compute-simple.version>
+    <security-oidc-common.version>1.0.9</security-oidc-common.version>
+    <security-azure.version>1.0.10</security-azure.version>
+    <karaf-security-common.version>1.0.9</karaf-security-common.version>
+    <karaf-security-azure.version>1.0.9</karaf-security-azure.version>
+    <karaf-compute-shell.version>1.0.9</karaf-compute-shell.version>
+    <karaf-memory-buffer-shell.version>1.0.5</karaf-memory-buffer-shell.version>
+    <karaf-features.version>1.0.9</karaf-features.version>
+    <misc-openid.version>1.0.9</misc-openid.version>
+    <posix-libc.version>1.0.1</posix-libc.version>
   </properties>
 
   <modules>
