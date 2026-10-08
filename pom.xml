@@ -80,7 +80,7 @@
     <!-- Apache ZooKeeper versions -->
     <zookeeper.stable.version>3.9.6</zookeeper.stable.version>
     <zookeeper.stable.mishmash.io.patch>1</zookeeper.stable.mishmash.io.patch>
-    <zookeeper.stable.mishmash.io.update>1</zookeeper.stable.mishmash.io.update>
+    <zookeeper.stable.mishmash.io.update>0</zookeeper.stable.mishmash.io.update>
 
     <!-- Apache Hadoop versions -->
     <hadoop.stable.version>3.5.0</hadoop.stable.version>
