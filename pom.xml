@@ -114,7 +114,7 @@
     <tools.jackson.version>3.2.3</tools.jackson.version>
     <stax2-api.version>4.3.1</stax2-api.version>
     <woodstox.version>7.3.0</woodstox.version>
-    <jetty.version>12.1.13</jetty.version>
+    <jetty.version>12.1.14</jetty.version>
     <jakarta-servlet.version>6.0.0</jakarta-servlet.version>
     <netty.version>4.2.18.Final</netty.version>
     <nimbus-jwt.version>10.10</nimbus-jwt.version>
