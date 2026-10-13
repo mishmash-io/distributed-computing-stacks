@@ -76,6 +76,16 @@ COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
+FROM stacks-base AS stacks-protobuf
+
+COPY protobuf /tmp/protobuf
+
+RUN cd /tmp/protobuf && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+
+#------------------------------------------------------------------------------
+
 FROM stacks-base AS stacks-yaml
 
 COPY yaml-snakeyaml /tmp/yaml-snakeyaml

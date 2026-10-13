@@ -14,13 +14,12 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-stacks="stacks-base stacks-guava stacks-jackson stacks-gson \
+stacks="stacks-base stacks-guava stacks-jackson stacks-gson stacks-protobuf \
     stacks-yaml stacks-jackson-yaml stacks-shellprofiles-container \
     stacks-logging stacks-slf4j stacks-bouncy-castle stacks-netty \
     stacks-sasl-oidc stacks-opentelemetry-agent stacks-jetty-base \
     stacks-jetty-client stacks-jetty-server stacks-jetty-servlet \
-    stacks-vertx-core stacks-vertx-common-grpc stacks-vertx-server-grpc \
-    stacks-vertx-common-web stacks-vertx-server-web \
+    stacks-vertx-server-grpc stacks-vertx-server-web \
     stacks-quorum-client stacks-quorum-server quorum-server \
     stacks-quorum-server-controller stacks-quorum-server-admin-rest \
     "
@@ -48,6 +47,7 @@ versions["stacks-shellprofiles-container"]=1.0.0
 versions["stacks-guava"]=$(get_version "guava.version")
 versions["stacks-jackson"]=$jackson_version
 versions["stacks-gson"]=$(get_version "gson.version")
+versions["stacks-protobuf"]=$(get_version "protobuf.version")-mmio.$(get_version "protobuf-patch.version")
 versions["stacks-yaml"]=$(get_version "snakeyaml.version")
 versions["stacks-jackson-yaml"]=$jackson_version
 versions["stacks-logging"]=$logging_version
@@ -60,9 +60,8 @@ versions["stacks-jetty-base"]=$jetty_version
 versions["stacks-jetty-client"]=$jetty_version
 versions["stacks-jetty-server"]=$jetty_version
 versions["stacks-jetty-servlet"]=$jetty_version
-versions["stacks-vertx-core"]=$vertx_version
-versions["stacks-vertx-common-grpc"]=$vertx_version
 versions["stacks-vertx-server-grpc"]=$vertx_version
+versions["stacks-vertx-server-web"]=$vertx_version
 versions["stacks-quorum-client"]=$quorum_version
 versions["stacks-quorum-server"]=$quorum_version
 versions["quorum-server"]=$quorum_version
