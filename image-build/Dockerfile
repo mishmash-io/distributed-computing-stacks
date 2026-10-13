@@ -40,11 +40,21 @@ COPY scripts/libexec "${INSTALL_BASE}/libexec"
 
 #------------------------------------------------------------------------------
 
+FROM stacks-base AS stacks-analytic-annotations
+
+COPY analytic-annotations /tmp/analytic-annotations
+
+RUN cd /tmp/analytic-annotations && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
 FROM stacks-base AS stacks-guava
 
 COPY guava /tmp/guava
 
 RUN cd /tmp/guava && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
@@ -61,6 +71,8 @@ FROM stacks-base AS stacks-gson
 COPY json-gson /tmp/json-gson
 
 RUN cd /tmp/json-gson && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
@@ -221,6 +233,8 @@ COPY --from=stacks-netty "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-sasl-oidc "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 # needed mostly for self-signed certificates:
 COPY --from=stacks-bouncy-castle "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 

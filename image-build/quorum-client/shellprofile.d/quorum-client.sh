@@ -18,8 +18,5 @@ hadoop_add_profile quorum-client
 
 function _quorum-client_hadoop_classpath
 {
-    hadoop_add_classpath "@common.path@/lib/@dependencies.spotbugs-annotations@" after
-    hadoop_add_classpath "@common.path@/lib/@dependencies.jsr305@" after
-    hadoop_add_classpath "@common.path@/lib/@dependencies.audience-annotations@" after
     hadoop_add_classpath "@quorum.client.path@/lib/@dependencies.quorum-client@" after
 }

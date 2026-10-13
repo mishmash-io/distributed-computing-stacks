@@ -24,6 +24,7 @@
   <properties>
     <base.path>${project.build.directory}/opt/stacks</base.path>
     <common.path>${base.path}/common</common.path>
+    <jackson.path>${common.path}/jackson</jackson.path>
   </properties>
 
   <dependencyManagement>
@@ -101,7 +102,7 @@
                 <artifactItem>
                   <groupId>com.fasterxml.jackson.dataformat</groupId>
                   <artifactId>jackson-dataformat-yaml</artifactId>
-                  <outputDirectory>${common.path}/lib</outputDirectory>
+                  <outputDirectory>${jackson.path}/lib</outputDirectory>
                 </artifactItem>
               </artifactItems>
             </configuration>

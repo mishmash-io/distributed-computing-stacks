@@ -18,7 +18,7 @@ hadoop_add_profile fasterxml-jackson-json
 
 function _fasterxml-jackson-json_hadoop_classpath
 {
-    hadoop_add_classpath "@common.path@/lib/@dependencies.jackson_annotations@" after
-    hadoop_add_classpath "@common.path@/lib/@dependencies.jackson_core@" after
-    hadoop_add_classpath "@common.path@/lib/@dependencies.jackson_databind@" after
+    hadoop_add_classpath "@jackson.path@/lib/@dependencies.jackson_annotations@" after
+    hadoop_add_classpath "@jackson.path@/lib/@dependencies.jackson_core@" after
+    hadoop_add_classpath "@jackson.path@/lib/@dependencies.jackson_databind@" after
 }
