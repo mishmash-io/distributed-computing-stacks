@@ -18,5 +18,5 @@ hadoop_add_profile fastxml-jackson-yaml
 
 function _fastxml-jackson-yaml_hadoop_classpath
 {
-    hadoop_add_classpath "@common.path@/lib/@dependencies.dataformat-yaml@" after
+    hadoop_add_classpath "@jackson.path@/lib/@dependencies.dataformat-yaml@" after
 }

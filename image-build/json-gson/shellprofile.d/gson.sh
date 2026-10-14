@@ -19,5 +19,4 @@ hadoop_add_profile gson
 function _gson_hadoop_classpath
 {
     hadoop_add_classpath "@common.path@/lib/@dependencies.gson@" after
-    hadoop_add_classpath "@common.path@/lib/@dependencies.error_prone_annotations@" after
 }

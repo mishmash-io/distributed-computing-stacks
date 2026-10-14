@@ -47,14 +47,6 @@
       <artifactId>quorum-client</artifactId>
       <version>${quorum.version}</version>
     </dependency>
-    <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.yetus</groupId>
-      <artifactId>audience-annotations</artifactId>
-    </dependency>
   </dependencies>
 
   <build>
@@ -92,9 +84,6 @@
             <configuration>
               <exportAntProperties>true</exportAntProperties>
               <target>
-                <basename file="${com.github.spotbugs:spotbugs-annotations:jar}" property="dependencies.spotbugs-annotations"/>
-                <basename file="${com.google.code.findbugs:jsr305:jar}" property="dependencies.jsr305"/>
-                <basename file="${org.apache.yetus:audience-annotations:jar}" property="dependencies.audience-annotations"/>
                 <basename file="${io.mishmash.stacks.quorum:quorum-client:jar}" property="dependencies.quorum-client"/>
               </target>
             </configuration>
@@ -118,34 +107,7 @@
                   <artifactId>quorum-client</artifactId>
                   <outputDirectory>${quorum.client.path}/lib</outputDirectory>
                 </artifactItem>
-                <artifactItem>
-                  <groupId>com.github.spotbugs</groupId>
-                  <artifactId>spotbugs-annotations</artifactId>
-                  <outputDirectory>${common.path}/lib</outputDirectory>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>org.apache.yetus</groupId>
-                  <artifactId>audience-annotations</artifactId>
-                  <outputDirectory>${common.path}/lib</outputDirectory>
-                </artifactItem>
               </artifactItems>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-spotbugs-dependencies</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <graphRoots>
-                <graphRoot>
-                  <groupId>com.github.spotbugs</groupId>
-                  <artifactId>spotbugs-annotations</artifactId>
-                </graphRoot>
-              </graphRoots>
-              <includeArtifactIds>jsr305</includeArtifactIds>
-              <outputDirectory>${common.path}/lib</outputDirectory>
             </configuration>
           </execution>
         </executions>

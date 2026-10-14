@@ -43,10 +43,6 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.google.errorprone</groupId>
-      <artifactId>error_prone_annotations</artifactId>
-    </dependency>
   </dependencies>
 
   <build>
@@ -85,7 +81,6 @@
               <exportAntProperties>true</exportAntProperties>
               <target>
                 <basename file="${com.google.code.gson:gson:jar}" property="dependencies.gson"/>
-                <basename file="${com.google.errorprone:error_prone_annotations:jar}" property="dependencies.error_prone_annotations"/>
               </target>
             </configuration>
           </execution>
@@ -106,11 +101,6 @@
                 <artifactItem>
                   <groupId>com.google.code.gson</groupId>
                   <artifactId>gson</artifactId>
-                  <outputDirectory>${common.path}/lib</outputDirectory>
-                </artifactItem>
-                <artifactItem>
-                  <groupId>com.google.errorprone</groupId>
-                  <artifactId>error_prone_annotations</artifactId>
                   <outputDirectory>${common.path}/lib</outputDirectory>
                 </artifactItem>
               </artifactItems>

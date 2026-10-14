@@ -28,11 +28,35 @@ ENV INSTALL_QUORUM_CLIENT_BASE=${INSTALL_QUORUM_BASE}/client
 ENV INSTALL_QUORUM_SERVER_BASE=${INSTALL_QUORUM_BASE}/server
 ENV INSTALL_QUORUM_SERVER_ETC=${INSTALL_QUORUM_SERVER_BASE}/etc
 
-RUN mkdir -p "${INSTALL_BASE}/libexec/shellprofile.d"
 RUN mkdir -p "${INSTALL_BASE}/bin"
+RUN mkdir -p "${INSTALL_BASE}/libexec"
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-base
+
+RUN mkdir -p "${INSTALL_BASE}/libexec/shellprofile.d"
 
 COPY scripts/bin "${INSTALL_BASE}/bin/"
 COPY scripts/libexec "${INSTALL_BASE}/libexec"
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-analytic-annotations
+
+COPY analytic-annotations /tmp/analytic-annotations
+
+RUN cd /tmp/analytic-annotations && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-guava
+
+COPY guava /tmp/guava
+
+RUN cd /tmp/guava && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
@@ -49,6 +73,18 @@ FROM base-builder AS stacks-gson
 COPY json-gson /tmp/json-gson
 
 RUN cd /tmp/json-gson && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-protobuf
+
+COPY protobuf /tmp/protobuf
+
+RUN cd /tmp/protobuf && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
@@ -110,6 +146,14 @@ COPY --from=stacks-gson "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
+FROM base-builder AS stacks-opentelemetry-api
+
+COPY opentelemetry-api /tmp/opentelemetry-api
+
+RUN cd /tmp/opentelemetry-api && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
 FROM base-builder AS stacks-opentelemetry-agent
 
 COPY opentelemetry-agent /tmp/opentelemetry-agent
@@ -150,6 +194,54 @@ RUN cd /tmp/jetty-servlet && mvn --offline -Dbase.path="${INSTALL_BASE}" clean i
 
 #------------------------------------------------------------------------------
 
+FROM base-builder AS stacks-vertx-core
+
+COPY vertx-core /tmp/vertx-core
+
+RUN cd /tmp/vertx-core && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM stacks-vertx-core AS stacks-vertx-common-grpc
+
+COPY vertx-common-grpc /tmp/vertx-common-grpc
+
+RUN cd /tmp/vertx-common-grpc && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM stacks-vertx-common-grpc AS stacks-vertx-server-grpc
+
+COPY vertx-server-grpc /tmp/vertx-server-grpc
+
+RUN cd /tmp/vertx-server-grpc && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM stacks-vertx-core AS stacks-vertx-common-web
+
+COPY vertx-common-web /tmp/vertx-common-web
+
+RUN cd /tmp/vertx-common-web && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM stacks-vertx-common-web AS stacks-vertx-server-web
+
+COPY vertx-server-web /tmp/vertx-server-web
+
+RUN cd /tmp/vertx-server-web && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-shellprofiles-container
+
+COPY shellprofiles-container /tmp/shellprofiles-container
+
+RUN cd /tmp/shellprofiles-container && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
 FROM base-builder AS stacks-quorum-client
 
 COPY quorum-client /tmp/quorum-client
@@ -162,6 +254,8 @@ COPY --from=stacks-sasl-oidc "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 # needed mostly for self-signed certificates:
 COPY --from=stacks-bouncy-castle "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
+COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+
 #------------------------------------------------------------------------------
 
 FROM stacks-quorum-client AS stacks-quorum-server
@@ -171,10 +265,6 @@ COPY quorum-server /tmp/quorum-server
 RUN cd /tmp/quorum-server && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
 
 RUN chmod -R 755 "${INSTALL_QUORUM_SERVER_BASE}/bin/quorum.sh"
-
-COPY shellprofiles-container /tmp/shellprofiles-container
-
-RUN cd /tmp/shellprofiles-container && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
 
 #------------------------------------------------------------------------------
 
@@ -205,13 +295,16 @@ FROM eclipse-temurin:25-jre-noble@sha256:d9a39a23634650173f1e2bbc176227af9728587
 
 ARG INSTALL_BASE="/opt/stacks"
 
+COPY --from=stacks-base "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-quorum-server "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-logging "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 # needed mostly for log4j2 yaml config:
 COPY --from=stacks-jackson "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-yaml "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-jackson-yaml "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+
 COPY --from=stacks-opentelemetry-agent "${INSTALL_BASE}/" "${INSTALL_BASE}/"
+COPY --from=stacks-shellprofiles-container "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 ENTRYPOINT ["/__cacert_entrypoint.sh", "/opt/stacks/quorum/server/bin/quorum.sh"]
 CMD ["standalone"]
