@@ -28,19 +28,21 @@ ENV INSTALL_QUORUM_CLIENT_BASE=${INSTALL_QUORUM_BASE}/client
 ENV INSTALL_QUORUM_SERVER_BASE=${INSTALL_QUORUM_BASE}/server
 ENV INSTALL_QUORUM_SERVER_ETC=${INSTALL_QUORUM_SERVER_BASE}/etc
 
+RUN mkdir -p "${INSTALL_BASE}/bin"
+RUN mkdir -p "${INSTALL_BASE}/libexec"
+
 #------------------------------------------------------------------------------
 
 FROM base-builder AS stacks-base
 
 RUN mkdir -p "${INSTALL_BASE}/libexec/shellprofile.d"
-RUN mkdir -p "${INSTALL_BASE}/bin"
 
 COPY scripts/bin "${INSTALL_BASE}/bin/"
 COPY scripts/libexec "${INSTALL_BASE}/libexec"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-analytic-annotations
+FROM base-builder AS stacks-analytic-annotations
 
 COPY analytic-annotations /tmp/analytic-annotations
 
@@ -48,7 +50,7 @@ RUN cd /tmp/analytic-annotations && mvn --offline -Dbase.path="${INSTALL_BASE}" 
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-guava
+FROM base-builder AS stacks-guava
 
 COPY guava /tmp/guava
 
@@ -58,7 +60,7 @@ COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-jackson
+FROM base-builder AS stacks-jackson
 
 COPY json-jackson /tmp/json-jackson
 
@@ -66,7 +68,7 @@ RUN cd /tmp/json-jackson && mvn --offline -Dbase.path="${INSTALL_BASE}" clean in
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-gson
+FROM base-builder AS stacks-gson
 
 COPY json-gson /tmp/json-gson
 
@@ -76,7 +78,7 @@ COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-protobuf
+FROM base-builder AS stacks-protobuf
 
 COPY protobuf /tmp/protobuf
 
@@ -86,7 +88,7 @@ COPY --from=stacks-analytic-annotations "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-yaml
+FROM base-builder AS stacks-yaml
 
 COPY yaml-snakeyaml /tmp/yaml-snakeyaml
 
@@ -94,7 +96,7 @@ RUN cd /tmp/yaml-snakeyaml && mvn --offline -Dbase.path="${INSTALL_BASE}" clean 
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-jackson-yaml
+FROM base-builder AS stacks-jackson-yaml
 
 COPY yaml-jackson /tmp/yaml-jackson
 
@@ -102,7 +104,7 @@ RUN cd /tmp/yaml-jackson && mvn --offline -Dbase.path="${INSTALL_BASE}" clean in
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-logging
+FROM base-builder AS stacks-logging
 
 COPY logging /tmp/logging
 
@@ -110,7 +112,7 @@ RUN cd /tmp/logging && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initial
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-slf4j
+FROM base-builder AS stacks-slf4j
 
 COPY logging-slf4j /tmp/logging-slf4j
 
@@ -118,7 +120,7 @@ RUN cd /tmp/logging-slf4j && mvn --offline -Dbase.path="${INSTALL_BASE}" clean i
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-bouncy-castle
+FROM base-builder AS stacks-bouncy-castle
 
 COPY security-bouncy-castle /tmp/security-bouncy-castle
 
@@ -126,7 +128,7 @@ RUN cd /tmp/security-bouncy-castle && mvn --offline -Dbase.path="${INSTALL_BASE}
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-netty
+FROM base-builder AS stacks-netty
 
 COPY netty /tmp/netty
 
@@ -134,7 +136,7 @@ RUN cd /tmp/netty && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initializ
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-sasl-oidc
+FROM base-builder AS stacks-sasl-oidc
 
 COPY sasl-oidc /tmp/sasl-oidc
 
@@ -144,7 +146,15 @@ COPY --from=stacks-gson "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-opentelemetry-agent
+FROM base-builder AS stacks-opentelemetry-api
+
+COPY opentelemetry-api /tmp/opentelemetry-api
+
+RUN cd /tmp/opentelemetry-api && mvn --offline -Dbase.path="${INSTALL_BASE}" clean initialize
+
+#------------------------------------------------------------------------------
+
+FROM base-builder AS stacks-opentelemetry-agent
 
 COPY opentelemetry-agent /tmp/opentelemetry-agent
 
@@ -152,7 +162,7 @@ RUN cd /tmp/opentelemetry-agent && mvn --offline -Dbase.path="${INSTALL_BASE}" c
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-jetty-base
+FROM base-builder AS stacks-jetty-base
 
 COPY jetty-base /tmp/jetty-base
 
@@ -176,7 +186,7 @@ RUN cd /tmp/jetty-server && mvn --offline -Dbase.path="${INSTALL_BASE}" clean in
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-jetty-servlet
+FROM base-builder AS stacks-jetty-servlet
 
 COPY jetty-servlet /tmp/jetty-servlet
 
@@ -184,7 +194,7 @@ RUN cd /tmp/jetty-servlet && mvn --offline -Dbase.path="${INSTALL_BASE}" clean i
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-vertx-core
+FROM base-builder AS stacks-vertx-core
 
 COPY vertx-core /tmp/vertx-core
 
@@ -224,7 +234,7 @@ RUN cd /tmp/vertx-server-web && mvn --offline -Dbase.path="${INSTALL_BASE}" clea
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-shellprofiles-container
+FROM base-builder AS stacks-shellprofiles-container
 
 COPY shellprofiles-container /tmp/shellprofiles-container
 
@@ -232,7 +242,7 @@ RUN cd /tmp/shellprofiles-container && mvn --offline -Dbase.path="${INSTALL_BASE
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-quorum-client
+FROM base-builder AS stacks-quorum-client
 
 COPY quorum-client /tmp/quorum-client
 
@@ -258,7 +268,7 @@ RUN chmod -R 755 "${INSTALL_QUORUM_SERVER_BASE}/bin/quorum.sh"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-quorum-server-controller
+FROM base-builder AS stacks-quorum-server-controller
 
 COPY quorum-controller /tmp/quorum-controller
 
@@ -269,7 +279,7 @@ COPY --from=stacks-jetty-server "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM stacks-base AS stacks-quorum-server-admin-rest
+FROM base-builder AS stacks-quorum-server-admin-rest
 
 COPY quorum-admin-rest /tmp/quorum-admin-rest
 
@@ -285,6 +295,7 @@ FROM eclipse-temurin:25-jre-noble@sha256:d9a39a23634650173f1e2bbc176227af9728587
 
 ARG INSTALL_BASE="/opt/stacks"
 
+COPY --from=stacks-base "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-quorum-server "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 COPY --from=stacks-logging "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 # needed mostly for log4j2 yaml config:

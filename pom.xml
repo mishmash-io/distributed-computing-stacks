@@ -148,6 +148,7 @@
     <hamcrest.version>3.0</hamcrest.version>
     <surefire.version>3.6.0</surefire.version>
     <opentelemetry.agent.version>2.32.0</opentelemetry.agent.version>
+    <opentelemetry.api.version>1.67.0</opentelemetry.api.version>
 
     <test.instrumentation.opts></test.instrumentation.opts>
 
@@ -666,6 +667,11 @@
         <groupId>io.mishmash.stacks</groupId>
         <artifactId>stacks-common</artifactId>
         <version>${stacks-common.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.opentelemetry</groupId>
+        <artifactId>opentelemetry-api</artifactId>
+        <version>${opentelemetry.api.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
