@@ -13,7 +13,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-FROM maven:3-eclipse-temurin-25-noble@sha256:4d66ab17f4c6d99e9f9d8033d1b1aadd3a1d83bdf89645e716afe324ed33ef94 AS base-builder
+FROM maven:3-eclipse-temurin-25-noble@sha256:8e20356c6442c8538ed673edf33a2478fe84dc23a5fe04039c4ed4835d7f6a82 AS base-builder
 
 ENV INSTALL_BASE=/opt/stacks
 ENV INSTALL_COMMON_BASE=${INSTALL_BASE}/common
@@ -291,7 +291,7 @@ COPY --from=stacks-jackson "${INSTALL_BASE}/" "${INSTALL_BASE}/"
 
 #------------------------------------------------------------------------------
 
-FROM eclipse-temurin:25-jre-noble@sha256:37c16059e13b3dfa59f4c24af72dd0f7798d5f1b06647e306feb914f4163a721 AS quorum-server
+FROM eclipse-temurin:25-jre-noble@sha256:3f2223fe04b750aa5a8179e29b5c9a1ddf7665fc9bb08bfe11ad01d143bc13a5 AS quorum-server
 
 ARG INSTALL_BASE="/opt/stacks"
 
