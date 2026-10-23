@@ -53,7 +53,7 @@
     <dependency>
       <groupId>io.mishmash.stacks.misc</groupId>
       <artifactId>posix-foreign-libc</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
     </dependency>
   </dependencies>
 
