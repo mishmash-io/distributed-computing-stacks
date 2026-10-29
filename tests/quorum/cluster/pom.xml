@@ -231,9 +231,9 @@
         <version>3.6.1</version>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <suiteXmlFiles>
-            <suiteXmlFile>src/test/conf/testng.xml</suiteXmlFile>
-          </suiteXmlFiles>
+          <includes>
+            <include>**/org/apache/helix/**/*</include>
+          </includes>
           <argLine>-Xms4096m -Xmx4096m -javaagent:${org.mockito:mockito-core:jar} ${test.instrumentation.opts}</argLine>
         </configuration>
       </plugin>
