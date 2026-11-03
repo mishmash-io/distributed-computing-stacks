@@ -30,7 +30,10 @@ function get_version() {
     echo "$v"
 }
 
+# make sure the plugin is downloaded for offline use:
 mvn dependency:get -Dartifact=org.apache.maven.plugins:maven-help-plugin:3.5.2 &> /dev/null
+# also make sure the metadata for prefix-to-plugin (help -> maven-help-plugin) is downloaded for offline use:
+mvn help:evaluate -Dexpression=asdf -Dartifact=io.mishmash.stacks:distributed-computing-stacks &> /dev/null
 
 echo "Collecting version information..."
 
