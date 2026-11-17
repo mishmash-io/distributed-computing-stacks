@@ -140,7 +140,7 @@
     <vertx.version>5.2.3</vertx.version>
     <vertx-patch.version>1.0</vertx-patch.version>
 
-    <checker.version>4.3.1</checker.version>
+    <checker.version>4.4.0</checker.version>
     <immutables.version>2.12.3</immutables.version>
 
     <junit.version>6.1.3</junit.version>
