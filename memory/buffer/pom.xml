@@ -191,7 +191,6 @@
                     **/module-info.java,
 
                     **/apache/arrow/memory/CheckAllocator.java,
-                    **/apache/arrow/memory/DefaultAllocationManagerOption.java,
                     **/apache/arrow/memory/util/MemoryUtil.java
                   </excludes>
                 </artifactItem>
